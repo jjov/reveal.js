@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/blood.css">
+		<link rel="stylesheet" href="css/theme/league.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -25,8 +25,114 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+            	<h3>AC Standalone - Result field missing</h3>
+            	When AppleCare Standalone activation was completed successfully, result field was not set.
+            				<pre><code class="hljs javascript">
+{
+    "header": {
+        "sessionId": "0b0d9374-8a45-424b-b98d-22f45fd3da7f",
+        "clientReferenceId": "20311",
+        "correlationId": "01a4b77b-5c72-11e9-bff9-0242ac130002"
+    },
+    "order": {
+        "plans": [
+            {
+                "connections": [
+                    {
+                        "device": {
+                            "serialNumber": "359031084298381",
+                            "addOnServices": [
+                                {
+                                    "provider": "APPLECARE",
+                                    "code": "junk",
+                                    "accountNumber": "325513273087",
+                                    "contract": {
+                                        "data": "JVBERi0xLjQKJeLjz9HhyZWYKMjEzNwolJUVPRgo=",
+                                        "MIMEtype": "Base64PDF"
+                                    },
+                                    "activationStatus": "COMPLETE"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "connections": [
+                    {
+                        "phoneNumber": "4042357027"
+                    }
+                ]
+            }
+        ]
+    }
+}
+            </code></pre>
+            		
+        		</section>
+				<section>
+					<h3>Issues after Result field implementation</h3>
+					<ul>
+						<li>Communication errors not supported for applecare. </li>
+						<ul>
+							<li>
+								Did not set error object.
+							</li>
+							<li>
+								Did not set Result as FAILURE.
+							</li>
+						</ul>
+						<li>Error handling logic was executed always, even when a successful rest call.</li>
+						<li>Some methods(scripts) does not respect Single Responsibility Principle.</li>
+						<li>The same issues for other insurance providers.</li>
+					</ul>
+					
+				</section>
+				<section>
+					<section>
+					<h3>Actions</h3>
+					<ul>
+						<li>Carrier errors supported by PAM for AppleCare (SPIKE)</li>
+						<ul>
+							<li>
+								AppleCare support 270 error codes.
+							</li>
+							<li>
+								PAM support 110 of them with a Canonical Error. 
+							</li>
+							<li>
+								PAM support 1 error code not currently supported by AppleCare.
+							</li>
+						</ul>
+						<li>Define common error handling for each insurance provider, with communication error support.</li>
+					</ul>
+					</section>
+					<section>
+					<h3>Actions</h3>	
+					<ul>
+						<li>Split methods when does not respect Single Responsibility Principle.</li>
+						<li>Implement success path, avoiding to run error handling logic when success.</li>
+					</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>AppleCare - common error handling</h3>
+						<img src="img/acCommonError.png">
+					</section>
+					<section>
+						<h3>Squaretrade - common error handling</h3>
+						<img src="img/stCommonError.png">
+					</section>
+					
+				</section>
+				<section>
+					<h3>Conclusions</h3>
+					<ul>
+						<li>Payment CR should be changed for wiremock.</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
