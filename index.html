@@ -1,49 +1,252 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+	<title>reveal.js</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/blood.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section>
+			<h3>INTRODUCCIÓN</h3>
+			<ol>
+				<li>Aspectos Generales.</li>
+				<li>Motor de Reglas.</li>
+				<li>Reglas y Workflow... Combinación perfecta!</li>
+				<li><a>Caso Práctico</a></li>
+				<li> Monitor de Ejecución</li>
+				<li> Integración</li>
+			</ol>
 
-		<script src="js/reveal.js"></script>
+		</section>
+		<section>
+			<h3>Aspectos Generales</h3>
+			<ul>
+				<li>Aplicación Web</li>
+				<li>Mecanismos de autenticación básicos</li>
+				<li>Flexible</li>
+				<li>Autogestionable</li>
+				<li>Transportable (paquetes de configuración llamados EXTENSIONES)</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Motor de Reglas</h3>
+			<ul>
+				<li>Permite la definición, manipulación y procesamiento de datos mediante elementos
+					visuales que pretenden simular el lenguaje natural.
+				</li>
+				<li>Basado en Groovy.</li>
+			</ul>
+		</section>
+		<section>
+			<h3>Reglas y Workflow...</h3>
+			<h5>Combinación perfecta!</h5>
+			<ul>
+				<li>La aplicación cuenta con un motor de workflow que puede ser integrado al motor
+					de reglas facilitando la creación de procesos complejos que dependan de la
+					ejecución de multiples reglas.
+				</li>
+			</ul>
+		</section>
+		<section>
+			<section>
+				<h2><a>Caso Práctico</a></h2>
+				<p>Calificación de clientes</p>
+				<h3>MANOS A LA OBRA!!!</h3>
+			</section>
+			<section>
+				<h3>Datos de Entrada</h3>
+				<pre><code class="hljs javascript" data-trim data-line-numbers="7,11,15-21, 25-27">
+{
+...
+   "cliente":{
+      "datosPersonales":{
+         "nombre": "Pedro",
+         "apellido": "Perez",
+         "edad": 25,
+         "identificacion":{
+             "numero": "1119900127744",
+             "ciudad": "CALI",
+             "nacionalidad": "COLOMBIANO"
+         }
+      },
+      "datosFinancieros":{
+         "ingresos":3400000,
+         "egresos": 2000000,
+         "activos": 30000000,
+         "pasivos": 20000000,
+         "personasACargo": 2,
+         "calificacionFinanciera": 8,
+         "casaPropia":false
+      }
+   },
+   "credito":{
+      "valor": 43000000
+      "valorCuota": 1000000,
+      "numeroCuotas": 72
+   }
+}
+            </code></pre>
+			</section>
+			<section>
+				<h3>Datos de Salida</h3>
+				<pre><code class="hljs javascript" data-trim>
+{
+   "calificacion": 10,
+   "resultadoOperacion": "EXITO",
+   "datosAdicionales": ""
+}
+            </code></pre>
+			</section>
+			<section>
+				<h3>Calificaciones</h3>
+				<p>
+					La calificación final es un número de 1 a 10 y se obtiene mediante la suma de:
+				</p>
+				<ul>
+					<li>
+						Calificación Financiera (70%)
+						<ul>
+							<li><a>Calificación por Ingresos (30%)</a></li>
+							<li><a>Calificación por Patrimonio (30%)</a></li>
+							<li><a>Calificación por Centrales de Riesgo (20%)</a></li>
+							<li><a>Calificación por Personas a Cargo (10%)</a></li>
+							<li><a>Calificación por Casa Propia (10%)</a></li>
+						</ul>
+					</li>
+					<li>Calificación Nacionalidad (10%)</li>
+					<li>Calificación Edad (20%)</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3>Calificacion por Ingresos</h3>
+				<table>
+					<thead>
+					<tr>
+						<th colspan="4"><h4><a>Valor Cuota </a>VS<a> Ingresos Netos</a></h4></th>
+					</tr>
+					<tr>
+						<th><10%</th>
+						<th><50%</th>
+						<th><100%</th>
+						<th>>100%</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>10</td>
+						<td>5</td>
+						<td>3</td>
+						<td>0</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h3>Calificacion por Patrimonio</h3>
+				<table>
+					<thead>
+					<tr>
+						<th colspan="4"><h4><a>Valor Crédito </a>VS<a> Patrimonio</a></h4></th>
+					</tr>
+					<tr>
+						<th><10%</th>
+						<th><50%</th>
+						<th><100%</th>
+						<th>>100%</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>10</td>
+						<td>5</td>
+						<td>3</td>
+						<td>0</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h3>Calificacion por Personas a Cargo</h3>
+				<table>
+					<thead>
+					<tr>
+						<th>0</th>
+						<th><2</th>
+						<th>>2</th>
+						<th>>5</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>10</td>
+						<td>8</td>
+						<td>5</td>
+						<td>0</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h3>Calificacion por Edad</h3>
+				<table>
+					<thead>
+					<tr>
+						<th><20</th>
+						<th><50</th>
+						<th>>50</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>3</td>
+						<td>10</td>
+						<td>5</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+		</section>
+		<section data-background="https://media.giphy.com/media/W7DHaxkSE4Lpm/giphy.gif" data-background-size="800px">
+		</section>
+	</div>
+</div>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info about config & dependencies:
+	// - https://github.com/hakimel/reveal.js#configuration
+	// - https://github.com/hakimel/reveal.js#dependencies
+	Reveal.initialize({
+		transition: 'convex', // none/fade/slide/convex/concave/zoom
+		dependencies: [
+			{src: 'plugin/markdown/marked.js'},
+			{src: 'plugin/markdown/markdown.js'},
+			{src: 'plugin/notes/notes.js', async: true},
+			{src: 'plugin/highlight/highlight.js', async: true}
+		]
+	});
+</script>
+</body>
 </html>
