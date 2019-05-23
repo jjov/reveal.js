@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="En">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/league.css">
+		<link rel="stylesheet" href="css/custom-macondo-styles.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -26,7 +27,131 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-            	<h3><a>AC Standalone - Result field missing</a></h3>
+					<img src="/images/logo.png">
+					<p class="demo-title">Demo</p>
+				</section>
+				<section>
+					<h3><a>MAIN TOPICS</a></h3>
+					<ol>
+						<li>SPRINT AUTHENTICATION CHANGES FOR SOHO</li>
+						<li>INSURE ERROR HANDLING REFACTORING</li>
+					</ol>
+				</section>
+				<section>
+					<section>
+						<h3><a>SPRINT AUTHENTICATION CHANGES FOR SOHO</a></h3>
+						<p>
+							Basically it is a change in the SPRINT carrier side to support using alternative data as
+							authentication mechanism
+						</p>
+					</section>
+					<section>
+						<h3><a>SPRINT APPROACH</a></h3>
+						<img src="/images/sprint_approach.png" style="width: 600px;">
+					</section>
+					<section>
+						<h3><a>Carrier APIs Affected</a></h3>
+						<ul>
+							<li><span class="highlighted-text">ValidateAccountInfo</span></li>
+							<li><span class="highlighted-text">CheckCreditAndInitiateOrder</span></li>
+							<li>LockRebateEligibility</li>
+							<li>querySubscriberBasicServices</li>
+						</ul>
+					</section>
+					<section>
+						<h3><a>Request Carrier API</a></h3>
+						<pre>
+						<code class="hljs xml" data-trim data-line-numbers="12-19">
+<wsMessageHeader>
+	<trackingMessageHeader>
+		<applicationId>AU2</applicationId>
+		<applicationUserId>AU2</applicationUserId>
+		<consumerId>apple</consumerId>
+		<messageId>30489f50-7cf8-11e9-a283-0242ac120003</messageId>
+		<conversationId>f1dfdf91-7e2b-4f9b-9057-0921fffa8bb0</conversationId>
+		<timeToLive>120</timeToLive>
+		<replyCompletionCode>0</replyCompletionCode>
+		<messageDateTimeStamp>2019-05-23T01:15:12</messageDateTimeStamp>
+	</trackingMessageHeader>
+	<securityMessageHeader>
+		<resourceCredentialInfo>
+			<mdn>7407074726</mdn>
+			<billingZipCode>42004</billingZipCode>
+			<iccId>89011201000236190559</iccId>
+			<pin>112235</pin>
+		</resourceCredentialInfo>
+	</securityMessageHeader>
+	<callingApplicationInfo>
+		<pin>7421</pin>
+		<vendorCode>AP</vendorCode>
+	</callingApplicationInfo>
+</wsMessageHeader>
+						</code>
+					</pre>
+						<p style="font-size: small;">MDN can be combined with <a>billingZipCode</a> or <a>iccId</a> or <a>pin</a></p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3><a>Solution</a></h3>
+						<ul>
+							<li>PAM will receive the customer information as part of the AccountLookup canonical
+								request and send to the ESB the new fields as HTTP-Headers.</li>
+							<li>ESB will process the HTTP-Headers received and create the MessageHeader as usual, but
+								containing this time, the new <a>securitymessageheader</a> mentioned before </li>
+						</ul>
+					</section>
+					<section>
+						<h3><a>ESB Changes</a></h3>
+						<ul>
+							<li>WSDL and XSDs updated</li>
+							<li>RAML & JSONSchemas updated</li>
+							<li>ESB Mappings updated</li>
+							<li>ESBGlobalCommon library was updated to receive the new HTTP-Headers send by PAM</li>
+						</ul>
+					</section>
+					<section>
+						<h3><a>PAM Changes</a></h3>
+						<ul>
+							<li>
+								AccountLookup spec was updated
+								<ul>
+									<li>
+										NetworkConnectionId was added to the request
+									</li>
+								</ul>
+							</li>
+							<li>ValidateAccountInfo and CheckCreditAndInitiateOrder Operations were generated</li>
+							<li>Rest Agents updated to send the new HTTP-Headers to the ESB</li>
+							<li>Backward compatibility through tenant preferences</li>
+							<li>New Canonical Validations implemented for CreditCheck and AccountLookup</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h3><a>Let's go to the code</a></h3>
+				</section>
+				<section>
+					<h3><a>Challenges</a></h3>
+					<ul>
+						<li>
+							SOHO support is given using a very old branch from the last mayor release (SOHO 28)
+							<ul>
+								<li>It does not support Wiremock so we have to deal with CR</li>
+								<li>Switching between Target and SOHO is a pain as several configurations should be
+									change in the ESB side</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+
+
+				<section data-background="https://media.giphy.com/media/3otPoAb6YXPqt7ELrG/giphy.gif" data-background-size="800px"></section>
+
+
+				<section>
+            	<h3><a>INSURE ERROR HANDLING REFACTORING</a></h3>
             	When AppleCare Standalone activation was completed successfully, result field was not set.
             				<pre><code class="hljs javascript">
 {
