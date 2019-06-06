@@ -199,13 +199,126 @@
                 </ul>
             </section>
             <section>
-                <h3><a>RETRIEVE ACCOUNT CANONICAL REQUEST EXAMPLE</a></h3>
-                <img src="images/RetrieveAccount_canonical_request_encrypted_fields.png" width="400px" height="400px">
+                <h4><a>RETRIEVE ACCOUNT CANONICAL REQUEST EXAMPLE</a></h4>
+                <pre>
+						<code class="hljs xml" data-line-numbers="26-31" data-trim>
+                            {
+                                "accountPhoneNumber": "7868772696",
+                                "options": {
+                                    "retrieveUsageInfo": false,
+                                    "verifyOnly": false
+                                },
+                                "header": {
+                                    "dealerCode": null,
+                                    "serviceProvider": "VERIZON",
+                                    "channel": "INSTORE",
+                                    "callbackURL": null,
+                                    "clientRepresentative": null,
+                                    "sessionId": "f21c8ad7-8332-4898-9e39-bc300afd3810",
+                                    "clientReferenceId": "20311",
+                                    "clientOriginationId": "90000",
+                                    "clientIPAddress": null
+                                },
+                                "accountNumber": "0511552789",
+                                "customer": {
+                                    "addresses": [
+                                        {
+                                            "postalCode": "33157",
+                                            "type": "SERVICE_BILLING"
+                                        }
+                                    ],
+                                    "nationalId": "MTk4My0wMi0yNw==MTk4My0wMi0yNw==MTk4My0wMi0yNw==@jdasfoqwe#%&AS34",
+                                    "serviceProviderAuthentication": {
+                                        "requestDeliveryMethod": null,
+                                        "securityQuestion": null,
+                                        "securityAnswer": null,
+                                        "passCode": "MTk4My0wMi0yNw==MTk4My0wMi0yNw==MTk4My0wMi0yNw==@jdasfoqwe#%&AS34",
+                                        "requestDeliveryDetails": null,
+                                        "accessToken": null,
+                                        "oneTimePIN": null
+                                    },
+                                    "nationalIdType": "SSN"
+                                }
+                            }
+                        </code>
+                </pre>
             </section>
             <section>
                 <h3><a>RETRIEVE ACCOUNT TOGGLE ON/OFF RESPONSES</a></h3>
-                <img src="images/retrieveAccount_toggle_off.png" align="left" width="400px" height="400px">
-                <img src="images/RetrieveAccount_toggle_On.png" align="right" width="400px" height="400px">
+                <div style="float: left;width: 50%">
+                <pre>
+						<code class="hljs xml" data-line-numbers="11-15" data-trim>
+                            {
+                                "creditResult": {
+                                    "decisionResult": "MORE_INFO_NEEDED",
+                                    "decisionExplanation": "Invalid Request Parameters"
+                                },
+                                "header": {
+                                    "serviceProvider": "Verizon",
+                                    "sessionId": "5a8f8e43-eac5-4415-94c1-f3ecebca242e",
+                                    "clientReferenceId": "9002074",
+                                    "correlationId": "cfc55d0f-882b-11e9-a05a-0242ac130003",
+                                    "errors": [
+                                        {
+                                            "code": "CC_NATIONALID_MISSING",
+                                            "message": "SSN or Tax Id is required.",
+                                            "messageDetailed": "nationalId must be set in customer record."
+                                        }
+                                    ]
+                                }
+                            }
+                        </code>
+                </pre>
+                </div>
+                <div style="float: right;width: 50%">
+                    <pre>
+						<code class="hljs xml" data-trim>
+                        {
+                                "header": {
+                                    "serviceProvider": "VERIZON",
+                                    "sessionId": "f21c8ad7-8332-4898-9e39-bc300afd3810",
+                                    "clientReferenceId": "20311",
+                                    "serviceProviderTransactionId": "VERIZON"
+                                },
+                                "account": {
+                                    "number": "0511552789-00001",
+                                    "customer": {
+                                        "name": {
+                                            "firstName": "DON",
+                                            "lastName": "POSADA"
+                                        },
+                                        "addresses": [
+                                            {
+                                                "type": "SERVICE_BILLING",
+                                                "line1": "BASIL'S AUTO REPAIR AND BODY",
+                                                "line2": "10501 SW 185TH TERRACE",
+                                                "locality": "MIAMI",
+                                                "administrativeArea": "FL",
+                                                "countryCode": "US",
+                                                "postalCode": "33157",
+                                                "isPrimaryPlaceOfUsage": false
+                                            }
+                                        ],
+                                        "emails": [
+                                            {
+                                                "address": "GZGR693@VZW.COM"
+                                            }
+                                        ]
+                                    },
+                                    "plans": [
+                                        {
+                                            "description": "MOBILE TO ANY MOBILE NATIONWIDE TALK TEXT 450 $64.99 0511",
+                                            "code": "96325~PTP=VD",
+                                            "connections": [
+                                                {
+                                                    "phoneNumber": "7868970159"
+                                                }]
+                                        }]
+                                }
+                            }
+                        </code>
+                    </pre>
+                </div>
             </section>
             <section>
                 <h3><a>CHALLENGES</a></h3>
