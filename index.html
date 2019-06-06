@@ -30,36 +30,50 @@
             <p class="demo-title">Demo</p>
         </section>
         <section>
-            <h3>MAIN TOPICS</h3>
+            <h3><a>SPI ENCRYPTION</a></h3>
             <ol>
-                <li>Fixing issue <a>"Trying to assign TNI beyond the no Lines approved"</a>.</li>
-                <li>CreditCheck Changes to support Submit/Retrieve Credit in separate calls.</li>
+                <li>ESB CHANGES.</li>
+                <li>PAM FEATURE TOGGLE VALIDATIONS.</li>
             </ol>
         </section>
         <section>
             <section data-background="blood" data-background-interactive>
-                <h2>Fixing issue:</h2>
-                <h4><a>"Trying to assign TNI beyond the no Lines approved"</a></h4>
+                <h3><a>Problem Description</a></h3>
+                <p>Sensitive Personal Information (SPI) fields are being enhanced to be able to receive encrypted values.PAM and ESB must be adjusted in order to support this requirement</p>
+                </br>
+                <p><small>"The encryption technique to be used is RSA."</small></p>
             </section>
-            <section data-background="https://media.giphy.com/media/q8jy5iPIyQrZe/giphy.gif"
-                     data-background-size="800px">
-                <div style="position: absolute; width: 40%; top: -50px; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 20px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 10px; font-size: 18px; text-align: left;">
-                    <p>During the activation process we can have multiple calls to RetrievePricePlan carrier API.</p>
-                    <ul>
-                        <li>One call during the Canonical RetrievePlans and a second call during CreateOrder execution</li>
-                        <li>Multiple manual retries to CreateOrder</li>
-                    </ul>
-                    <p>But for NEW ACTIVATIONS or ADD A LINES this was making RetrievePricePlan failed</p>
+            <section>
+                <h4>SPI ENCRYPTION FLOW</h4>
+                <img src="images/workflow.png">
+            </section>
+        </section>
+        <section>
+            <section data-background="blood" data-background-interactive>
+                <h2>ESB CHANGES</h2>
+                <h4><a>Supporting Submit/Retrieve Credit in separate calls</a></h4>
+            </section>
+            <section>
+                <h3>CURRENT CREDITCHECK BEHAVIOR</h3>
+                <img src="images/creditcheckissue.png">
+            </section>
+            <section data-background="https://media.giphy.com/media/Ni4cpi0uUkd6U/giphy.gif" data-background-size="800px">
+                <div style="position: absolute; width: 40%; top: -50px; right: -50px; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 20px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 10px; font-size: 28px; text-align: left;">
+                    <p>But then Verizon asked to increase the wait time to <a>30</a> little seconds.</p>
                 </div>
             </section>
             <section>
-                <h3>VERIZON RECOMMENDATION</h3>
-                <a>"You should pass to subsequent RetrievePricePlan calls, the mtn generated already during the first call"</a>
-                <img class="fragment" src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+                <h3>NEW CREDITCHECK BEHAVIOR</h3>
+                <ul>
+                    <li>The first time CreditCheck is called SubmitCredit carrier API will be called and PAM will return status PENDING</li>
+                    <li>The consumer will need to make a second CreditCheck call</li>
+                    <li>Then for the second call CreditCheck executes RetrieveCredit carrier API and PAM will return the new status accordingly to the carrier response (In a happy path scenario it would be APPROVED)</li>
+                </ul>
+                <a>In this way, PAM will delegate the wait time to the consumer</a>
             </section>
             <section>
-                <h3>FIX EXPLANATION</h3>
-                <img src="images/tnifix.png">
+                <h3>NEW CREDITCHECK BEHAVIOR</h3>
+                <img src="images/creditcheckfix.png">
             </section>
             <section>
                 <h1>LET'S SEE THE CODE</h1>
@@ -67,7 +81,7 @@
         </section>
         <section>
             <section data-background="blood" data-background-interactive>
-                <h2>CreditCheck Changes</h2>
+                <h2>PAM FEATURE TOGGLE VALIDATIONS</h2>
                 <h4><a>Supporting Submit/Retrieve Credit in separate calls</a></h4>
             </section>
             <section>
