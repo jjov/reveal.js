@@ -2,17 +2,17 @@
 <html lang="En">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 
     <title>reveal.js</title>
 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/blood.css">
-    <link rel="stylesheet" href="css/custom-condor-styles.css">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/reveal.css" rel="stylesheet">
+    <link href="css/theme/blood.css" rel="stylesheet">
+    <link href="css/custom-condor-styles.css" rel="stylesheet">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/monokai.css">
+    <link href="lib/css/monokai.css" rel="stylesheet">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -39,9 +39,12 @@
         <section>
             <section data-background="blood" data-background-interactive>
                 <h3><a>Problem Description</a></h3>
-                <p>Sensitive Personal Information (SPI) fields are being enhanced to be able to receive encrypted values.PAM and ESB must be adjusted in order to support this requirement</p>
+                <p>Sensitive Personal Information (SPI) fields are being enhanced to be able to receive encrypted
+                    values.PAM and ESB must be adjusted in order to support this requirement</p>
                 </br>
-                <p><small>"The encryption technique to be used is RSA."</small></p>
+                <p>
+                    <small>"The encryption technique to be used is RSA."</small>
+                </p>
             </section>
             <section>
                 <h4>SPI ENCRYPTION FLOW</h4>
@@ -51,29 +54,112 @@
         <section>
             <section data-background="blood" data-background-interactive>
                 <h2>ESB CHANGES</h2>
-                <h4><a>Supporting Submit/Retrieve Credit in separate calls</a></h4>
+                <h4><a>Supporting encrypted fields </a></h4>
             </section>
-            <section>
-                <h3>CURRENT CREDITCHECK BEHAVIOR</h3>
-                <img src="images/creditcheckissue.png">
-            </section>
-            <section data-background="https://media.giphy.com/media/Ni4cpi0uUkd6U/giphy.gif" data-background-size="800px">
-                <div style="position: absolute; width: 40%; top: -50px; right: -50px; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 20px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 10px; font-size: 28px; text-align: left;">
-                    <p>But then Verizon asked to increase the wait time to <a>30</a> little seconds.</p>
+
+            <section >
+                <h3> <a> Sensitive Personal Fields</a></h3>
+                <div >
+                    <div style="float: left;width: 50%">
+                        <!--<img src="https://media.giphy.com/media/1zKdb4WSHgY4QKAsjo/giphy.gif">-->
+                        <img src="images/lady.jpg">
+                    </div>
+                    <div style="float: right;width: 50%">
+                        <ul>
+                            <li>SSN</li>
+                            <li>dateOfBirth</li>
+                            <li>drvLic</li>
+                            <li>backAccountNum</li>
+                            <li>passwordPin</li>
+                            <li>cardNumber</li>
+                            <li>cardExpDate</li>
+                            <li>cvv2</li>
+                        </ul>
+                    </div>
                 </div>
+
+
+
+
             </section>
+
+
+
             <section>
-                <h3>NEW CREDITCHECK BEHAVIOR</h3>
+                <h3><a>Carrier APIs Affected</a></h3>
                 <ul>
-                    <li>The first time CreditCheck is called SubmitCredit carrier API will be called and PAM will return status PENDING</li>
-                    <li>The consumer will need to make a second CreditCheck call</li>
-                    <li>Then for the second call CreditCheck executes RetrieveCredit carrier API and PAM will return the new status accordingly to the carrier response (In a happy path scenario it would be APPROVED)</li>
+                    <li>SubmitCreditApplication</span></li>
+                    <li>SubmitEdgeUpPayment</span></li>
+                    <li><a> RetrieveCustomerDetails</a></li>
+                    <li><a> SubmitPortInDetails</a></li>
                 </ul>
-                <a>In this way, PAM will delegate the wait time to the consumer</a>
+            </section>
+
+            <section>
+                <h3><a>Retrieve Customer Details</a></h3>
+                <pre>
+						<code class="hljs xml" data-line-numbers="12    -14" data-trim>
+                        <VzwServices xmlns="http://pos.odc.vzwcorp.com">
+                            <ServiceHeader>
+                                <userName>user</userName>
+                                <password>pass</password>
+                                ....
+                            </ServiceHeader>
+                            <ServiceBody>
+                                <custLookup>
+                                    <request>
+                                        <mobileNumber>9085551212</mobileNumber>
+                                        <indvOrBussCustomer>I</indvOrBussCustomer>
+                                        <ssn>NDQzNTA4Nzg0ANa5lqQlVMj4MPAM69XVU+HP8vxHVx/+eLhCaRBNiDR1</ssn>
+                                        <passwordPin>NDQzNTADf98kadfs9FD98sadfaASDFdf90898sdfaDFFDA</passwordPin>
+                                        <keyVersion>2</keyVersion>
+                                    </request>
+                                </custLookup>
+                            </ServiceBody>
+                        </VzwServices>
+						</code>
+					</pre>
             </section>
             <section>
-                <h3>NEW CREDITCHECK BEHAVIOR</h3>
-                <img src="images/creditcheckfix.png">
+                <h3><a>Submit Port In Details</a></h3>
+                <pre>
+                    <code class="hljs xml" data-line-numbers="5-17" data-trim>
+                         <VzwServices xmlns="http://pos.odc.vzwcorp.com">
+                             <ServiceHeader> ..... </ServiceHeader>
+                             <ServiceBody>
+                                 <portInSubmit>
+                                     <request>
+                                         <creditApplicationNum>804964862</creditApplicationNum>
+                                         <portInDetails>
+                                             <userInfo> .... </userInfo>
+                                             <bussOrIndvCustomer>R</bussOrIndvCustomer>
+                                             <ssn>NDQzNTA4Nzg0ANa5lqQlVMj4MPAM69XVU+HP8vxHVx/+eLhCaRBNiDR1</ssn>
+                                             <authorizedSigner>PORTIN TEST</authorizedSigner>
+                                             <CBRPhone>6092410326</CBRPhone>
+                                             <passwordPin>NDQzNTADf98kadfs9FD98sadfaASDFdf90898sdfaDFFDA</passwordPin>
+                                             <portInItems> .... </portInItems>
+                                         </portInDetails>
+                                         <keyVersion>2</keyVersion>
+                                     </request>
+                                 </portInSubmit>
+                             </ServiceBody>
+                         </VzwServices>
+
+
+
+                    </code>
+                </pre>
+
+
+            </section>
+
+            <section>
+                <h3><a>ACTIONS</a></h3>
+                <ul>
+                    <li>XSDs updated</li>
+                    <li>RAML & JSONSchemas updated</li>
+                    <li>ESB Mappings updated</li>
+                </ul>
             </section>
             <section>
                 <h1>LET'S SEE THE CODE</h1>
@@ -88,7 +174,8 @@
                 <h3>CURRENT CREDITCHECK BEHAVIOR</h3>
                 <img src="images/creditcheckissue.png">
             </section>
-            <section data-background="https://media.giphy.com/media/Ni4cpi0uUkd6U/giphy.gif" data-background-size="800px">
+            <section data-background="https://media.giphy.com/media/Ni4cpi0uUkd6U/giphy.gif"
+                     data-background-size="800px">
                 <div style="position: absolute; width: 40%; top: -50px; right: -50px; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 20px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 10px; font-size: 28px; text-align: left;">
                     <p>But then Verizon asked to increase the wait time to <a>30</a> little seconds.</p>
                 </div>
@@ -96,9 +183,13 @@
             <section>
                 <h3>NEW CREDITCHECK BEHAVIOR</h3>
                 <ul>
-                    <li>The first time CreditCheck is called SubmitCredit carrier API will be called and PAM will return status PENDING</li>
+                    <li>The first time CreditCheck is called SubmitCredit carrier API will be called and PAM will return
+                        status PENDING
+                    </li>
                     <li>The consumer will need to make a second CreditCheck call</li>
-                    <li>Then for the second call CreditCheck executes RetrieveCredit carrier API and PAM will return the new status accordingly to the carrier response (In a happy path scenario it would be APPROVED)</li>
+                    <li>Then for the second call CreditCheck executes RetrieveCredit carrier API and PAM will return the
+                        new status accordingly to the carrier response (In a happy path scenario it would be APPROVED)
+                    </li>
                 </ul>
                 <a>In this way, PAM will delegate the wait time to the consumer</a>
             </section>
@@ -127,8 +218,8 @@
             {src: 'plugin/markdown/marked.js'},
             {src: 'plugin/markdown/markdown.js'},
             {src: 'plugin/highlight/highlight.js', async: true},
-            { src: 'plugin/search/search.js', async: true },
-            { src: 'plugin/zoom-js/zoom.js', async: true },
+            {src: 'plugin/search/search.js', async: true},
+            {src: 'plugin/zoom-js/zoom.js', async: true},
             {src: 'plugin/notes/notes.js', async: true}
         ]
     });
