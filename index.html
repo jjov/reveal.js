@@ -154,11 +154,11 @@
             </section>
 
             <section>
-                <h3><a>ACTIONS</a></h3>
+                <h3><a>HOW WE DID IT</a></h3>
                 <ul>
-                    <li>XSDs updated</li>
-                    <li>RAML & JSONSchemas updated</li>
-                    <li>ESB Mappings updated</li>
+                    <li>XSDs were updated</li>
+                    <li>RAML & JSONSchemas were regenerated</li>
+                    <li>ESB Mappings were updated</li>
                 </ul>
             </section>
             <section>
@@ -168,34 +168,53 @@
         <section>
             <section data-background="blood" data-background-interactive>
                 <h2>PAM FEATURE TOGGLE VALIDATIONS</h2>
-                <h4><a>Supporting Submit/Retrieve Credit in separate calls</a></h4>
+                <h4><a>Execute/Skip Validations for Encrypted fields</a></h4>
             </section>
             <section>
-                <h3>CURRENT CREDITCHECK BEHAVIOR</h3>
-                <img src="images/creditcheckissue.png">
-            </section>
-            <section data-background="https://media.giphy.com/media/Ni4cpi0uUkd6U/giphy.gif"
-                     data-background-size="800px">
-                <div style="position: absolute; width: 40%; top: -50px; right: -50px; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 20px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 10px; font-size: 28px; text-align: left;">
-                    <p>But then Verizon asked to increase the wait time to <a>30</a> little seconds.</p>
-                </div>
-            </section>
-            <section>
-                <h3>NEW CREDITCHECK BEHAVIOR</h3>
+                <h3><a>FIELDS TO BE ENCRYPTED USED BY CANONICAL APIS</a></h3>
                 <ul>
-                    <li>The first time CreditCheck is called SubmitCredit carrier API will be called and PAM will return
-                        status PENDING
-                    </li>
-                    <li>The consumer will need to make a second CreditCheck call</li>
-                    <li>Then for the second call CreditCheck executes RetrieveCredit carrier API and PAM will return the
-                        new status accordingly to the carrier response (In a happy path scenario it would be APPROVED)
-                    </li>
+                    <li>SSN</li>
+                    <li>dateOfBirth</li>
+                    <li>drvLic (Driver’s License)</li>
+                    <li>drvLicState</li>
+                    <li>PassCode</li>
                 </ul>
-                <a>In this way, PAM will delegate the wait time to the consumer</a>
             </section>
             <section>
-                <h3>NEW CREDITCHECK BEHAVIOR</h3>
-                <img src="images/creditcheckfix.png">
+                <h3><a>CANONICAL APIS IMPACTED</a></h3>
+                <ul>
+                    <li>RetrieveAccount</li>
+                    <li>CreateCustomer</li>
+                    <li>CreateOrder</li>
+                </ul>
+            </section>
+            <section>
+                <h3><a>HOW WE DID IT</a></h3>
+                <ul>
+                    <li>Created a new feature <a>VERIZON_ENCRYPTED_FIELDS_VALIDATION.</a></li>
+                    <li>When VERIZON_ENCRYPTED_FIELDS_VALIDATION is <a>ON</a> it will execute the current validations.</li>
+                    <li>When VERIZON_ENCRYPTED_FIELDS_VALIDATION is <a>OFF</a>> it will skip those validations.</li>
+                    <li>When <a>feature toggle service is down</a>, validations will be executed as default.</li>
+                    <li>Add previous logic to current canonical and Verizon validations.</li>
+                </ul>
+            </section>
+            <section>
+                <h3><a>RETRIEVE ACCOUNT CANONICAL REQUEST EXAMPLE</a></h3>
+                <img src="images/RetrieveAccount_canonical_request_encrypted_fields.png" width="400px" height="400px">
+            </section>
+            <section>
+                <h3><a>RETRIEVE ACCOUNT TOGGLE ON/OFF RESPONSES</a></h3>
+                <img src="images/retrieveAccount_toggle_off.png" align="left" width="400px" height="400px">
+                <img src="images/RetrieveAccount_toggle_On.png" align="right" width="400px" height="400px">
+            </section>
+            <section>
+                <h3><a>CHALLENGES</a></h3>
+                <ul>
+                    <li>Environment Issues.</li>
+                    <li>Mock feature toggle service for Unit Testing using JUnit and Spock.</li>
+                    <li>Be careful not to break Current Pipeline BDDs by implementing feature toggle.</li>
+                </ul>
+                <img src="https://media.giphy.com/media/D12CsrRNv7gL6/giphy.gif" width="200" height="200">
             </section>
             <section>
                 <h1>LET'S SEE THE CODE</h1>
