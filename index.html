@@ -33,98 +33,28 @@
 				<section>
 					<h3><a>MAIN TOPICS</a></h3>
 					<ol>
-						<li>SPRINT AUTHENTICATION CHANGES FOR SOHO</li>
-						<li>INSURANCE ERROR HANDLING REFACTORING</li>
+						<li>VERIZON SUBMIT CREDIT CHECK MIGRATION</li>
+						<li>AT&T SUBMIT CREDIT CHECK MIGRATION</li>
 					</ol>
 				</section>
 				<section>
 					<section>
-						<h3><a>SPRINT AUTHENTICATION CHANGES FOR SOHO</a></h3>
+						<h3><a>VERIZON SUBMIT CREDIT CHECK MIGRATION</a></h3>
 						<p>
-							Basically it is a change in the SPRINT carrier side to support using alternative data as
-							authentication mechanism
+							Successfuly migrated the two verizon APIs in CreditCheck, SubmitCreditApplication and RetrieveCreditApplication for version 2 and version 3.
 						</p>
 					</section>
-					<section>
-						<h3><a>SPRINT APPROACH</a></h3>
-						<img src="/images/sprint_approach.png" style="width: 600px;">
-					</section>
-					<section>
-						<h3><a>Carrier APIs Affected</a></h3>
-						<ul>
-							<li><span class="highlighted-text">ValidateAccountInfo</span></li>
-							<li><span class="highlighted-text">CheckCreditAndInitiateOrder</span></li>
-							<li>LockRebateEligibility</li>
-							<li>querySubscriberBasicServices</li>
-						</ul>
-					</section>
-					<section>
-						<h3><a>Request Carrier API</a></h3>
-						<pre>
-						<code class="hljs xml" data-trim data-line-numbers="12-19">
-<wsMessageHeader>
-	<trackingMessageHeader>
-		<applicationId>AU2</applicationId>
-		<applicationUserId>AU2</applicationUserId>
-		<consumerId>apple</consumerId>
-		<messageId>30489f50-7cf8-11e9-a283-0242ac120003</messageId>
-		<conversationId>f1dfdf91-7e2b-4f9b-9057-0921fffa8bb0</conversationId>
-		<timeToLive>120</timeToLive>
-		<replyCompletionCode>0</replyCompletionCode>
-		<messageDateTimeStamp>2019-05-23T01:15:12</messageDateTimeStamp>
-	</trackingMessageHeader>
-	<securityMessageHeader>
-		<resourceCredentialInfo>
-			<mdn>7407074726</mdn>
-			<billingZipCode>42004</billingZipCode>
-			<iccId>89011201000236190559</iccId>
-			<pin>112235</pin>
-		</resourceCredentialInfo>
-	</securityMessageHeader>
-	<callingApplicationInfo>
-		<pin>7421</pin>
-		<vendorCode>AP</vendorCode>
-	</callingApplicationInfo>
-</wsMessageHeader>
-						</code>
-					</pre>
-						<p style="font-size: small;">MDN can be combined with <a>billingZipCode</a> or <a>iccId</a> or <a>pin</a></p>
-					</section>
+					
 				</section>
 				<section>
 					<section>
 						<h3><a>Solution</a></h3>
 						<ul>
-							<li>PAM will receive the customer information as part of the AccountLookup canonical
-								request and send to the ESB the new fields as HTTP-Headers.</li>
-							<li>ESB will process the HTTP-Headers received and create the MessageHeader as usual, but
-								containing this time, the new <a>securitymessageheader</a> mentioned before </li>
-						</ul>
-					</section>
-					<section>
-						<h3><a>ESB Changes</a></h3>
-						<ul>
-							<li>WSDL and XSDs updated</li>
-							<li>RAML & JSONSchemas updated</li>
-							<li>ESB Mappings updated</li>
-							<li>ESBGlobalCommon library was updated to receive the new HTTP-Headers send by PAM</li>
-						</ul>
-					</section>
-					<section>
-						<h3><a>PAM Changes</a></h3>
-						<ul>
-							<li>
-								AccountLookup spec was updated
-								<ul>
-									<li>
-										NetworkConnectionId was added to the request
-									</li>
-								</ul>
-							</li>
-							<li>ValidateAccountInfo and CheckCreditAndInitiateOrder Operations were generated</li>
-							<li>Rest Agents updated to send the new HTTP-Headers to the ESB</li>
-							<li>Backward compatibility through tenant preferences</li>
-							<li>New Canonical Validations implemented for CreditCheck and AccountLookup</li>
+							<li>Create a new workflow from the old one</li>
+							<li>To decide which workflow will be used using a feature toggle</li>
+							<li>Fix each mapping with the new generated classes</li>
+							<li>Change the REST call with the new invoker class</li>
+							<li>Fix usages of the carrier response after the carrier call using the new atributes</li>
 						</ul>
 					</section>
 				</section>
@@ -132,18 +62,32 @@
 					<h3><a>Let's go to the code</a></h3>
 				</section>
 				<section>
-					<h3><a>Challenges</a></h3>
-					<ul>
-						<li>
-							SOHO support is given using a very old branch from the last mayor release (SOHO 28)
-							<ul>
-								<li>It does not support Wiremock so we have to deal with CR</li>
-								<li>Switching between Target and SOHO is a pain as several configurations should be
-									change in the ESB side</li>
-							</ul>
-						</li>
-					</ul>
+					<section>
+						<h3><a>Challenges</a></h3>
+						<ul>
+							<li>To call the carrier with the new implementation</li>
+							<li>Generated classes from old xsds</li>
+							<li>Started working with a branch different to develop because the changes were not in develop</li>
+							<li>To understand how to use the new models and carrier call</li>
+						</ul>
+					</section>
+					<section>
+						<h3><a>Challenges</a></h3>
+						<ul>
+							<li>For version 3, we had to cherry pick the implementation from team condor branch because it was not in develop when we started</li>
+							<li>Workflows are in constant change by other teams and it generate conflicts</li>
+							<li>To cherry pick migration changes when the adapters were merged to develop</li>
+						</ul>
+					</section>
 				</section>
+				
+				<section>
+						<h3><a>TO DO</a></h3>
+						<ul>
+							<li>FEDEX API was not migrated yet because it is not currently supported by the new adapter.</li>
+							<li>REST calls are not supported for the new adapter yet.</li>
+						</ul>
+					</section>
 
 
 
@@ -151,105 +95,36 @@
 
 
 				<section>
-            	<h3><a>INSURANCE ERROR HANDLING REFACTORING</a></h3>
-            	When AppleCare Standalone activation was completed successfully, result field was not set.
-            				<pre><code class="hljs javascript">
-{
-    "header": {
-        "sessionId": "0b0d9374-8a45-424b-b98d-22f45fd3da7f",
-        "clientReferenceId": "20311",
-        "correlationId": "01a4b77b-5c72-11e9-bff9-0242ac130002"
-    },
-    "order": {
-        "plans": [
-            {
-                "connections": [
-                    {
-                        "device": {
-                            "serialNumber": "359031084298381",
-                            "addOnServices": [
-                                {
-                                    "provider": "APPLECARE",
-                                    "code": "junk",
-                                    "accountNumber": "325513273087",
-                                    "contract": {
-                                        "data": "JVBERi0xLjQKJeLjz9HhyZWYKMjEzNwolJUVPRgo=",
-                                        "MIMEtype": "Base64PDF"
-                                    },
-                                    "activationStatus": "COMPLETE"
-                                }
-                            ]
-                        }
-                    }
-                ]
-            },
-            {
-                "connections": [
-                    {
-                        "phoneNumber": "4042357027"
-                    }
-                ]
-            }
-        ]
-    }
-}
-            </code></pre>
+            	<h3><a>AT&T SUBMIT CREDIT CHECK MIGRATION</a></h3>
+            		Successfuly migrated happy paths for AT&T CreditCheck APIs AddAccount, ExecuteCreditCheck, InquireSubscriptionElegibility, and an approach to the new error handling for AT&T.
             		
         		</section>
 				<section>
-					<h3><a>Challenges during the implementation</a></h3>
+					<h3><a>ADDITIONAL WORK COMPARED TO VERIZON</a></h3>
 					<ul>
-						<li>Communication errors not supported for applecare. </li>
-						<ul>
-							<li>
-								Did not set error object.
-							</li>
-							<li>
-								Did not set Result as FAILURE.
-							</li>
-						</ul>
-						<li>Error handling logic was executed always, even when a successful rest call.</li>
-						<li>Some methods(scripts) does not respect Single Responsibility Principle.</li>
-						<li>All these issues were present on all other insurance providers.</li>
+						<li>AT&T old error handling is complitely different to the required.</li>
+						<li>To map the request header in PAM.</li>
+						<li>Duplicate stubs for BDDs because the namespaces of the new models missmatch with the old stubs</li>
+						<li>To send the correct version in the header to the carrier.</li>
 					</ul>
 					
-				</section>
-				<section>
-					<section>
-					<h3><a>Actions</a></h3>
-					<ul>
-						<li>Carrier errors supported by PAM for AppleCare (SPIKE)</li>
-						<ul>
-							<li>
-								AppleCare support 270 error codes.
-							</li>
-							<li>
-								PAM support 110 of them with a Canonical Error. 
-							</li>
-							<li>
-								PAM support 1 error code not currently supported by AppleCare.
-							</li>
-						</ul>
-						<li>Define common error handling for each insurance provider, with communication error support.</li>
-					</ul>
-					</section>
-					<section>
-					<h3><a>Actions</a></h3>	
-					<ul>
-						<li>Split methods when does not respect Single Responsibility Principle.</li>
-						<li>Implement success path, avoiding to run error handling logic when success.</li>
-					</ul>
-					</section>
 				</section>
 				<section>
 					<h3><a>Let's go to the code</a></h3>
 				</section>
 				<section>
-					<h3><a>Conclusions</a></h3>
-					<ul>
-						<li>Payment CR should be changed for wiremock.</li>
-					</ul>
+					<section>
+						<h3><a>Challenges</a></h3>
+						<ul>
+							<li>Sending wrong AT&T version to the carrier, getting failure executions.</li>
+							<li>Bug in date marshalling class which format the date wrong.</li>
+							<li>New tenant preferences where not in develop.</li>
+							<li>Wrong default namespace.</li>
+						</ul>
+					</section>
 				</section>
+				
+				
 			</div>
 		</div>
 
