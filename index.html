@@ -29,7 +29,7 @@
 				<section>
 					<img src="/images/logo.png">
 					<p class="demo-title">Demo</p>
-					
+
 					Previous sprint 22.5/26 -> 87%<br>
 					Current sprint 20.5/21 -> 97%
 				</section>
@@ -82,63 +82,79 @@
 				<section data-background="https://media.giphy.com/media/3otPoAb6YXPqt7ELrG/giphy.gif" data-background-size="800px"></section>
 
 
+
 				<section>
 					<section>
-						<h3><a>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</a></h3>
+						<h3><a> A Problem </a></h3>
 						<p>
-							Successfuly migrated the two verizon APIs in CreditCheck for version 2 and version 3.
+
 							<ul>
-								<li>SubmitCreditApplication</li>
-								<li>RetrieveCreditApplication</li>
+								<li>New Exception management in PAM Proxy</li>
+								<li>Duplicated code for error management on all the carrier calls</li>
+								<li>Duplicated workflow logic for response analysis and error handling eg: Retry logic</li>
+								<li>Different error codes mapping logic for each API call</li>
+								<li>Different versions for Exception classes from carrier, eg: v118, v126, v236<li>
 							</ul>
 						</p>
 					</section>
-					
-				</section>
-				<section>
+
+
 					<section>
-						<h3><a>Solution</a></h3>
-						<ul>
-							<li>Create a new workflow from the old one</li>
-							<li>To decide which workflow will be used using a feature toggle</li>
-							<li>Fix each mapping with the new generated classes</li>
-							<li>Change the REST call with the new invoker class</li>
-							<li>Fix usages of the carrier response after the carrier call using the new atributes</li>
-						</ul>
+						<h3><a>Workflow for Error handling after ESB Call</a></h3>
+						<img src="images/ESBCallExample.png" ></img>
 					</section>
+
+
+					<section>
+						<h3><a>Error code mapping </a></h3>
+						<img src="images/code-1.png" />
+					</section>
+
+					<section>
+						<h3><a>
+							Common Error Handling for ATT API Calls in PAM Proxy
+						</a></h3>
+
+
+						<ul>
+							<li> Common workflow for carrier response analysis  </li>
+							<li> Unified ErrorCode mapping </li>
+						</ul>
+
+					</section>
+
+					<section>
+						<h3><a> Common workflow for carrier response analysis</a> </h3>
+						<img src="images/PAMProxyCallExample.png">
+					</section>
+
+					<section>
+						<h3> <a>Unified Error Mapper </a></h3>
+
+						<p>Map from Canonical API Name and Carrier API to Error Code Enumeration</p>
+
+						<table>
+							<tr>
+								<td style="width:40%;vertical-align: top;">
+						<img src="images/code-1.png" />
+								</td>
+								<td style="width:10%;vertical-align: top;">
+									==>
+								</td>
+								<td>
+
+									<img src="images/unifiedErrorCodes-1.png" style="width:90%;"></img>
+								</td>
+							</tr>
+						</table>
+					</section>
+
 				</section>
 				<section>
 					<h3><a>Let's go to the code</a></h3>
 				</section>
-				<section>
-					<section>
-						<h3><a>Challenges</a></h3>
-						<ul>
-							<li>To call the carrier with the new implementation</li>
-							<li>Generated classes from old xsds</li>
-							<li>Started working with a branch different to develop because the changes were not in develop</li>
-							<li>To understand how to use the new models and carrier call</li>
-						</ul>
-					</section>
-					<section>
-						<h3><a>Challenges</a></h3>
-						<ul>
-							<li>For version 3, we had to cherry pick the implementation from team condor branch because it was not in develop when we started</li>
-							<li>Workflows are in constant change by other teams and it generate conflicts</li>
-							<li>To cherry pick migration changes when the adapters were merged to develop</li>
-						</ul>
-					</section>
-				</section>
-				
-				<section>
-						<h3><a>TO DO</a></h3>
-						<ul>
-							<li>FEDEX API was not migrated yet because it is not currently supported by the new adapter.</li>
-							<li>REST calls are not supported for the new adapter yet.</li>
-						</ul>
-					</section>
-				
-				
+
+
 			</div>
 		</div>
 
