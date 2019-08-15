@@ -40,6 +40,48 @@
                         <li>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</li>
 					</ol>
 				</section>
+
+				<section>
+					<h3><a>AT&T RETRIEVE PLANS MIGRATION</a></h3>
+					Successfuly migrated happy paths for AT&T Retrieve Plans APIs and the implementation of the new error handling for AT&T in this canonical api.
+					<br>
+					<br>
+					<ul>
+						<li>InquireMarketServiceArea</li>
+						<li>InquireAvailableDevice</li>
+						<li>InquireSubscriptionElegibility</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3><a>Solution</a></h3>
+					<ul>
+						<li>Create a new workflow from the old one</li>
+						<li>Create a feature toggle for this canonical api</li>
+						<li>Create each mapping and header mapping with the new generated classes</li>
+						<li>Change the REST call with the new invoker class</li>
+						<li>Fix usages of the carrier response after the carrier call using the new atributes</li>
+						<li>Implement the common error handling in this canonical api</li>
+					</ul>
+
+				</section>
+				<section>
+					<h3><a>Let's go to the code</a></h3>
+				</section>
+				<section>
+					<section>
+						<h3><a>Challenges</a></h3>
+						<ul>
+							<li>Multiple changes at the moment of the implementation of the error handling</li>
+							<li>Re do due to changes in the new generated classes</li>
+						</ul>
+					</section>
+				</section>
+
+
+				<section data-background="https://media.giphy.com/media/3otPoAb6YXPqt7ELrG/giphy.gif" data-background-size="800px"></section>
+
+
 				<section>
 					<section>
 						<h3><a>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</a></h3>
@@ -95,48 +137,6 @@
 							<li>REST calls are not supported for the new adapter yet.</li>
 						</ul>
 					</section>
-
-
-
-				<section data-background="https://media.giphy.com/media/3otPoAb6YXPqt7ELrG/giphy.gif" data-background-size="800px"></section>
-
-
-				<section>
-            	<h3><a>AT&T RETRIEVE PLANS MIGRATION</a></h3>
-            		Successfuly migrated happy paths for AT&T Retrieve Plans APIs and the implementation of the new error handling for AT&T in this canonical api.
-            		<br>
-            		<br>
-            		<ul>
-            			<li>InquireMarketServiceArea</li>
-            			<li>InquireAvailableDevice</li>
-            			<li>InquireSubscriptionElegibility</li>
-            		</ul>
-            		
-        		</section>
-				<section>
-					<h3><a>Solution</a></h3>
-					<ul>
-						<li>Create a new workflow from the old one</li>
-						<li>Create a feature toggle for this canonical api</li>
-						<li>Create each mapping and header mapping with the new generated classes</li>
-						<li>Change the REST call with the new invoker class</li>
-						<li>Fix usages of the carrier response after the carrier call using the new atributes</li>
-						<li>Implement the common error handling in this canonical api</li>
-					</ul>
-					
-				</section>
-				<section>
-					<h3><a>Let's go to the code</a></h3>
-				</section>
-				<section>
-					<section>
-						<h3><a>Challenges</a></h3>
-						<ul>
-							<li>Multiple changes at the moment of the implementation of the error handling</li>
-							<li>Re do due to changes in the new generated classes</li>
-						</ul>
-					</section>
-				</section>
 				
 				
 			</div>
