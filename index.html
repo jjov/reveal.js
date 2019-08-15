@@ -29,7 +29,7 @@
 				<section>
 					<img src="/images/logo.png">
 					<p class="demo-title">Demo</p>
-					
+
 					Previous sprint 22.5/26 -> 87%<br>
 					Current sprint 20.5/21 -> 97%
 				</section>
@@ -84,28 +84,51 @@
 
 				<section>
 					<section>
-						<h3><a>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</a></h3>
+						<h3><a> A Problem </a></h3>
 						<p>
 							Successfuly migrated the two verizon APIs in CreditCheck for version 2 and version 3.
 							<ul>
-								<li>SubmitCreditApplication</li>
-								<li>RetrieveCreditApplication</li>
+								<li>New Exception management in PAM Proxy</li>
+								<li>Duplicated code for error management on all the carrier calls</li>
+								<li>Duplicated workflow logic for response analysis and error handling eg: Retry logic</li>
+								<li>Differen error codes mapping logic for each API call</li>
+								<li>Different versions for Exception classes from carrier, eg: 118, 126, 236<li>
 							</ul>
 						</p>
 					</section>
-					
-				</section>
-				<section>
+
 					<section>
-						<h3><a>Solution</a></h3>
+						<h3> How can we solve it </h3>
+						<p>
+							Common Error Handling for ATT API Calls thru PAM Proxy
 						<ul>
-							<li>Create a new workflow from the old one</li>
-							<li>To decide which workflow will be used using a feature toggle</li>
-							<li>Fix each mapping with the new generated classes</li>
-							<li>Change the REST call with the new invoker class</li>
-							<li>Fix usages of the carrier response after the carrier call using the new atributes</li>
+							<li> Common workflow for carrier response analysis  </li>
+							<li> Unified ErrorCode mapping </li>
 						</ul>
+					</p>
 					</section>
+
+					<section>
+						<h3> Unified Error Mapper </h3>
+
+						<p>Map from Canonical API Name and Carrier API to Error Code Enumeration</p>
+
+						<table>
+							<tr>
+								<td style="width:40%;vertical-align: top;">
+						<img src="images/code-1.png" />
+								</td>
+								<td style="width:10%;vertical-align: top;">
+									==>
+								</td>
+								<td>
+
+									<img src="images/unifiedErrorCodes-1.png" style="width:90%;"></img>
+								</td>
+							</tr>
+						</table>
+					</section>
+
 				</section>
 				<section>
 					<h3><a>Let's go to the code</a></h3>
@@ -129,7 +152,7 @@
 						</ul>
 					</section>
 				</section>
-				
+
 				<section>
 						<h3><a>TO DO</a></h3>
 						<ul>
@@ -137,8 +160,8 @@
 							<li>REST calls are not supported for the new adapter yet.</li>
 						</ul>
 					</section>
-				
-				
+
+
 			</div>
 		</div>
 
