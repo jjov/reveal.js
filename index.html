@@ -36,13 +36,13 @@
 				<section>
 					<h3><a>MAIN TOPICS - ESB REPLACEMENT</a></h3>
 					<ol>
-						<li>AT&T RETRIEVE PLANS MIGRATION</li>
-						<li>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</li>
+                        <li>AT&T RETRIEVE PLANS MIGRATION</li>
+                        <li>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</li>
 					</ol>
 				</section>
 				<section>
 					<section>
-						<h3><a>AT&T RETRIEVE PLANS MIGRATION</a></h3>
+						<h3><a>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</a></h3>
 						<p>
 							Successfuly migrated the two verizon APIs in CreditCheck for version 2 and version 3.
 							<ul>
@@ -102,25 +102,26 @@
 
 
 				<section>
-            	<h3><a>AT&T COMMON ERROR HANDLING FOR ESB MIGRATION</a></h3>
-            		Successfuly migrated happy paths for AT&T CreditCheck APIs and an 
-            		approach to the new error handling for AT&T.
+            	<h3><a>AT&T RETRIEVE PLANS MIGRATION</a></h3>
+            		Successfuly migrated happy paths for AT&T Retrieve Plans APIs and the implementation of the new error handling for AT&T in this canonical api.
             		<br>
             		<br>
             		<ul>
-            			<li>AddAccount</li>
-            			<li>ExecuteCreditCheck</li>
+            			<li>InquireMarketServiceArea</li>
+            			<li>InquireAvailableDevice</li>
             			<li>InquireSubscriptionElegibility</li>
             		</ul>
             		
         		</section>
 				<section>
-					<h3><a>ADDITIONAL WORK COMPARED TO VERIZON</a></h3>
+					<h3><a>Solution</a></h3>
 					<ul>
-						<li>AT&T old error handling is completely different to the required.</li>
-						<li>To map the request header in PAM.</li>
-						<li>Duplicate stubs for BDDs because the namespaces of the new models mismatch with the old stubs</li>
-						<li>To send the correct version in the header to the carrier.</li>
+						<li>Create a new workflow from the old one</li>
+						<li>Create a feature toggle for this canonical api</li>
+						<li>Create each mapping and header mapping with the new generated classes</li>
+						<li>Change the REST call with the new invoker class</li>
+						<li>Fix usages of the carrier response after the carrier call using the new atributes</li>
+						<li>Implement the common error handling in this canonical api</li>
 					</ul>
 					
 				</section>
@@ -131,10 +132,8 @@
 					<section>
 						<h3><a>Challenges</a></h3>
 						<ul>
-							<li>Sending wrong AT&T version to the carrier, getting failure executions.</li>
-							<li>Bug in date marshalling class which format the date wrong.</li>
-							<li>New tenant preferences where not in develop.</li>
-							<li>Wrong default namespace.</li>
+							<li>Multiple changes at the moment of the implementation of the error handling</li>
+							<li>Re do due to changes in the new generated classes</li>
 						</ul>
 					</section>
 				</section>
