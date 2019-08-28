@@ -31,315 +31,47 @@
         </section>
         <section>
             <h3><a>MAIN TOPICS</a></h3>
+            <br>
             <ol>
                 <li>ONLINE UPGRADE KME</li>
                 <li>ESB MIGRATION RETRIEVE PRICE PLAN PAM API</li>
             </ol>
         </section>
         <section>
-            <h3><a>ESB MIGRATION RETRIEVE PRICE PLAN</a></h3>
-            <ol>
-                <li>RETRIEVE NPA-NXX CARRIER API</li>
-                <li>RETRIEVE PRICE PLAN CARRIER API</li>
-            </ol>
+            <h3><a>VERIZON RETRIEVE PLANS MIGRATION</a></h3>
+            <br>
+            <div align="left">Successfully migrated happy paths and error scenarios for Retrieve Plans APIs.
+                <ul>
+                    <li>RetrieveNpaNxx.</li>
+                    <li>RetrievePricePlans.</li>
+                </ul>
+            </div>
         </section>
         <section>
-            <section data-background="blood" data-background-interactive>
-                <h3><a>Problem Description</a></h3>
-                <p>Sensitive Personal Information (SPI) fields are being enhanced to be able to receive encrypted
-                    values.PAM and ESB must be adjusted in order to support this requirement</p>
-                </br>
-                <p>
-                    <small>"The encryption technique to be used is RSA."</small>
-                </p>
-            </section>
-            <section>
-                <h4>VERIZON SPI ENCRYPTION FLOW</h4>
-                <img src="images/workflow.png">
-            </section>
+            <h3><a>SOLUTION</a></h3>
+            <br>
+            <ul>
+                <li>Create a new workflow from the old one.</li>
+                <li>Create a feature toggle for this canonical api.</li>
+                <li>Create each mapping and header mapping with the new generated classes.</li>
+                <li>Change the REST call with the new invoker class.</li>
+                <li>Fix usages of the carrier response after the carrier call using the new attributes.</li>
+            </ul>
         </section>
         <section>
-            <section data-background="blood" data-background-interactive>
-                <h2>ESB CHANGES</h2>
-                <h4><a>Supporting encrypted fields </a></h4>
-            </section>
-
-            <section >
-                <h3> <a> Sensitive Personal Fields</a></h3>
-                <div >
-                    <div style="float: left;width: 50%">
-                        <!--<img src="https://media.giphy.com/media/1zKdb4WSHgY4QKAsjo/giphy.gif">-->
-                        <img src="images/lady.jpg">
-                    </div>
-                    <div style="float: right;width: 50%">
-                        <ul>
-                            <li>SSN</li>
-                            <li>dateOfBirth</li>
-                            <li>drvLic</li>
-                            <li>backAccountNum</li>
-                            <li>passwordPin</li>
-                            <li>cardNumber</li>
-                            <li>cardExpDate</li>
-                            <li>cvv2</li>
-                        </ul>
-                    </div>
-                </div>
-
-
-
-
-            </section>
-
-
-
-            <section>
-                <h3><a>Carrier APIs Affected</a></h3>
-                <ul>
-                    <li>SubmitCreditApplication</span></li>
-                    <li>SubmitEdgeUpPayment</span></li>
-                    <li><a> RetrieveCustomerDetails</a></li>
-                    <li><a> SubmitPortInDetails</a></li>
-                </ul>
-            </section>
-
-            <section>
-                <h3><a>Retrieve Customer Details</a></h3>
-                <pre>
-						<code class="hljs xml" data-line-numbers="12    -14" data-trim>
-                        <VzwServices xmlns="http://pos.odc.vzwcorp.com">
-                            <ServiceHeader>
-                                <userName>user</userName>
-                                <password>pass</password>
-                                ....
-                            </ServiceHeader>
-                            <ServiceBody>
-                                <custLookup>
-                                    <request>
-                                        <mobileNumber>9085551212</mobileNumber>
-                                        <indvOrBussCustomer>I</indvOrBussCustomer>
-                                        <ssn>NDQzNTA4Nzg0ANa5lqQlVMj4MPAM69XVU+HP8vxHVx/+eLhCaRBNiDR1</ssn>
-                                        <passwordPin>NDQzNTADf98kadfs9FD98sadfaASDFdf90898sdfaDFFDA</passwordPin>
-                                        <keyVersion>2</keyVersion>
-                                    </request>
-                                </custLookup>
-                            </ServiceBody>
-                        </VzwServices>
-						</code>
-					</pre>
-            </section>
-            <section>
-                <h3><a>Submit Port In Details</a></h3>
-                <pre>
-                    <code class="hljs xml" data-line-numbers="10,13,16" data-trim>
-                         <VzwServices xmlns="http://pos.odc.vzwcorp.com">
-                             <ServiceHeader> ..... </ServiceHeader>
-                             <ServiceBody>
-                                 <portInSubmit>
-                                     <request>
-                                         <creditApplicationNum>804964862</creditApplicationNum>
-                                         <portInDetails>
-                                             <userInfo> .... </userInfo>
-                                             <bussOrIndvCustomer>R</bussOrIndvCustomer>
-                                             <ssn>NDQzNTA4Nzg0ANa5lqQlVMj4MPAM69XVU+HP8vxHVx/+eLhCaRBNiDR1</ssn>
-                                             <authorizedSigner>PORTIN TEST</authorizedSigner>
-                                             <CBRPhone>6092410326</CBRPhone>
-                                             <passwordPin>NDQzNTADf98kadfs9FD98sadfaASDFdf90898sdfaDFFDA</passwordPin>
-                                             <portInItems> .... </portInItems>
-                                         </portInDetails>
-                                         <keyVersion>2</keyVersion>
-                                     </request>
-                                 </portInSubmit>
-                             </ServiceBody>
-                         </VzwServices>
-
-
-
-                    </code>
-                </pre>
-
-
-            </section>
-
-            <section>
-                <h3><a>HOW WE DID IT</a></h3>
-                <ul>
-                    <li>XSDs were updated</li>
-                    <li>RAML & JSONSchemas were regenerated</li>
-                    <li>ESB Mappings were updated</li>
-                </ul>
-            </section>
-            <section>
-                <h1>LET'S SEE THE CODE</h1>
-            </section>
-        </section>
-        <section>
-            <section data-background="blood" data-background-interactive>
-                <h2>PAM FEATURE TOGGLE VALIDATIONS</h2>
-                <h4><a>Execute/Skip Validations for Encrypted fields</a></h4>
-            </section>
-            <section>
-                <h3><a>FIELDS TO BE ENCRYPTED USED BY CANONICAL APIS</a></h3>
-                <ul>
-                    <li>SSN</li>
-                    <li>dateOfBirth</li>
-                    <li>drvLic (Driver’s License)</li>
-                    <li>drvLicState</li>
-                    <li>PassCode</li>
-                </ul>
-            </section>
-            <section>
-                <h3><a>CANONICAL APIS IMPACTED</a></h3>
-                <ul>
-                    <li>RetrieveAccount</li>
-                    <li>CreateCustomer</li>
-                    <li>CreateOrder</li>
-                </ul>
-            </section>
-            <section>
-                <h3><a>HOW WE DID IT</a></h3>
-                <ul>
-                    <li>Created a new feature toggle <a>VERIZON_ENCRYPTED_FIELDS_VALIDATION.</a></li>
-                    <ul>
-                        <li><a>ON:</a> it will execute the current validations.</li>
-                        <li><a>OFF:</a> it will skip those validations.</li>
-                        <li><a>Default:</a> validations will be executed as default.</li>
-                    </ul>
-
-                </ul>
-            </section>
-            <section>
-                <h4><a>RETRIEVE ACCOUNT CANONICAL REQUEST EXAMPLE</a></h4>
-                <pre>
-						<code class="hljs javascript" data-line-numbers="26,31" data-trim>
-                            {
-                                "accountPhoneNumber": "7868772696",
-                                "options": {
-                                    "retrieveUsageInfo": false,
-                                    "verifyOnly": false
-                                },
-                                "header": {
-                                    "dealerCode": null,
-                                    "serviceProvider": "VERIZON",
-                                    "channel": "INSTORE",
-                                    "callbackURL": null,
-                                    "clientRepresentative": null,
-                                    "sessionId": "f21c8ad7-8332-4898-9e39-bc300afd3810",
-                                    "clientReferenceId": "20311",
-                                    "clientOriginationId": "90000",
-                                    "clientIPAddress": null
-                                },
-                                "accountNumber": "0511552789",
-                                "customer": {
-                                    "addresses": [
-                                        {
-                                            "postalCode": "33157",
-                                            "type": "SERVICE_BILLING"
-                                        }
-                                    ],
-                                    "nationalId": "MTk4My0wMi0yNw==MTk4My0wMi0yNw==MTk4My0wMi0yNw==@jdasfoqwe#%&AS34",
-                                    "serviceProviderAuthentication": {
-                                        "requestDeliveryMethod": null,
-                                        "securityQuestion": null,
-                                        "securityAnswer": null,
-                                        "passCode": "MTk4My0wMi0yNw==MTk4My0wMi0yNw==MTk4My0wMi0yNw==@jdasfoqwe#%&AS34",
-                                        "requestDeliveryDetails": null,
-                                        "accessToken": null,
-                                        "oneTimePIN": null
-                                    },
-                                    "nationalIdType": "SSN"
-                                }
-                            }
-                        </code>
-                </pre>
-            </section>
-            <section>
-                <h3><a>RETRIEVE ACCOUNT TOGGLE ON RESPONSE</a></h3>
-                <pre>
-						<code class="hljs javascript" data-line-numbers="11-15" data-trim>
-                            {
-                                "creditResult": {
-                                    "decisionResult": "MORE_INFO_NEEDED",
-                                    "decisionExplanation": "Invalid Request Parameters"
-                                },
-                                "header": {
-                                    "serviceProvider": "Verizon",
-                                    "sessionId": "5a8f8e43-eac5-4415-94c1-f3ecebca242e",
-                                    "clientReferenceId": "9002074",
-                                    "correlationId": "cfc55d0f-882b-11e9-a05a-0242ac130003",
-                                    "errors": [
-                                        {
-                                            "code": "CC_NATIONALID_MISSING",
-                                            "message": "SSN or Tax Id is required.",
-                                            "messageDetailed": "nationalId must be set in customer record."
-                                        }
-                                    ]
-                                }
-                            }
-                        </code>
-                </pre>
-            </section>
-            <section>
-                <h3><a>RETRIEVE ACCOUNT TOGGLE OFF RESPONSE</a></h3>
-                    <pre>
-						<code class="hljs javascript" data-trim>
-                        {
-                                "header": {
-                                    "serviceProvider": "VERIZON",
-                                    "sessionId": "f21c8ad7-8332-4898-9e39-bc300afd3810",
-                                    "clientReferenceId": "20311",
-                                    "serviceProviderTransactionId": "VERIZON"
-                                },
-                                "account": {
-                                    "number": "0511552789-00001",
-                                    "customer": {
-                                        "name": {
-                                            "firstName": "DON",
-                                            "lastName": "POSADA"
-                                        },
-                                        "addresses": [
-                                            {
-                                                "type": "SERVICE_BILLING",
-                                                "line1": "BASIL'S AUTO REPAIR AND BODY",
-                                                "line2": "10501 SW 185TH TERRACE",
-                                                "locality": "MIAMI",
-                                                "administrativeArea": "FL",
-                                                "countryCode": "US",
-                                                "postalCode": "33157",
-                                                "isPrimaryPlaceOfUsage": false
-                                            }
-                                        ],
-                                        "emails": [
-                                            {
-                                                "address": "GZGR693@VZW.COM"
-                                            }
-                                        ]
-                                    },
-                                    "plans": [
-                                        {
-                                            "description": "MOBILE TO ANY MOBILE NATIONWIDE TALK TEXT 450 $64.99 0511",
-                                            "code": "96325~PTP=VD",
-                                            "connections": [
-                                                {
-                                                    "phoneNumber": "7868970159"
-                                                }]
-                                        }]
-                                }
-                            }
-                        </code>
-                    </pre>
-            </section>
             <section>
                 <h3><a>CHALLENGES</a></h3>
-                <ul>
-                    <li>Environment Issues.</li>
-                    <li>Mock feature toggle service for Unit Testing using JUnit and Spock.</li>
-                    <li>Be careful not to break Current Pipeline BDDs by implementing feature toggle.</li>
-                </ul>
-                <img src="https://media.giphy.com/media/D12CsrRNv7gL6/giphy.gif" width="200" height="200">
+                <br>
+                <div>
+                    <ul>
+                        <li>RetrievePricePlans API new model has an structure with a lot of differences with old model.</li>
+                        <li>RetrievePricePlansResponse pam-db variable usages in createOrder and submitOrder which was using the old model increased the estimated time for this task.</li>
+                    </ul>
+                </div>
             </section>
-            <section>
-                <h1>LET'S SEE THE CODE</h1>
-            </section>
+        </section>
+        <section>
+            <h3><a>Let's go to the code</a></h3>
         </section>
         <section data-background="https://media.giphy.com/media/6tHy8UAbv3zgs/giphy.gif" data-background-size="800px">
         </section>
