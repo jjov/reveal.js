@@ -100,7 +100,7 @@
                         <tr>
                             <td>CheckTradeIn</td>
                             <td></td>
-                            <td>IN PROGRESS</td>
+                            <td>DONE</td>
                         </tr>
                         <tr>
                             <td>NumberPort</td>
@@ -148,124 +148,35 @@
                         <li>AT&T VALIDATE CART MIGRATION</li>
 					</ol>
 				</section>
-
 				<section>
-					<h3><a>AT&T NUMBER PORT MIGRATION</a></h3>
-					Successfuly migrated AT&T Number Port migration.
-					<br>
-					<br>
-					<ul>
-						<li>InquireMarketServiceArea</li>
-						<li>InquireAvailableDevice</li>
-						<li>InquirePricePlans</li>
-						<li>InquireAdditionalOfferings</li>
-					</ul>
-
-				</section>
-				<section>
-					<h3><a>Solution</a></h3>
+					<section>
+					<h3><a>Development process</a></h3>
 					<ul>
 						<li>Create a new workflow from the old one</li>
 						<li>Create a feature toggle for this canonical api</li>
 						<li>Create each mapping and header mapping with the new generated classes</li>
 						<li>Change the REST call with the new invoker class</li>
-						<li>Fix usages of the carrier response after the carrier call using the new atributes</li>
-						<li>Implement the common error handling in this canonical api</li>
+						<li>Fix usages of the carrier response after the carrier call using the new models</li>
 					</ul>
+					</section>
+					<section>
+					<h3><a>Development process</a></h3>
+					<ul>
+						<li>Implement the common error handling</li>
+						<li>Check PamDB differences and usages</li>
+						<li>Carrier testing</li>
+						<li>API history logging check</li>
+					</ul>
+					</section>
+					
 
+				</section>
+				<section>
+					<h3><a>CHALLENGES</a></h3>
 				</section>
 				<section>
 					<h3><a>Let's go to the code</a></h3>
 				</section>
-				<section>
-					<section>
-						<h3><a>Challenges</a></h3>
-						<ul>
-							<li>Redo some work due to changes in the new generated classes</li>
-						</ul>
-					</section>
-				</section>
-
-
-				<section data-background="https://media.giphy.com/media/3otPoAb6YXPqt7ELrG/giphy.gif" data-background-size="800px"></section>
-
-
-				<section>
-					<section>
-						<h3><a> ATT Common Error Handling </a></h3>
-					</section>
-
-					<section>
-						<h3><a> A Problem </a></h3>
-						<p>
-
-							<ul>
-								<li>New Exception management in PAM Proxy</li>
-								<li>Duplicated code for error management on all the carrier calls</li>
-								<li>Duplicated workflow logic for response analysis and error handling eg: Retry logic</li>
-								<li>Different error codes mapping logic for each API call</li>
-								<li>Different versions for Exception classes from carrier, eg: v118, v126, v236</li>
-							</ul>
-						</p>
-					</section>
-
-
-					<section>
-						<h3><a>Workflow for Error handling after ESB Call</a></h3>
-						<img src="images/ESBCallExample.png" ></img>
-					</section>
-
-
-					<section>
-						<h3><a>Error code mapping </a></h3>
-						<img src="images/code-1.png" />
-					</section>
-
-					<section>
-						<h3><a>
-							Common Error Handling for ATT API Calls in PAM Proxy
-						</a></h3>
-
-
-						<ul>
-							<li> Common workflow for carrier response analysis  </li>
-							<li> Unified ErrorCode mapping </li>
-						</ul>
-
-					</section>
-
-					<section>
-						<h3><a> Common workflow for carrier response analysis</a> </h3>
-						<img src="images/PAMProxyCallExample.png">
-					</section>
-
-					<section>
-						<h3> <a>Unified Error Mapper </a></h3>
-
-						<p>Map from Canonical API Name and Carrier API to Error Code Enumeration</p>
-
-						<table>
-							<tr>
-								<td style="width:40%;vertical-align: top;">
-						<img src="images/code-1.png" />
-								</td>
-								<td style="width:10%;vertical-align: top;">
-									==>
-								</td>
-								<td>
-
-									<img src="images/unifiedErrorCodes-1.png" style="width:90%;"></img>
-								</td>
-							</tr>
-						</table>
-					</section>
-
-				</section>
-				<section>
-					<h3><a>Let's go to the code</a></h3>
-				</section>
-
-
 			</div>
 		</div>
 
