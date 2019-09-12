@@ -37,8 +37,8 @@
                 <section>
                     <h3><a>SOHO SUPPORT</a></h3>
                     <ul>
-                        <li>Release 31.5</li>
-                        <li>Release 32.0</li>
+                        <li>Release 33.0</li>
+                        <li>Release 34.0</li>
                     </ul>
                 </section>
 
@@ -173,6 +173,12 @@
 				</section>
 				<section>
 					<h3><a>CHALLENGES</a></h3>
+					<ul>
+						<li>Complexity of the response usages is higher. Probably, is going to increment in createOrder and submitOrder.</li>
+						<li>To generate and use classes for new versions rise problems with messageHeaderInfo mapping. We decided to use classes from v118 for messageHeaderInfo.</li>
+						<li>API history call from pam proxy was not working before. Now, we have to warrant that all of the migrated APIs are storing the API history as is expected.</li>
+					</ul>
+
 				</section>
 				<section>
 					<h3><a>Let's go to the code</a></h3>
