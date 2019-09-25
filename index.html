@@ -62,7 +62,7 @@
                 <div align="left">
                     <li> Responses from Verizon took a lot of time.</li>
                     <li> Data issues</li>
-                    <li> <a> Phone Number is not present in Create Order request for New Activations</a></li>
+                    <li> <a> GIC failures for new activations</a></li>
                 </div>
             </section>
 
@@ -96,27 +96,7 @@
                 </pre>
             </section>
 
-            <section>
-                <h4> <a>getting Phone number from Retrieve Price Plan Response</a> </h4>
-                <pre>
-                    <code class="hljs java" data-line-numbers="" data-trim>
-                    Map createMapDeviceConnections (List&lt;MtnInfo&gt; mtnInfos ){
-                        Map&lt;String,Stack&lt;MtnInfo&gt;&gt; connectionToPlansResponse = new HashMap&lt;String,Stack&lt;MtnInfo&gt;&gt; ()
-                        for (def mtnInfo : mtnInfos ){
-                            for ( def planInfo : mtnInfo.mtnPlanList.planInfo){
-                                String deviceId = mtnInfo.eqptInfo.deviceInfo.deviceId? : mtnInfo.eqptInfo.deviceInfo.deviceSKU
-                                String planId = planInfo.pricePlanId.split("~")[0]
-                                String id = planId.concat(deviceId)
-                                Stack&lt;MtnInfo&gt; mtns= connectionToPlansResponse.get(id) ?: new Stack&lt;MtnInfo&gt;()
-                                mtns.push(mtnInfo)
-                                connectionToPlansResponse.put(id,mtns)
-                            }
-                        }
-                        return connectionToPlansResponse
-                    }
-                    </code>
-                </pre>
-            </section>
+
             <section>
                 <h1>LET'S SEE THE CODE</h1>
             </section>
