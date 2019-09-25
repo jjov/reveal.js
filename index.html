@@ -33,7 +33,7 @@
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
                 <li>ONLINE UPGRADE KME</li>
-                <li>ESB MIGRATION RETRIEVE PRICE PLAN PAM API</li>
+                <li>ESB MIGRATION NUMBER PORT PAM API</li>
             </ol>
         </section>
         <section>
@@ -93,15 +93,14 @@
             </section>
         </section>
         <section><section>
-            <h3><a>VERIZON RETRIEVE PLANS MIGRATION</a></h3>
+            <h3><a>VERIZON NUMBER PORT MIGRATION</a></h3>
             <div align="left">
                 <div align="left">
-                    <p align="justify"> Successfully migrated happy paths and error scenarios for Retrieve Plans APIs. </p>
+                    <p align="justify"> Successfully migrated happy paths and error scenarios for NumberPort APIs. </p>
 
                 </div>
                 <ul>
-                    <li>RetrieveNpaNxx.</li>
-                    <li>RetrievePricePlans.</li>
+                    <li>validatePortInEligibility.</li>
                 </ul>
             </div>
         </section>
@@ -113,22 +112,10 @@
                     <li>Create a feature toggle for this canonical api.</li>
                     <li>Create each mapping and header mapping with the new generated classes.</li>
                     <li>Change the REST call with the new invoker class.</li>
-                    <li>Fix usages of the carrier response after the carrier call using the new attributes.</li>
                 </ul>
             </section>
             <section>
                 <h3><a>Let's go to the code</a></h3>
-            </section>
-            <section>
-                <h3><a>CHALLENGES</a></h3>
-                <br>
-                <div>
-                    <ul>
-                        <li>RetrievePricePlans API new model has a structure with a lot of differences with old model.</li>
-                        <li>RetrievePricePlansResponse pam-db variable usages in createOrder and submitOrder increased the estimated time for this task as we have to support the old and new models.</li>
-                        <li>Shared Pam-Proxy issues</li>
-                    </ul>
-                </div>
             </section>
             <section>
                 <h3><a>CHALLENGES</a></h3>
@@ -141,7 +128,6 @@
                 <br>
                 <div>
                     <img src="https://media.giphy.com/media/tbj1fCWpdtjH2/giphy.gif">
-
                 </div>
             </section>
             </section></section>
