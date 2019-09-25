@@ -32,21 +32,21 @@
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>ONLINE UPGRADE KME</li>
+                <li>ONLINE NEW ACTIVATION</li>
                 <li>ESB MIGRATION RETRIEVE PRICE PLAN PAM API</li>
             </ol>
         </section>
         <section>
             <section>
-                <h3><a>ONLINE UPGRADE KME</a></h3>
+                <h3><a>ONLINE NEW ACTIVATION</a></h3>
             </section>
             <section>
                 <h3> HOW IT WORKS </h3>
-                <img src="images/OnlineFlow.png">
+                <img src="images/OnlineNewActivation.png">
             </section>
             <section>
-                <h3> ONLINE CHANGES</h3>
-                <img src="images/upgradeOnline.png">
+                <h3> NEW ACTIVATION APIS</h3>
+                <img src="images/NewActivationAPIs.png">
             </section>
             <section>
                 <h3> <a>CHALLENGES</a> </h3>
@@ -62,28 +62,57 @@
                 <div align="left">
                     <li> Responses from Verizon took a lot of time.</li>
                     <li> Data issues</li>
-                    <li> NullPointer exceptions in the carrier responses.</li>
-                    <li> <a> transactionId for the final submit  must be unique.</a> </li>
+                    <li> <a> Phone Number is not present in Create Order request for New Activations</a></li>
                 </div>
             </section>
 
             <section>
-                <h3><a>NUllPOINTER EXCEPTION </a></h3>
-                <img src="images/saveInstallmentDetails.png">
+                <h3> <a> Genereate Installment Contract Request</a></h3>
+                    <pre>
+                    <code class="hljs xml" data-line-numbers="6" data-trim>
+                    <VzwServices>
+                        <ServiceHeader> ...... </ServiceHeader>
+                        <ServiceBody>
+                            <generateInstallmentContract>
+                                <request>
+                                    <mobileNumber>4107139224</mobileNumber>
+                                    <multiLineSeqNumber>1</multiLineSeqNumber>
+                                    <newEqptInfo>
+                                        <deviceInfo>
+                                            <deviceSKU>SMG970UZKV</deviceSKU>
+                                            <deviceType>4GE</deviceType>
+                                            <deviceFullRetailPrice>649.99</deviceFullRetailPrice>
+                                            <installmentDetails>
+                                                ......
+                                            </installmentDetails>
+                                        </deviceInfo>
+                                    </newEqptInfo>
+                                    <documentFormat>P</documentFormat>
+                                </request>
+                            </generateInstallmentContract>
+                        </ServiceBody>
+                    </VzwServices>
+                    </code>
+                </pre>
             </section>
 
             <section>
-                <h3> <a>Unique TransactionId</a> </h3>
+                <h4> <a>getting Phone number from Retrieve Price Plan Response</a> </h4>
                 <pre>
-                    <code class="hljs java" data-line-numbers="4-6" data-trim>
-                    def getNewUniqueTransactionId() {
-                        String transactionId = getUniqueTransactionId()
-                        if (channel == Channel.ONLINE){
-                            LocalDateTime today = LocalDateTime.now()
-                            DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("HHmmss")
-                            transactionId = formatter.format(today).concat("_").concat(transactionId)
+                    <code class="hljs java" data-line-numbers="" data-trim>
+                    Map createMapDeviceConnections (List&lt;MtnInfo&gt; mtnInfos ){
+                        Map&lt;String,Stack&lt;MtnInfo&gt;&gt; connectionToPlansResponse = new HashMap&lt;String,Stack&lt;MtnInfo&gt;&gt; ()
+                        for (def mtnInfo : mtnInfos ){
+                            for ( def planInfo : mtnInfo.mtnPlanList.planInfo){
+                                String deviceId = mtnInfo.eqptInfo.deviceInfo.deviceId? : mtnInfo.eqptInfo.deviceInfo.deviceSKU
+                                String planId = planInfo.pricePlanId.split("~")[0]
+                                String id = planId.concat(deviceId)
+                                Stack&lt;MtnInfo&gt; mtns= connectionToPlansResponse.get(id) ?: new Stack&lt;MtnInfo&gt;()
+                                mtns.push(mtnInfo)
+                                connectionToPlansResponse.put(id,mtns)
+                            }
                         }
-                        return transactionId
+                        return connectionToPlansResponse
                     }
                     </code>
                 </pre>
