@@ -49,24 +49,24 @@
                 <img src="images/NewActivationAPIs.png">
             </section>
             <section>
-                <h3> <a>CHALLENGES</a> </h3>
+                <h3><a>CHALLENGES</a></h3>
                 <div>
                     <div>
-                        <img src="https://media.giphy.com/media/iAqP1YFX53Oh2/giphy.gif" >
+                        <img src="https://media.giphy.com/media/iAqP1YFX53Oh2/giphy.gif">
 
                     </div>
                 </div>
                 <div align="left">
                     <li> Responses from Verizon took a lot of time.</li>
-                    <li> Switch from sqa3 to sqa1 carrier environment </li>
+                    <li> Switch from sqa3 to sqa1 carrier environment</li>
                     <li> Data issues</li>
-                    <li> <a> GIC failures for new activations</a></li>
+                    <li><a> GIC failures for new activations</a></li>
                 </div>
             </section>
 
             <section>
-                <h3> <a> Genereate Installment Contract Request</a></h3>
-                    <pre>
+                <h3><a> Genereate Installment Contract Request</a></h3>
+                <pre>
                     <code class="hljs xml" data-line-numbers="6" data-trim>
                     <VzwServices>
                         <ServiceHeader> ...... </ServiceHeader>
@@ -99,18 +99,135 @@
                 <h1>LET'S SEE THE CODE</h1>
             </section>
         </section>
-        <section><section>
-            <h3><a>VERIZON NUMBER PORT MIGRATION</a></h3>
-            <div align="left">
-                <div align="left">
-                    <p align="justify"> Successfully migrated happy paths and error scenarios for NumberPort APIs. </p>
+
+        <section>
+            <h3><a>NEXT TOPIC</a></h3>
+            <div>
+                <div>
+                    <img src="https://media.giphy.com/media/6EiJBiYKFT8OnAfkin/giphy.gif">
 
                 </div>
-                <ul>
-                    <li>validatePortInEligibility.</li>
-                </ul>
             </div>
         </section>
+
+        <section>
+            <h3><a>ESB REPLACEMENT</a></h3>
+        </section>
+
+        <section>
+            <section>
+                <h3>ESB Replacement Plan</h3>
+                <h5>(Development Status)</h5>
+                <table>
+                    <thead>
+                    <tr>
+                        <th><a>Canonical API</a></th>
+                        <th><a>VZN Migrated</a></th>
+                        <th><a>ATT Migrated</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>AccountLookup</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>CreditCheck</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>RetrievePaymentPrograms</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>RetrievePlans</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>RetrievePlansAddOns</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <table>
+                    <thead>
+                    <tr>
+                        <th><a>Canonical API</a></th>
+                        <th><a>VZN Migrated</a></th>
+                        <th><a>ATT Migrated</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>ValidateDevice</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>CheckTradeIn</td>
+                        <td>NA</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td><a style="color: #dd5566">NumberPort</a></td>
+                        <td><a style="color: #dd5566">DONE</a></td>
+                        <td><a style="color: #dd5566">DONE</a></td>
+                    </tr>
+                    <tr>
+                        <td><a style="color: #dd5566">ValidateCart</a></td>
+                        <td><a style="color: #dd5566">DONE</a></td>
+                        <td><a style="color: #dd5566">DONE</a></td>
+                    </tr>
+                    <tr>
+                        <td><a style="color: #dd5566">CreateOrder</a></td>
+                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
+                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
+                    </tr>
+                    <tr>
+                        <td>SubmitOrder</td>
+                        <td></td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>SubmitReturn</td>
+                        <td></td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>CancelOrder</td>
+                        <td></td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>SubmitPayment</td>
+                        <td></td>
+                        <td>PENDING</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3><a>VERIZON NUMBER PORT MIGRATION</a></h3>
+                <div align="left">
+                    <div align="left">
+                        <p align="justify"> Successfully migrated happy paths and error scenarios for NumberPort
+                            APIs. </p>
+
+                    </div>
+                    <ul>
+                        <li>validatePortInEligibility.</li>
+                    </ul>
+                </div>
+            </section>
             <section>
                 <h3><a>SOLUTION</a></h3>
                 <br>
@@ -120,7 +237,9 @@
                     <li>Created each mapping and header mapping with the new generated classes.</li>
                     <li>Changed the REST call with the new invoker class.</li>
                     <li>Fixed usages of PAM-DB Variables.</li>
-                    <li>Added Missing Http headers in validatePortInEligibility and all previous migrated APIs for VERIZON in order to log in API history</li>
+                    <li>Added Missing Http headers in validatePortInEligibility and all previous migrated APIs for
+                        VERIZON in order to log in API history
+                    </li>
                 </ul>
             </section>
             <section>
@@ -131,16 +250,21 @@
                 <br>
                 <div align="left">
                     <ul>
-                        <li>Pam-db variables were accessed using old model structure causing conflicts with ESB Migration Implementation.</li>
+                        <li>Pam-db variables were accessed using old model structure causing conflicts with ESB
+                            Migration Implementation.
+                        </li>
                         <li>Migrated APIs weren't logging on API history</li>
-                        <li>Shared Pam Proxy issues (There's no external ELB for PAM Proxy and cdeapp2 environment is incomplete as no API History Producer don'r exists).</li>
+                        <li>Shared Pam Proxy issues (There's no external ELB for PAM Proxy and cdeapp2 environment is
+                            incomplete as no API History Producer don'r exists).
+                        </li>
                         <li>Set API Producer and Pam-Proxy environments locally</li>
                         <li>Data issues.</li>
                     </ul>
                 </div>
                 <br>
             </section>
-            </section></section>
+        </section>
+        </section>
 
     </div>
 </div>
