@@ -137,10 +137,12 @@
                 <h3><a>SOLUTION</a></h3>
                 <br>
                 <ul>
-                    <li>Create a new workflow from the old one.</li>
-                    <li>Create a feature toggle for this canonical api.</li>
-                    <li>Create each mapping and header mapping with the new generated classes.</li>
-                    <li>Change the REST call with the new invoker class.</li>
+                    <li>Created a new workflow from the old one.</li>
+                    <li>Created a feature toggle for this canonical api.</li>
+                    <li>Created each mapping and header mapping with the new generated classes.</li>
+                    <li>Changed the REST call with the new invoker class.</li>
+                    <li>Fixed usages of PAM-DB Variables.</li>
+                    <li>Added Missing Http headers in validatePortInEligibility and all previous migrated APIs for VERIZON in order to log in API history</li>
                 </ul>
             </section>
             <section>
@@ -151,13 +153,14 @@
                 <br>
                 <div align="left">
                     <ul>
+                        <li>Pam-db variables were accessed using old model structure causing conflicts with ESB Migration Implementation.</li>
+                        <li>Migrated APIs weren't logging on API history</li>
+                        <li>Shared Pam Proxy issues (There's no external ELB for PAM Proxy and cdeapp2 environment is incomplete as no API History Producer don'r exists).</li>
+                        <li>Set API Producer and Pam-Proxy environments locally</li>
                         <li>Data issues.</li>
                     </ul>
                 </div>
                 <br>
-                <div>
-                    <img src="https://media.giphy.com/media/tbj1fCWpdtjH2/giphy.gif">
-                </div>
             </section>
             </section></section>
 
