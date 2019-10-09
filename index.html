@@ -30,18 +30,9 @@
 					<img src="/images/logo.png">
 					<p class="demo-title">Demo</p>
 
-					Previous sprint 22.5/26 -> 87%<br>
-					Current sprint 20.5/21 -> 97%
+					Previous sprint 26/23.5 -> 110.64%<br>
+					Current sprint 28/26.5 -> 105.66%
 				</section>
-
-                <section>
-                    <h3><a>SOHO SUPPORT</a></h3>
-                    <ul>
-                        <li>Release 33.0</li>
-                        <li>Release 34.0</li>
-                    </ul>
-                </section>
-
                 <section>
                     <h3>ESB Migration Plan</h3>
                     <table>
@@ -115,7 +106,7 @@
                         <tr>
                             <td>CreateOrder</td>
                             <td></td>
-                            <td>PENDING</td>
+                            <td>DONE</td>
                         </tr>
                         <tr>
                             <td>SubmitOrder</td>
@@ -144,8 +135,7 @@
 				<section>
 					<h3><a>MAIN TOPICS - ESB REPLACEMENT</a></h3>
 					<ol>
-                        <li>AT&T NUMBER PORT MIGRATION</li>
-                        <li>AT&T VALIDATE CART MIGRATION</li>
+                        <li>AT&T CREATE ORDER MIGRATION</li>
 					</ol>
 				</section>
 				<section>
@@ -172,13 +162,15 @@
 
 				</section>
 				<section>
+                    <section>
 					<h3><a>CHALLENGES</a></h3>
 					<ul>
-						<li>Complexity of the response usages is higher. Probably, is going to increment in createOrder and submitOrder.</li>
-						<li>To generate and use classes for new versions rise problems with messageHeaderInfo mapping. We decided to use classes from v118 for messageHeaderInfo.</li>
-						<li>API history call from pam proxy was not working before. Now, we have to warrant that all of the migrated APIs are storing the API history as is expected.</li>
+						<li>Missing data for some scenarios delayed carrier testing for checkTradeIn</li>
+						<li>Problems with shared catalog for development process delayed createOrder carrier testing</li>
+						<li>High coupling due to multiple usages of RAML objects in createOrder and submitOrder, and the huge amount of logic around them increased the complexity of the migration</li>
+                        <li>Shared pam proxy server is not logging properly in the API history.</li>
 					</ul>
-
+                    </section>
 				</section>
 				<section>
 					<h3><a>Let's go to the code</a></h3>
