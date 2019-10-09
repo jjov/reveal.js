@@ -2,4 +2,25 @@ p.demo-title {
     position: relative;
     top: 500px;
     font-weight: bold;
+    margin: 0;
+}
+
+p.demo-date {
+    position: relative;
+    top: 500px;
+    font-size: 18px;
+    margin: 0;
+}
+
+th.demo-th-text {
+    color: #dd5566;
+    font-size: 22px;
+}
+
+td.demo-td-text {
+    font-size: 18px;
+}
+
+p.indent {
+    margin: 0 0 0 40px;
 }

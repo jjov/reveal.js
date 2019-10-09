@@ -27,80 +27,110 @@
 <div class="reveal">
     <div class="slides">
         <section data-background="images/poster.png">
-            <p class="demo-title">Demo</p>
+            <p class="demo-title"><a>Design Proposal</a></p>
+            <p class="demo-date">03-10-2019</p>
         </section>
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>ONLINE NEW ACTIVATION</li>
-                <li>ESB MIGRATION NUMBER PORT PAM API</li>
+                <li>FLUTTER PROJECT STRUCTURE</li>
             </ol>
         </section>
         <section>
             <section>
-                <h3><a>ONLINE NEW ACTIVATION</a></h3>
+                <h3><a>FLUTTER PROJECT STRUCTURE</a></h3>
             </section>
             <section>
-                <h3> HOW IT WORKS </h3>
-                <img src="images/OnlineNewActivation.png">
-            </section>
-            <section>
-                <h3> NEW ACTIVATION APIS</h3>
-                <img src="images/NewActivationAPIs.png">
-            </section>
-            <section>
-                <h3><a>CHALLENGES</a></h3>
-                <div>
-                    <div>
-                        <img src="https://media.giphy.com/media/iAqP1YFX53Oh2/giphy.gif">
-
-                    </div>
-                </div>
-                <div align="left">
-                    <li> Responses from Verizon took a lot of time.</li>
-                    <li> Switch from sqa3 to sqa1 carrier environment</li>
-                    <li> Data issues</li>
-                    <li><a> GIC failures for new activations</a></li>
-                </div>
+                <h3><a> BACKGROUND </a></h3>
+                <p>Before start writing any line of code we need to make a decision about the project structure we want
+                    to follow for our flutter apps regardless the project you are working on.</p>
             </section>
 
             <section>
-                <h3><a> Genereate Installment Contract Request</a></h3>
-                <pre>
-                    <code class="hljs xml" data-line-numbers="6" data-trim>
-                    <VzwServices>
-                        <ServiceHeader> ...... </ServiceHeader>
-                        <ServiceBody>
-                            <generateInstallmentContract>
-                                <request>
-                                    <mobileNumber>4107139224</mobileNumber>
-                                    <multiLineSeqNumber>1</multiLineSeqNumber>
-                                    <newEqptInfo>
-                                        <deviceInfo>
-                                            <deviceSKU>SMG970UZKV</deviceSKU>
-                                            <deviceType>4GE</deviceType>
-                                            <deviceFullRetailPrice>649.99</deviceFullRetailPrice>
-                                            <installmentDetails>
-                                                ......
-                                            </installmentDetails>
-                                        </deviceInfo>
-                                    </newEqptInfo>
-                                    <documentFormat>P</documentFormat>
-                                </request>
-                            </generateInstallmentContract>
-                        </ServiceBody>
-                    </VzwServices>
-                    </code>
-                </pre>
+                <h3><a>PROJECT COMPOSITION</a></h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="demo-th-text">Package Name</th>
+                        <th class="demo-th-text">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="demo-td-text">functional_package_name</td>
+                        <td class="demo-td-text">This will contain functional packages like common, account...</td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">ui</p></td>
+                        <td class="demo-td-text">Widgets that are part of the Graphic User Interface</td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">bloc</p></td>
+                        <td class="demo-td-text"><a>B</a>usiness <a>LO</a>gic <a>C</a>omponents used to provide data to
+                            the UI and manipulate
+                            the data model defined
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">services</p></td>
+                        <td class="demo-td-text">It would contain the specification of the services to consume in the
+                            app
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">model</p></td>
+                        <td class="demo-td-text">Here we will define our Plain Old Dart Objects (PODO) which will
+                            represent
+                            our data model. (No business logic should be included here)
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </section>
-
-
             <section>
-                <h1>LET'S SEE THE CODE</h1>
+                <h3><a>OPTIONAL PROJECT COMPOSITION COMPLEMENT</a></h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="demo-th-text">Package Name</th>
+                        <th class="demo-th-text">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="demo-td-text">functional_package_name</td>
+                        <td class="demo-td-text">This will contain functional packages like common, account...</td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">...</p></td>
+                        <td class="demo-td-text">Here we will have all packages mentioned before
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">i18n</p></td>
+                        <td class="demo-td-text">Internationalization configuration for the UIs that make part of this
+                            specific functional package
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">repository</p></td>
+                        <td class="demo-td-text">In the future this package can be use to story the database repository
+                            that can be required
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="demo-td-text"><p class="indent">dao</p></td>
+                        <td class="demo-td-text">Incase data access objects can be required. If there is an ORM that can
+                            be
+                            use we can make it part of the model package, so this is not going to be required.
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </section>
         </section>
 
-        <section>
+        <!--section>
             <h3><a>NEXT TOPIC</a></h3>
             <div>
                 <div>
@@ -108,163 +138,7 @@
 
                 </div>
             </div>
-        </section>
-
-        <section>
-            <h3><a>ESB REPLACEMENT</a></h3>
-        </section>
-
-        <section>
-            <section>
-                <h3>ESB Replacement Plan</h3>
-                <h5>(Development Status)</h5>
-                <table>
-                    <thead>
-                    <tr>
-                        <th><a>Canonical API</a></th>
-                        <th><a>VZN Migrated</a></th>
-                        <th><a>ATT Migrated</a></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>AccountLookup</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CreditCheck</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePaymentPrograms</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePlans</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePlansAddOns</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section>
-                <table>
-                    <thead>
-                    <tr>
-                        <th><a>Canonical API</a></th>
-                        <th><a>VZN Migrated</a></th>
-                        <th><a>ATT Migrated</a></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>ValidateDevice</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CheckTradeIn</td>
-                        <td>NA</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td><a style="color: #dd5566">NumberPort</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
-                    </tr>
-                    <tr>
-                        <td><a style="color: #dd5566">ValidateCart</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
-                    </tr>
-                    <tr>
-                        <td><a style="color: #dd5566">CreateOrder</a></td>
-                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
-                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
-                    </tr>
-                    <tr>
-                        <td>SubmitOrder</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>SubmitReturn</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>CancelOrder</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>SubmitPayment</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section>
-                <h3><a>VERIZON NUMBER PORT MIGRATION</a></h3>
-                <div align="left">
-                    <div align="left">
-                        <p align="justify"> Successfully migrated happy paths and error scenarios for NumberPort
-                            APIs. </p>
-
-                    </div>
-                    <ul>
-                        <li>validatePortInEligibility.</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <h3><a>SOLUTION</a></h3>
-                <br>
-                <ul>
-                    <li>Created a new workflow from the old one.</li>
-                    <li>Created a feature toggle for this canonical api.</li>
-                    <li>Created each mapping and header mapping with the new generated classes.</li>
-                    <li>Changed the REST call with the new invoker class.</li>
-                    <li>Fixed usages of PAM-DB Variables.</li>
-                    <li>Added Missing Http headers in validatePortInEligibility and all previous migrated APIs for
-                        VERIZON in order to log in API history
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3><a>Let's go to the code</a></h3>
-            </section>
-            <section>
-                <h3><a>CHALLENGES</a></h3>
-                <br>
-                <div align="left">
-                    <ul>
-                        <li>Pam-db variables were accessed using old model structure causing conflicts with ESB
-                            Migration Implementation.
-                        </li>
-                        <li>Migrated APIs weren't logging on API history</li>
-                        <li>Shared Pam Proxy issues (There's no external ELB for PAM Proxy and cdeapp2 environment is
-                            incomplete as no API History Producer exists).
-                        </li>
-                        <li>Set API Producer and Pam-Proxy environments locally</li>
-                        <li>Data issues.</li>
-                    </ul>
-                </div>
-                <br>
-            </section>
-        </section>
-        </section>
+        </section -->
 
     </div>
 </div>
