@@ -165,12 +165,15 @@
                     <section>
 					<h3><a>CHALLENGES</a></h3>
 					<ul>
-						<li>Missing data for some scenarios delayed carrier testing for checkTradeIn</li>
-						<li>Problems with shared catalog for development process delayed createOrder carrier testing</li>
-						<li>High coupling due to multiple usages of RAML objects in createOrder and submitOrder, and the huge amount of logic around them increased the complexity of the migration</li>
-                        <li>Shared pam proxy server is not logging properly in the API history.</li>
+                        <li>High coupling dependencies between createOrder and submitOrder increased the complexity of the migration</li>
+                        <li>Most of createOrder AT&T APIs did not have standard retry logic.</li>
+                        <li>We found two AT&T unused APIs in createOrder</li>
+                        <li>Missing data delayed checkTradeIn testing</li>
+                        <li>Shared pam proxy server is not logging in the API history</li>
+                        <li>Problems with shared catalog delayed createOrder testing</li>
 					</ul>
                     </section>
+                
 				</section>
 				<section>
 					<h3><a>Let's go to the code</a></h3>
