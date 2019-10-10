@@ -1,204 +1,278 @@
 <!doctype html>
 <html lang="En">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>reveal.js</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css">
-		<link rel="stylesheet" href="css/custom-macondo-styles.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/league.css">
+    <link rel="stylesheet" href="css/custom-macondo-styles.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<img src="/images/logo.png">
-					<p class="demo-title">Demo</p>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <img src="/images/logo.png">
+            <p class="demo-title">Demo</p>
 
-					Previous sprint 24.5/22 -> 111%<br>
-					Current sprint 21/22 -> 96%
-				</section>
-                <section>
-                    <h3>ESB Replacement Plan</h3>
-                    <h5>(Development Status)</h5>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th><a>Canonical API</a></th>
-                            <th><a>VZN Migrated</a></th>
-                            <th><a>ATT Migrated</a></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>AccountLookup</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td>CreditCheck</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td>RetrievePaymentPrograms</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td>RetrievePlans</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td>RetrievePlansAddOns</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </section>
+            Previous sprint 24.5/22 -> 111%<br>
+            Current sprint 21/22 -> 96%
+        </section>
+        <section>
+            <h3>ESB Replacement Plan</h3>
+            <h5>(Development Status)</h5>
+            <table>
+                <thead>
+                <tr>
+                    <th><a>Canonical API</a></th>
+                    <th><a>VZN Migrated</a></th>
+                    <th><a>ATT Migrated</a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>AccountLookup</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>CreditCheck</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>RetrievePaymentPrograms</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>RetrievePlans</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>RetrievePlansAddOns</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
 
-                <section>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th><a>Canonical API</a></th>
-                            <th><a>VZN Migrated</a></th>
-                            <th><a>ATT Migrated</a></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>ValidateDevice</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td>CheckTradeIn</td>
-                            <td>N/A</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td>NumberPort</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td>ValidateCart</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
-                        </tr>
-                        <tr>
-                            <td><a>CreateOrder</a></td>
-                            <td><a>IN PROGRESS</a></td>
-                            <td><a>DONE</a></td>
-                        </tr>
-                        <tr>
-                            <td>SubmitOrder</td>
-                            <td>PENDING</td>
-                            <td>PENDING</td>
-                        </tr>
-                        <tr>
-                            <td>SubmitReturn</td>
-                            <td>PENDING</td>
-                            <td>PENDING</td>
-                        </tr>
-                        <tr>
-                            <td>CancelOrder</td>
-                            <td>PENDING</td>
-                            <td>PENDING</td>
-                        </tr>
-                        <tr>
-                            <td>SubmitPayment</td>
-                            <td>PENDING</td>
-                            <td>PENDING</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </section>
+        <section>
+            <table>
+                <thead>
+                <tr>
+                    <th><a>Canonical API</a></th>
+                    <th><a>VZN Migrated</a></th>
+                    <th><a>ATT Migrated</a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ValidateDevice</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>CheckTradeIn</td>
+                    <td>N/A</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>NumberPort</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>ValidateCart</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td><a>CreateOrder</a></td>
+                    <td><a>IN PROGRESS</a></td>
+                    <td><a>DONE</a></td>
+                </tr>
+                <tr>
+                    <td>SubmitOrder</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                <tr>
+                    <td>SubmitReturn</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                <tr>
+                    <td>CancelOrder</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                <tr>
+                    <td>SubmitPayment</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
 
-				<section>
-					<h3><a>MAIN TOPICS - ESB REPLACEMENT</a></h3>
-					<ol>
-                        <li>AT&T CREATE ORDER MIGRATION</li>
-					</ol>
-				</section>
-				<section>
-					<section>
-					<h3><a>Development process</a></h3>
-					<ul>
-						<li>Create a new workflow from the old one</li>
-						<li>Create a feature toggle for this canonical api</li>
-						<li>Create each mapping and header mapping with the new generated classes</li>
-						<li>Change the REST call with the new invoker class</li>
-						<li>Fix usages of the carrier response after the carrier call using the new models</li>
-					</ul>
-					</section>
-					<section>
-					<h3><a>Development process</a></h3>
-					<ul>
-						<li>Implement the common error handling</li>
-						<li>Check PamDB differences and usages</li>
-						<li>Carrier testing</li>
-						<li>API history logging check</li>
-					</ul>
-					</section>
-					
+        <section>
+            <h3><a>MAIN TOPICS - ESB REPLACEMENT</a></h3>
+            <ol>
+                <li>AT&T CREATE ORDER MIGRATION</li>
+            </ol>
+        </section>
+        <section>
+            <section>
+                <h3><a>Development process</a></h3>
+                <ul>
+                    <li>Create a new workflow from the old one</li>
+                    <li>Create a feature toggle for this canonical api</li>
+                    <li>Create each mapping and header mapping with the new generated classes</li>
+                    <li>Change the REST call with the new invoker class</li>
+                    <li>Fix usages of the carrier response after the carrier call using the new models</li>
+                </ul>
+            </section>
+            <section>
+                <h3><a>Development process</a></h3>
+                <ul>
+                    <li>Implement the common error handling</li>
+                    <li>Check PamDB differences and usages</li>
+                    <li>Carrier testing</li>
+                    <li>API history logging check</li>
+                </ul>
+            </section>
 
-				</section>
-				<section>
-                    <section>
-					<h3><a>CHALLENGES</a></h3>
-					<ul>
-                        <li>High coupling between createOrder and submitOrder increased the complexity of the migration</li>
-                        <li>Most of createOrder AT&T APIs did not have standard retry logic</li>
-                        <li>We found two AT&T unused APIs in createOrder</li>
-                        <li>Missing data delayed checkTradeIn testing</li>
-                        <li>Shared pam proxy server is not logging in the API history</li>
-                        <li>Problems with shared catalog delayed createOrder testing</li>
-					</ul>
-                    </section>
-                
-				</section>
-				<section>
-					<h3><a>Let's go to the code</a></h3>
-				</section>
-			</div>
-		</div>
 
-		<script src="js/reveal.js"></script>
+        </section>
+        <section>
+            <section>
+                <h3><a>CHALLENGES</a></h3>
+                <ul>
+                    <li>High coupling between createOrder and submitOrder increased the complexity of the migration</li>
+                    <li>Most of createOrder AT&T APIs did not have standard retry logic</li>
+                    <li>We found two AT&T unused APIs in createOrder</li>
+                    <li>Missing data delayed checkTradeIn testing</li>
+                    <li>Shared pam proxy server is not logging in the API history</li>
+                    <li>Problems with shared catalog delayed createOrder testing</li>
+                </ul>
+            </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				transition: 'convex', // none/fade/slide/convex/concave/zoom
-				dependencies: [
-					{src: 'plugin/markdown/marked.js'},
-					{src: 'plugin/markdown/markdown.js'},
-					{src: 'plugin/notes/notes.js', async: true},
-					{src: 'plugin/highlight/highlight.js', async: true},
-					{ src: 'plugin/search/search.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true }
-				]
-			});
-		</script>
-	</body>
+        </section>
+        <section>
+            <h3><a>Let's go to the code</a></h3>
+        </section>
+        <section>
+            <section>
+                <h3>AT&T Carrier Testing Plan</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th><a>Scenario</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>New activation Financed (Loan) without porting (Smartphone)</td>
+                    </tr>
+                    <tr>
+                        <td>Add a line Financed(Loan) without porting (Smartphone)</td>
+                    </tr>
+                    <tr>
+                        <td>New Activation Financed (Loan) with porting (Smartphone)</td>
+                    </tr>
+                    <tr>
+                        <td>Upgrade - Financed(Loan) - Smartphone - change plan (from share plan)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3>AT&T Carrier Testing Plan</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th><a>Scenario</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Upgrade - Financed (Loan)- Smartphone - keep plan (share plan)</td>
+                    </tr>
+                    <tr>
+                        <td>Upgrade Non Financed without porting (Smartphone)</td>
+                    </tr>
+                    <tr>
+                        <td>Upgrade Financed(Loan) without porting and not fail initiateEID</td>
+                    </tr>
+                    <tr>
+                        <td>Upgrade Financed(Loan) without porting and fail initiateEID</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3>AT&T Carrier Testing Plan</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th><a>Scenario</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Upgrade Financed(Loan) without porting tradeIn (Smartphone - Apple)</td>
+                    </tr>
+                    <tr>
+                        <td>Upgrade Financed(Loan) without porting tradeIn (Smartphone - No Apple)</td>
+                    </tr>
+                    <tr>
+                        <td>ONLINE: Upgrade Financed(LOAN) without porting - KME-(Smartphone)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        <section>
+            <h3><a>Thanks!!</a></h3>
+        </section>
+    </div>
+</div>
+
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {src: 'plugin/highlight/highlight.js', async: true},
+            {src: 'plugin/search/search.js', async: true},
+            {src: 'plugin/zoom-js/zoom.js', async: true}
+        ]
+    });
+</script>
+</body>
 </html>
