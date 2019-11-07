@@ -32,69 +32,71 @@
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>ONLINE NEW ACTIVATION</li>
+                <li>ONLINE ACTIVATIONS</li>
                 <li>ESB MIGRATION NUMBER PORT PAM API</li>
             </ol>
         </section>
         <section>
             <section>
-                <h3><a>ONLINE NEW ACTIVATION</a></h3>
+                <h3><a>ONLINE ACTIVATION</a></h3>
             </section>
             <section>
-                <h3> HOW IT WORKS </h3>
-                <img src="images/OnlineNewActivation.png">
+                <h3><a>SUCESSFULL SCENARIOS</a></h3>
+                <div align="left">
+                    <br>
+                    <li> ONLINE ADD A LINE </li>
+                    <li> ONLINE NEW ACTIVATION PORTIN </li>
+                </div>
             </section>
             <section>
-                <h3> NEW ACTIVATION APIS</h3>
-                <img src="images/NewActivationAPIs.png">
+                <h3> ONLINE ADD A LINE </h3>
+                <img src="images/ONLINE_AAL.jpeg">
+            </section>
+            <section>
+                <h3> ONLINE NEW ACTIVATION PORTIN  </h3>
+                <img src="images/ONLINE_NP.png">
             </section>
             <section>
                 <h3><a>CHALLENGES</a></h3>
-                <div>
-                    <div>
-                        <img src="https://media.giphy.com/media/iAqP1YFX53Oh2/giphy.gif">
 
-                    </div>
-                </div>
                 <div align="left">
-                    <li> Responses from Verizon took a lot of time.</li>
-                    <li> Switch from sqa3 to sqa1 carrier environment</li>
+                    <li> RetrievePricePlans header was being saved with different name </li>
+                    <li> Apply Verizon Recomendations</li>
                     <li> Data issues</li>
-                    <li><a> GIC failures for new activations</a></li>
                 </div>
             </section>
-
             <section>
-                <h3><a> Genereate Installment Contract Request</a></h3>
+                <h3> avoid double call to RetrieveNpaNxx</h3>
+
+            </section>
+            <section>
+                <h3><a> Delete Installment Details from Final SubmitOrder </a></h3>
                 <pre>
-                    <code class="hljs xml" data-line-numbers="6" data-trim>
+                    <code class="hljs xml" data-line-numbers="6-17" data-trim>
                     <VzwServices>
-                        <ServiceHeader> ...... </ServiceHeader>
-                        <ServiceBody>
-                            <generateInstallmentContract>
-                                <request>
-                                    <mobileNumber>4107139224</mobileNumber>
-                                    <multiLineSeqNumber>1</multiLineSeqNumber>
-                                    <newEqptInfo>
-                                        <deviceInfo>
-                                            <deviceSKU>SMG970UZKV</deviceSKU>
-                                            <deviceType>4GE</deviceType>
-                                            <deviceFullRetailPrice>649.99</deviceFullRetailPrice>
-                                            <installmentDetails>
-                                                ......
-                                            </installmentDetails>
-                                        </deviceInfo>
-                                    </newEqptInfo>
-                                    <documentFormat>P</documentFormat>
-                                </request>
-                            </generateInstallmentContract>
-                        </ServiceBody>
+                      <ServiceHeader> ..... </ServiceHeader>
+                      <ServiceBody>
+                            .....
+                              <newEqptInfo>
+                                  <installmentDetails>
+                                    <installmentContractNum>2144263105</installmentContractNum>
+                                    <installmentPaymentDetails>
+                                      <totalAmountFinanced>649.99</totalAmountFinanced>
+                                      <firstInstallmentAmount>27.15</firstInstallmentAmount>
+                                      <installmentContractTerm>24</installmentContractTerm>
+                                      <monthlyInstallmentPayment>27.08</monthlyInstallmentPayment>
+                                      <agentDownPaymentAmount>0.0</agentDownPaymentAmount>
+                                      <vZWRequiredDownPaymentAmount>0.0</vZWRequiredDownPaymentAmount>
+                                      <totalDownPaymentAmount>0.0</totalDownPaymentAmount>
+                                    </installmentPaymentDetails>
+                                  </installmentDetails>
+                              </newEqptInfo>
+                            ......
+                      </ServiceBody>
                     </VzwServices>
                     </code>
                 </pre>
             </section>
-
-
             <section>
                 <h1>LET'S SEE THE CODE</h1>
             </section>
@@ -188,8 +190,8 @@
                     </tr>
                     <tr>
                         <td><a style="color: #dd5566">CreateOrder</a></td>
-                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
-                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
+                        <td><a style="color: #dd5566">DONE</a></td>
+                        <td><a style="color: #dd5566">DONE</a></td>
                     </tr>
                     <tr>
                         <td>SubmitOrder</td>
@@ -216,16 +218,32 @@
             </section>
 
             <section>
-                <h3><a>VERIZON NUMBER PORT MIGRATION</a></h3>
+                <h3><a>VERIZON CREATE ORDER MIGRATION</a></h3>
                 <div align="left">
                     <div align="left">
-                        <p align="justify"> Successfully migrated happy paths and error scenarios for NumberPort
+                        <p align="justify"> Successfully migrated happy paths and error scenarios for CreateOrder
                             APIs. </p>
-
                     </div>
-                    <ul>
-                        <li>validatePortInEligibility.</li>
-                    </ul>
+                    <div align="left" style="width: 50%; float:left">
+                        <ul>
+                            <li>RetrieveNPANxx.</li>
+                            <li>RetrievePricePlans.</li>
+                            <li>changePricePlan.</li>
+                            <li>submitPortInDetails.</li>
+                            <li>SubmitEdgeUpPayment.</li>
+                            <li>SaveInstallmentDetails.</li>
+                        </ul>
+                    </div>
+                    <div align="rigth" style="width: 50%; float:right">
+                        <ul>
+                            <li>SubmitOrder.</li>
+                            <li>RetrieveOrderDetails.</li>
+                            <li>generateServiceAgreements.</li>
+                            <li>generateInstallmentContract.</li>
+                            <li>retrieveInstallmentContract.</li>
+                            <li>RetrieveAcceptanceLanguage.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
             <section>
@@ -253,12 +271,6 @@
                         <li>Pam-db variables were accessed using old model structure causing conflicts with ESB
                             Migration Implementation.
                         </li>
-                        <li>Migrated APIs weren't logging on API history</li>
-                        <li>Shared Pam Proxy issues (There's no external ELB for PAM Proxy and cdeapp2 environment is
-                            incomplete as no API History Producer exists).
-                        </li>
-                        <li>Set API Producer and Pam-Proxy environments locally</li>
-                        <li>Data issues.</li>
                     </ul>
                 </div>
                 <br>
