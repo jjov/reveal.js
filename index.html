@@ -33,7 +33,7 @@
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
                 <li>ONLINE ACTIVATIONS</li>
-                <li>ESB MIGRATION NUMBER PORT PAM API</li>
+                <li>ESB MIGRATION CREATE ORDER</li>
             </ol>
         </section>
         <section>
@@ -60,17 +60,19 @@
                 <h3><a>CHALLENGES</a></h3>
 
                 <div align="left">
-                    <li> RetrievePricePlans header was being saved with different name </li>
-                    <li> Apply Verizon Recomendations</li>
-                    <li> Data issues</li>
+                    <ul>
+                        <li> Inconsistencies getting data from RetrievePricePlan Header.</li>
+                        <li> Apply Verizon Recommendations</li>
+                        <ul>
+                            <li> Avoid calling RetrieveNpaNxx twice.</li>
+                            <li> Remove Installment Details from Final SubmitOrder. </li>
+                        </ul>
+                        <li> Data issues.</li>
+                    </ul>
                 </div>
             </section>
             <section>
-                <h3> avoid double call to RetrieveNpaNxx</h3>
-
-            </section>
-            <section>
-                <h3><a> Delete Installment Details from Final SubmitOrder </a></h3>
+                <h4><a> Remove Installment Details from Final SubmitOrder </a></h4>
                 <pre>
                     <code class="hljs xml" data-line-numbers="6-17" data-trim>
                     <VzwServices>
@@ -179,19 +181,19 @@
                         <td>DONE</td>
                     </tr>
                     <tr>
-                        <td><a style="color: #dd5566">NumberPort</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
+                        <td>NumberPort</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
                     </tr>
                     <tr>
-                        <td><a style="color: #dd5566">ValidateCart</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
+                        <td>ValidateCart</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
                     </tr>
                     <tr>
                         <td><a style="color: #dd5566">CreateOrder</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
-                        <td><a style="color: #dd5566">DONE</a></td>
+                        <td><a style="color: #dd5566">TESTING</a></td>
+                        <td><a style="color: #dd5566">TESTING</a></td>
                     </tr>
                     <tr>
                         <td>SubmitOrder</td>
@@ -228,19 +230,19 @@
                         <ul>
                             <li>RetrieveNPANxx.</li>
                             <li>RetrievePricePlans.</li>
-                            <li>changePricePlan.</li>
-                            <li>submitPortInDetails.</li>
+                            <li>ChangePricePlan.</li>
+                            <li>SubmitPortInDetails.</li>
                             <li>SubmitEdgeUpPayment.</li>
                             <li>SaveInstallmentDetails.</li>
                         </ul>
                     </div>
-                    <div align="rigth" style="width: 50%; float:right">
+                    <div style="width: 50%; float:right">
                         <ul>
                             <li>SubmitOrder.</li>
                             <li>RetrieveOrderDetails.</li>
-                            <li>generateServiceAgreements.</li>
-                            <li>generateInstallmentContract.</li>
-                            <li>retrieveInstallmentContract.</li>
+                            <li>GenerateServiceAgreements.</li>
+                            <li>GenerateInstallmentContract.</li>
+                            <li>RetrieveInstallmentContract.</li>
                             <li>RetrieveAcceptanceLanguage.</li>
                         </ul>
                     </div>
@@ -255,9 +257,6 @@
                     <li>Created each mapping and header mapping with the new generated classes.</li>
                     <li>Changed the REST call with the new invoker class.</li>
                     <li>Fixed usages of PAM-DB Variables.</li>
-                    <li>Added Missing Http headers in validatePortInEligibility and all previous migrated APIs for
-                        VERIZON in order to log in API history
-                    </li>
                 </ul>
             </section>
             <section>
@@ -270,6 +269,9 @@
                     <ul>
                         <li>Pam-db variables were accessed using old model structure causing conflicts with ESB
                             Migration Implementation.
+                        </li>
+                        <li>
+                            Long methods refactoring.
                         </li>
                     </ul>
                 </div>
