@@ -30,8 +30,8 @@
             <img src="/images/logo.png">
             <p class="demo-title">Demo</p>
 
-            Previous sprint 24.5/22 -> 111%<br>
-            Current sprint 21/22 -> 96%
+            Previous sprint 18/18 -> 100%<br>
+            Current sprint 13/13 -> 123%
         </section>
         <section>
             <h3>ESB Replacement Plan</h3>
@@ -142,74 +142,81 @@
         </section>
         <section>
             <section>
-                <h3>AT&T Carrier Testing Plan</h3>
+                <h3>AT&T Create Order Carrier Testing</h3>
                 <table>
-                    <thead>
+                <thead>
                     <tr>
+                        <th><a>Buy Flow</a></th>
                         <th><a>Scenario</a></th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
                     <tr>
-                        <td>New activation Financed (Loan) without porting (Smartphone)</td>
+                        <td>New</td>
+                        <td>Financed without porting (Smartphone)</td>
                     </tr>
                     <tr>
-                        <td>Add a line Financed(Loan) without porting (Smartphone)</td>
+                        <td>New</td>
+                        <td>Activation Financed with porting (Smartphone) </td>
                     </tr>
                     <tr>
-                        <td>New Activation Financed (Loan) with porting (Smartphone)</td>
+                        <td>AAL</td>
+                        <td>Financed without porting (Smartphone)</td>
                     </tr>
                     <tr>
-                        <td>Upgrade - Financed(Loan) - Smartphone - change plan (from share plan)</td>
+                        <td>AAL</td>
+                        <td>Financed without porting and not fail initiateEID</td>
                     </tr>
-                    </tbody>
+                    
+                    </tr>
                 </table>
             </section>
             <section>
                 <h3>AT&T Carrier Testing Plan</h3>
                 <table>
-                    <thead>
+                <thead>
                     <tr>
+                        <th><a>Buy Flow</a></th>
                         <th><a>Scenario</a></th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Upgrade - Financed (Loan)- Smartphone - keep plan (share plan)</td>
+                </thead>
+                <tr>
+                        <td>AAL</td>
+                        <td>Financed without porting and fail initiateEID</td>
                     </tr>
                     <tr>
-                        <td>Upgrade Non Financed without porting (Smartphone)</td>
+                        <td>Upgrade</td>
+                        <td>Financed - Smartphone - change plan</td>
                     </tr>
                     <tr>
-                        <td>Upgrade Financed(Loan) without porting and not fail initiateEID</td>
-                    </tr>
+                        <td>Upgrade</td>
+                        <td>Financed - Smartphone - keep plan</td>
                     <tr>
-                        <td>Upgrade Financed(Loan) without porting and fail initiateEID</td>
+                        <td>Upgrade</td>
+                        <td>Non Financed without porting (Smartphone)</td>
                     </tr>
-                    </tbody>
                 </table>
             </section>
             <section>
-                <h3>AT&T Carrier Testing Plan</h3>
+                <h3>AT&T Create Order Carrier Testing</h3>
                 <table>
-                    <thead>
+                <thead>
                     <tr>
+                        <th><a>Buy Flow</a></th>
                         <th><a>Scenario</a></th>
                     </tr>
-                    </thead>
-                    <tbody>
+                </thead>
                     <tr>
-                        <td>Upgrade Financed(Loan) without porting tradeIn (Smartphone - Apple)</td>
+                        <td>Upgrade</td>
+                        <td>Financed without porting tradeIn (Smartphone - apple)</td>
                     </tr>
                     <tr>
-                        <td>Upgrade Financed(Loan) without porting tradeIn (Smartphone - No Apple)</td>
+                        <td>Upgrade</td>
+                        <td>Financed without porting tradeIn (Smartphone - no apple) </td>
                     </tr>
-                    <tr>
-                        <td>ONLINE: Upgrade Financed(LOAN) without porting - KME-(Smartphone)</td>
-                    </tr>
-                    </tbody>
+                    
                 </table>
             </section>
+            
         </section>
         <section>
             <section>
@@ -320,12 +327,10 @@
             <section>
                 <h3><a>CHALLENGES</a></h3>
                 <ul>
-                    <li>High coupling between createOrder and submitOrder increased the complexity of the migration</li>
-                    <li>Most of createOrder AT&T APIs did not have standard retry logic</li>
-                    <li>We found two AT&T unused APIs in createOrder</li>
-                    <li>Missing data delayed checkTradeIn testing</li>
-                    <li>Shared pam proxy server is not logging in the API history</li>
-                    <li>Problems with shared catalog delayed createOrder testing</li>
+                    <li>To test some AT&T scenarios running PAM using IntelliJ is not possible due to the callback from PAMTest.</li>
+                    <li>ESB SSL certificates not updated in SOHO docker images and delayed testing against CR</li>
+                    <li>No shared ESB environment with Sprint apps delayed carrier testing</li>
+                    <li>After the deployment of Sprint, carrier is answering a rejected by policy status, blocking carrier testing</li>
                 </ul>
             </section>
 
