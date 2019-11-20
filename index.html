@@ -105,14 +105,14 @@
                     <td>DONE</td>
                 </tr>
                 <tr>
-                    <td><a>CreateOrder</a></td>
-                    <td><a>IN PROGRESS</a></td>
-                    <td><a>DONE</a></td>
+                    <td>CreateOrder</td>
+                    <td>DONE</td>
+                    <td>DONE</td>
                 </tr>
                 <tr>
-                    <td>SubmitOrder</td>
-                    <td>PENDING</td>
-                    <td>PENDING</td>
+                    <td><a>SubmitOrder</a></td>
+                    <td><a>PENDING</a></td>
+                    <td><a>IN PROGRESS</a></td>
                 </tr>
                 <tr>
                     <td>SubmitReturn</td>
@@ -136,48 +136,9 @@
         <section>
             <h3><a>MAIN TOPICS - ESB REPLACEMENT</a></h3>
             <ol>
-                <li>AT&T CREATE ORDER MIGRATION</li>
+                <li>AT&T CREATE ORDER CARRIER TESTING</li>
+                <li>AT&T SUBMIT ORDER ESB REPLACEMENT</li>
             </ol>
-        </section>
-        <section>
-            <section>
-                <h3><a>Development process</a></h3>
-                <ul>
-                    <li>Create a new workflow from the old one</li>
-                    <li>Create a feature toggle for this canonical api</li>
-                    <li>Create each mapping and header mapping with the new generated classes</li>
-                    <li>Change the REST call with the new invoker class</li>
-                    <li>Fix usages of the carrier response after the carrier call using the new models</li>
-                </ul>
-            </section>
-            <section>
-                <h3><a>Development process</a></h3>
-                <ul>
-                    <li>Implement the common error handling</li>
-                    <li>Check PamDB differences and usages</li>
-                    <li>Carrier testing</li>
-                    <li>API history logging check</li>
-                </ul>
-            </section>
-
-
-        </section>
-        <section>
-            <section>
-                <h3><a>CHALLENGES</a></h3>
-                <ul>
-                    <li>High coupling between createOrder and submitOrder increased the complexity of the migration</li>
-                    <li>Most of createOrder AT&T APIs did not have standard retry logic</li>
-                    <li>We found two AT&T unused APIs in createOrder</li>
-                    <li>Missing data delayed checkTradeIn testing</li>
-                    <li>Shared pam proxy server is not logging in the API history</li>
-                    <li>Problems with shared catalog delayed createOrder testing</li>
-                </ul>
-            </section>
-
-        </section>
-        <section>
-            <h3><a>Let's go to the code</a></h3>
         </section>
         <section>
             <section>
@@ -250,6 +211,129 @@
                 </table>
             </section>
         </section>
+        <section>
+            <section>
+            <h3>AT&T Submit Order ESB Replacement</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th><a>Carrier API</a></th>
+                        <th><a>Status</a></th>
+                    </tr>
+                </thead>
+                    <tr>
+                        <td>InquireSubscriberContractDetails</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>OrderEquipment</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>UpgradeEquipment</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>AddSalesTransactionDetails</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>CreateShippingLabel</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>CreateShippingInstructions</td>
+                        <td>DONE</td>
+                    </tr>
+                    <tr>
+                        <td>AddWireLinePayment</td>
+                        <td>DONE</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+            <h3>AT&T Submit Order ESB Replacement</h3>
+                <table>
+                <thead>
+                    <tr>
+                        <th><a>Carrier API</a></th>
+                        <th><a>Status</a></th>
+                    </tr>
+                </thead>
+                    <tr>
+                        <td>ActivateSubscriber</td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>SwapEquipment</td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>ActivatePendingEquipmentUpgrade</td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>UpdateDeviceProfile</td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>UpdateSharedDataGroupProfile</td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>UpdateSharedGroupSubscriberList</td>
+                        <td>PENDING</td>
+                    </tr>
+                    <tr>
+                        <td>AddSalesTransactionDetails for TradeIn</td>
+                        <td>PENDING</td>
+                    </tr>
+                    
+
+            </table>
+</section>
+
+
+        </section>
+        <section>
+            <section>
+                <h3><a>Development process</a></h3>
+                <ul>
+                    <li>Create a new workflow from the old one</li>
+                    <li>Create a feature toggle for this canonical api</li>
+                    <li>Create each mapping and header mapping with the new generated classes</li>
+                    <li>Change the REST call with the new invoker class</li>
+                    <li>Fix usages of the carrier response after the carrier call using the new models</li>
+                </ul>
+            </section>
+            <section>
+                <h3><a>Development process</a></h3>
+                <ul>
+                    <li>Implement the common error handling</li>
+                    <li>Check PamDB differences and usages</li>
+                    <li>Carrier testing</li>
+                    <li>API history logging check</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3><a>CHALLENGES</a></h3>
+                <ul>
+                    <li>High coupling between createOrder and submitOrder increased the complexity of the migration</li>
+                    <li>Most of createOrder AT&T APIs did not have standard retry logic</li>
+                    <li>We found two AT&T unused APIs in createOrder</li>
+                    <li>Missing data delayed checkTradeIn testing</li>
+                    <li>Shared pam proxy server is not logging in the API history</li>
+                    <li>Problems with shared catalog delayed createOrder testing</li>
+                </ul>
+            </section>
+
+        </section>
+        <section>
+            <h3><a>Let's go to the code</a></h3>
+        </section>
+        
         <section>
             <h3><a>Thanks!!</a></h3>
         </section>
