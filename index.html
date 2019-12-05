@@ -26,79 +26,147 @@
 <body>
 <div class="reveal">
     <div class="slides">
+
         <section data-background="images/poster.png">
             <p class="demo-title">Demo</p>
         </section>
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>ONLINE ACTIVATIONS</li>
+                <li>FIX TRANSACTIONID FOR SUBMIT ORDER API</li>
                 <li>ESB MIGRATION CREATE ORDER</li>
             </ol>
         </section>
         <section>
             <section>
-                <h3><a>ONLINE ACTIVATION</a></h3>
+                <h3><a>FIX TRANSACTIONID FOR SUBMIT ORDER API</a></h3>
             </section>
             <section>
-                <h3><a>SUCESSFULL SCENARIOS</a></h3>
-                <div align="left">
-                    <br>
-                    <li> ONLINE ADD A LINE </li>
-                    <li> ONLINE NEW ACTIVATION PORTIN </li>
-                </div>
-            </section>
-            <section>
-                <h3> ONLINE ADD A LINE </h3>
-                <img src="images/ONLINE_AAL.png">
-            </section>
-            <section>
-                <h3> ONLINE NEW ACTIVATION PORTIN  </h3>
-                <img src="images/ONLINE_NP.png">
-            </section>
-            <section>
-                <h3><a>CHALLENGES</a></h3>
-
-                <div align="left">
-                    <ul>
-                        <li> Inconsistencies getting data from RetrievePricePlan Header.</li>
-                        <li> Apply Verizon Recommendations</li>
-                        <ul>
-                            <li> Avoid calling RetrieveNpaNxx twice.</li>
-                            <li> Remove Installment Details from Final SubmitOrder. </li>
-                        </ul>
-                        <li> Data issues.</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <h4><a> Remove Installment Details from Final SubmitOrder </a></h4>
+                <h4><a> Problem Description</a></h4>
+                <p> When Create Order is called and there is a problem with the sim, PAM is returning this error.</p>
                 <pre>
-                    <code class="hljs xml" data-line-numbers="6-17" data-trim>
-                    <VzwServices>
-                      <ServiceHeader> ..... </ServiceHeader>
-                      <ServiceBody>
-                            .....
-                              <newEqptInfo>
-                                  <installmentDetails>
-                                    <installmentContractNum>2144263105</installmentContractNum>
-                                    <installmentPaymentDetails>
-                                      <totalAmountFinanced>649.99</totalAmountFinanced>
-                                      <firstInstallmentAmount>27.15</firstInstallmentAmount>
-                                      <installmentContractTerm>24</installmentContractTerm>
-                                      <monthlyInstallmentPayment>27.08</monthlyInstallmentPayment>
-                                      <agentDownPaymentAmount>0.0</agentDownPaymentAmount>
-                                      <vZWRequiredDownPaymentAmount>0.0</vZWRequiredDownPaymentAmount>
-                                      <totalDownPaymentAmount>0.0</totalDownPaymentAmount>
-                                    </installmentPaymentDetails>
-                                  </installmentDetails>
-                              </newEqptInfo>
-                            ......
-                      </ServiceBody>
-                    </VzwServices>
+                    <code class="hljs json"  data-trim>
+
+                      "header": {
+                        "sessionId": "f436e98e-403a-4124-900b-2401c31b147f",
+                        "clientReferenceId": "6670403",
+                        "correlationId": "7a92549c-4a2b-11e9-9964-060c803fb6c6",
+                        "errors": [
+                          {
+                            "code": "PAM_NETWORKCONNECTIONID_INCOMPATIBLE",
+                            "message": "Network Connection Id is incompatible",
+                            "messageDetailed": "Different network connection id is required for this device and/or plan.",
+                            "additionalInfo": [
+                              {
+                                "type": "SERVICEPROVIDER_MESSAGE",
+                                "value": "00060 :: ICCID is not eligible for pairing."
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+
                     </code>
                 </pre>
             </section>
+
+            <section>
+                <h4><a> Problem Description</a></h4>
+                <p> Error for the second call to create Order with change of sim</p>
+                <pre>
+                    <code class="hljs xml" data-trim>
+                        <?xml version="1.0" encoding="UTF-8"?>
+                        <VzwServices xmlns="http://pos.odc.vzwcorp.com">
+                          <ServiceHeader>
+                            <serviceName>orderProcessingComposite</serviceName>
+                            <serviceAction>submitOrder</serviceAction>
+                            <applicationResponseCode>00406</applicationResponseCode>
+                            <applicationResponseClass>ERROR</applicationResponseClass>
+                            <applicationResponseMessage>[M04:vipsvcs15:15]Transaction ID with this order key info already exists.</applicationResponseMessage>
+                            <applicationResponseDetails>
+                            </applicationResponseDetails>
+                            <timeStamp>2019-03-19T05:50:07.079-04:00</timeStamp>
+                            <storeID>9999</storeID>
+                            <clientAddlInfo>6670403</clientAddlInfo>
+                            <transactionId>6670403</transactionId>
+                            <sessionID>f436e98e-403a-4124-900b-2401c31b147f</sessionID>
+                            <serviceAreaZip>07920</serviceAreaZip>
+                              ...
+                          </ServiceHeader>
+                          <ServiceBody>
+                            <fatalErrorResponse>Error occurred during XML processing. See header info.</fatalErrorResponse>
+                          </ServiceBody>
+                        </VzwServices>
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h4><a> submitOrder Request </a></h4>
+                <pre>
+                    <code class="hljs xml" data-line-numbers="5,7-15" data-trim>
+                        <ns0:VzwServices xmlns:ns0="http://pos.odc.vzwcorp.com">
+                          <ns0:ServiceHeader>
+                            <ns0:serviceName>orderProcessingComposite</ns0:serviceName>
+                            <ns0:serviceAction>submitOrder</ns0:serviceAction>
+                            <ns0:transactionId>6670403</ns0:transactionId>
+                            <ns0:sessionID>f436e98e-403a-4124-900b-2401c31b147f</ns0:sessionID>
+                            <ns0:orderKeyInfo>
+                              <ns0:clusterInfo>MIDWEST</ns0:clusterInfo>
+                              <ns0:location>N784401</ns0:location>
+                              <ns0:creditApplicationNum>652988084</ns0:creditApplicationNum>
+                              <ns0:orderNum>2224</ns0:orderNum>
+                              <ns0:billingSystem>VN</ns0:billingSystem>
+                              <ns0:salesForceId>ENC</ns0:salesForceId>
+                              <ns0:outletId>000122460</ns0:outletId>
+                            </ns0:orderKeyInfo>
+                            <ns0:originatingIPAddress>127.0.1.1</ns0:originatingIPAddress>
+                            <ns0:xmlVersion>2.0</ns0:xmlVersion>
+                          </ns0:ServiceHeader>
+                          <ns0:ServiceBody>
+                            .....
+                          </ns0:ServiceBody>
+                        </ns0:VzwServices>
+
+                    </code>
+                </pre>
+            </section>
+
+
+            <section>
+                <h4><a> First Solution (rolled back)</a></h4>
+                create a new transactionId for every call to submit Order
+                <pre>
+                    <code class="hljs json" data-trim>
+                        {
+                            "orderId":"6919595",
+                            "isFinanced":true,
+                            "errors":[
+                                {
+                                    "code":"PAM_RESULT_DELAYED",
+                                    "message":"Service Provider unable to provide result.",
+                                    "description":null,
+                                    "identification":null,
+                                    "additionalInfo":[
+                                        {
+                                            "type":"SERVICEPROVIDER_MESSAGE",
+                                            "value":"[W06:vipsvcs14:14]Service setup initiated. Please refresh for order status."
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h3><a> SOLUTION</a></h3>
+                transactionId needs to be updated just in case the sim was changed.
+                this transactionID is going to be update using timestamp as a prefix.
+            </section>
+
+
             <section>
                 <h1>LET'S SEE THE CODE</h1>
             </section>
