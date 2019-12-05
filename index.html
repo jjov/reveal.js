@@ -34,7 +34,7 @@
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
                 <li>FIX TRANSACTIONID FOR SUBMIT ORDER API</li>
-                <li>ESB MIGRATION CREATE ORDER</li>
+                <li>VERIZON ONLINE ACTIVATION WITH INSURANCE</li>
             </ol>
         </section>
         <section>
@@ -183,136 +183,15 @@
         </section>
 
         <section>
-            <h3><a>ESB REPLACEMENT</a></h3>
+            <h3><a>VERIZON ONLINE ACTIVATION WITH INSURANCE</a></h3>
         </section>
-
         <section>
             <section>
-                <h3>ESB Replacement Plan</h3>
-                <h5>(Development Status)</h5>
-                <table>
-                    <thead>
-                    <tr>
-                        <th><a>Canonical API</a></th>
-                        <th><a>VZN Migrated</a></th>
-                        <th><a>ATT Migrated</a></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>AccountLookup</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CreditCheck</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePaymentPrograms</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePlans</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePlansAddOns</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section>
-                <table>
-                    <thead>
-                    <tr>
-                        <th><a>Canonical API</a></th>
-                        <th><a>VZN Migrated</a></th>
-                        <th><a>ATT Migrated</a></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>ValidateDevice</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CheckTradeIn</td>
-                        <td>NA</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>NumberPort</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>ValidateCart</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td><a style="color: #dd5566">CreateOrder</a></td>
-                        <td><a style="color: #dd5566">TESTING</a></td>
-                        <td><a style="color: #dd5566">TESTING</a></td>
-                    </tr>
-                    <tr>
-                        <td>SubmitOrder</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>SubmitReturn</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>CancelOrder</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>SubmitPayment</td>
-                        <td></td>
-                        <td>PENDING</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section>
-                <h3><a>VERIZON CREATE ORDER MIGRATION</a></h3>
+                <h3><a>PROBLEM</a></h3>
                 <div align="left">
                     <div align="left">
-                        <p align="justify"> Successfully migrated happy paths and error scenarios for CreateOrder
-                            APIs. </p>
-                    </div>
-                    <div align="left" style="width: 50%; float:left">
-                        <ul>
-                            <li>RetrieveNPANxx.</li>
-                            <li>RetrievePricePlans.</li>
-                            <li>ChangePricePlan.</li>
-                            <li>SubmitPortInDetails.</li>
-                            <li>SubmitEdgeUpPayment.</li>
-                            <li>SaveInstallmentDetails.</li>
-                        </ul>
-                    </div>
-                    <div style="width: 50%; float:right">
-                        <ul>
-                            <li>SubmitOrder.</li>
-                            <li>RetrieveOrderDetails.</li>
-                            <li>GenerateServiceAgreements.</li>
-                            <li>GenerateInstallmentContract.</li>
-                            <li>RetrieveInstallmentContract.</li>
-                            <li>RetrieveAcceptanceLanguage.</li>
-                        </ul>
+                        <p align="justify">The logic to support insurance service for online activations is being executed
+                        on the first submit, it should be executed on the final submit after line is activated.</p>
                     </div>
                 </div>
             </section>
@@ -320,12 +199,271 @@
                 <h3><a>SOLUTION</a></h3>
                 <br>
                 <ul>
-                    <li>Created a new workflow from the old one.</li>
-                    <li>Created a feature toggle for this canonical api.</li>
-                    <li>Created each mapping and header mapping with the new generated classes.</li>
-                    <li>Changed the REST call with the new invoker class.</li>
-                    <li>Fixed usages of PAM-DB Variables.</li>
+                    <li>Added a validation for VERIZON Carrier based on activateNow flag to invoke insurance logic
+                        in orderPut Canonical workflow</li>
+                    <li>If activateNow flag is true (FINALSUBMIT) then insurance workflow will be called</li>
+                    <li>Added a validation on insurance workflow to support ONLINE Activations with insurance based on
+                        channel flag</li>
+                    <li>If channel is ONLINE then online insurance logic will be executed</li>
                 </ul>
+            </section>
+            <section>
+                <h3><a>HOW INSURANCE WERE EXECUTED FOR ONLINE ACTIVATIONS</a></h3>
+                <div>
+                    <div>
+                        <img src="images/WRONG ONLINE UPG INSURANCE FIRST SUBMIT.png">
+
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h3><a>CURRENT EXECUTION OF INSURANCE FOR ONLINE ACTIVATION</a></h3>
+                <div>
+                    <div>
+                        <img src="images/ONLINE UPG INSURANCE FINAL SUBMIT-2.png">
+
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h4><a>ORDERPOST CANONICAL REQUEST</a></h4>
+                <pre>
+                    <code class="hljs json" data-trim>
+                        {
+                            "accountType": "INDIVIDUAL",
+                            "header": {
+                                "dealerCode": null,
+                                "serviceProvider": "VERIZON",
+                                "channel": "ONLINE",
+                                "callbackURL": null,
+                                "clientRepresentative": null,
+                                "sessionId": "268c64f3-7e67-4360-a4bf-f35d5b7f48b7",
+                                "clientReferenceId": "329367653",
+                                "clientOriginationId": "0099",
+                                "clientIPAddress": null
+                            },
+                            "store": {
+                                "address": {
+                                    "postOfficeBox": null,
+                                    "countryCode": "US",
+                                    "postalCode": "47420",
+                                    "locality": "Bedford",
+                                    "isPrimaryPlaceOfUsage": true,
+                                    "type": "SERVICE_BILLING",
+                                    "administrativeArea": "IN",
+                                    "line2": null,
+                                    "line1": "1000 Lincoln Ave"
+                                },
+                                "phoneNumber": null,
+                                "name": "CRYSTAL",
+                                "id": "0099",
+                                "repId": null
+                            },
+                            "accountNumber": "0513787676",
+                            "cart": {
+                                "totalTaxes": null,
+                                "devices": null,
+                                "addOnFeatures": [
+
+                                ],
+                                "totalPrice": null,
+                                "plans": [
+                                    {
+                                        "transactionType": "CHANGE_PLAN",
+                                        "serviceContractType": "MONTH_TO_MONTH",
+                                        "code": "96325",
+                                        "addOnFeatures": [
+
+                                        ],
+                                        "retailIdentifiers": [
+
+                                        ],
+                                        "connections": [
+                                            {
+                                                "transactionType": "UPGRADE_DEVICE",
+                                                "phoneNumber": "8434890244",
+                                                "index": 1,
+                                                "device": {
+                                                    "paymentPlan": {
+                                                        "firstInstallmentAmount": {
+                                                            "amount": 29.31,
+                                                            "code": "USD"
+                                                        },
+                                                        "code": "PDSSFLOC",
+                                                        "lastInstallmentDueDate": null,
+                                                        "installmentAmount": {
+                                                            "amount": 29.16,
+                                                            "code": "USD"
+                                                        },
+                                                        "installmentPeriod": "MONTH",
+                                                        "name": null,
+                                                        "downPaymentAmount": {
+                                                            "amount": 0,
+                                                            "code": "USD"
+                                                        },
+                                                        "retailIdentifiers": null,
+                                                        "type": "LOAN",
+                                                        "firstInstallmentDueDate": null,
+                                                        "serviceDepositWaived": false,
+                                                        "contractLength": 24
+                                                    },
+                                                    "code": "MQ732LL/A",
+                                                    "technologyType": "LTE",
+                                                    "model": "IPHONE 8 SILVER 64GB VZ",
+                                                    "type": "SMARTPHONE",
+                                                    "retailPrice": {
+                                                        "amount": 699.99,
+                                                        "code": "USD"
+                                                    },
+                                                    "addOnServices": [
+                                                        {
+                                                            "code": "junk",
+                                                            "provider": "APPLECARE",
+                                                            "retailIdentifiers": [
+                                                                {
+                                                                    "type": "PURCHASEORDERNUMBER",
+                                                                    "value": "0255-0264118-9727"
+                                                                },
+                                                                {
+                                                                    "type": "RANDOMTYPE",
+                                                                    "value": "RANDOMVALUE"
+                                                                }
+                                                            ],
+                                                            "recurringCharge": {
+                                                                "amount": "7.99",
+                                                                "code": "USD"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "manufacturer": "APPLE"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "customer": {
+                                "emails": [
+                                    {
+                                        "address": "LOIS.WAYNE@consensuscorp.com",
+                                        "isPrimary": true,
+                                        "type": "PERSONAL"
+                                    }
+                                ],
+                                "addresses": [
+                                    {
+                                        "postOfficeBox": null,
+                                        "countryCode": "US",
+                                        "postalCode": "29902",
+                                        "locality": "BEAUFORT",
+                                        "isPrimaryPlaceOfUsage": true,
+                                        "type": "SERVICE_BILLING",
+                                        "administrativeArea": "SC",
+                                        "line2": null,
+                                        "line1": "27 JOHNNY MORRALL CIR APT H3"
+                                    }
+                                ],
+                                "serviceProviderAuthentication": {
+                                    "requestDeliveryMethod": null,
+                                    "securityQuestion": null,
+                                    "securityAnswer": null,
+                                    "passCode": "2018",
+                                    "requestDeliveryDetails": null,
+                                    "accessToken": null,
+                                    "oneTimePIN": null
+                                },
+                                "nationalId": "7676",
+                                "name": {
+                                    "firstName": "JUAN",
+                                    "lastName": "WRIGHT"
+                                },
+                                "dateOfBirth": "11/28/1950",
+                                "nationalIdType": "SSN"
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h4><a>SECOND ORDERPUT CANONICAL REQUEST (FINAL SUBMIT)</a></h4>
+                <pre>
+                    <code class="hljs json" data-trim>
+                        {
+                            "header": {
+                                "dealerCode": null,
+                                "serviceProvider": "VERIZON",
+                                "channel": "ONLINE",
+                                "callbackURL": null,
+                                "clientRepresentative": null,
+                                "sessionId": "268c64f3-7e67-4360-a4bf-f35d5b7f48b7",
+                                "clientReferenceId": "329367653",
+                                "clientOriginationId": "0099",
+                                "clientIPAddress": null
+                            },
+                            "accountNumber": "0513787676",
+                            "order": {
+                                "plans": [
+                                    {
+                                        "code": "96325",
+                                        "connections": [
+                                            {
+                                                "activateNow": true,
+                                                "phoneNumber": "8434890244",
+                                                "index": 1,
+                                                "device": {
+                                                    "serialNumber": "358330080791873",
+                                                    "networkConnectionId": "89148000003631636615"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h4><a>SECOND ORDERPUT CANONICAL RESPONSE (FINAL SUBMIT)</a></h4>
+                <pre>
+                    <code class="hljs json" data-trim>
+                        {
+                            "result": "SUCCESS",
+                            "header": {
+                                "sessionId": "268c64f3-7e67-4360-a4bf-f35d5b7f48b7",
+                                "clientReferenceId": "329367653",
+                                "correlationId": "92e37c3a-1717-11ea-989f-b270c3fce747"
+                            },
+                            "order": {
+                                "plans": [
+                                    {
+                                        "connections": [
+                                            {
+                                                "phoneNumber": "8434890244",
+                                                "activationStatus": "COMPLETE",
+                                                "device": {
+                                                    "serialNumber": "358330080791873",
+                                                    "addOnServices": [
+                                                        {
+                                                            "provider": "APPLECARE",
+                                                            "code": "junk",
+                                                            "accountNumber": "325513273087",
+                                                            "contract": {
+                                                                "data": "JVBERi0xLj",
+                                                                "MIMEtype": "Base64PDF"
+                                                            },
+                                                            "activationStatus": "COMPLETE"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    </code>
+                </pre>
             </section>
             <section>
                 <h3><a>Let's go to the code</a></h3>
@@ -335,12 +473,8 @@
                 <br>
                 <div align="left">
                     <ul>
-                        <li>Pam-db variables were accessed using old model structure causing conflicts with ESB
-                            Migration Implementation.
-                        </li>
-                        <li>
-                            Long methods refactoring.
-                        </li>
+                        <li>Find out how to build the canonical response with the serial Number and network Connection ID
+                            with the device code and the insurance data sent in the canonical request of OrderPost</li>
                     </ul>
                 </div>
                 <br>
