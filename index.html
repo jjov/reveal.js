@@ -136,182 +136,17 @@
         <section>
             <h3><a>MAIN TOPICS - ESB REPLACEMENT</a></h3>
             <ol>
-                <li>AT&T CREATE ORDER CARRIER TESTING</li>
-                <li>AT&T SUBMIT ORDER ESB REPLACEMENT</li>
+                <li>APPLECARE ESB REPLACEMENT</li>
             </ol>
         </section>
-        <section>
-            <section>
-                <h3><a>AT&T Create Order Carrier Testing Summary</a></h3>
-                <p>9 of 10 scenarios PASSED</p>
-                <p>Remaining Scenario: Upg - Online    Financed without porting (Smartphone) </p>
-            </section>
-            <section>
-                <h3>AT&T Create Order Carrier Testing Summary</h3>
-                <table>
-                <thead>
-                    <tr>
-                        <th><a>Buy Flow</a></th>
-                        <th><a>Scenario</a></th>
-                    </tr>
-                </thead>
-                    <tr>
-                        <td>New</td>
-                        <td>Financed without porting (Smartphone)</td>
-                    </tr>
-                    <tr>
-                        <td>New</td>
-                        <td>Activation Financed with porting (Smartphone) </td>
-                    </tr>
-                    <tr>
-                        <td>AAL</td>
-                        <td>Financed without porting (Smartphone)</td>
-                    </tr>
-                    <tr>
-                        <td>AAL</td>
-                        <td>Financed without porting and not fail initiateEID</td>
-                    </tr>
-                    
-                    </tr>
-                </table>
-            </section>
-            <section>
-                <h3>AT&T Carrier Testing Plan</h3>
-                <table>
-                <thead>
-                    <tr>
-                        <th><a>Buy Flow</a></th>
-                        <th><a>Scenario</a></th>
-                    </tr>
-                </thead>
-                <tr>
-                        <td>AAL</td>
-                        <td>Financed without porting and fail initiateEID</td>
-                    </tr>
-                    <tr>
-                        <td>Upgrade</td>
-                        <td>Financed - Smartphone - change plan</td>
-                    </tr>
-                    <tr>
-                        <td>Upgrade</td>
-                        <td>Financed - Smartphone - keep plan</td>
-                    <tr>
-                        <td>Upgrade</td>
-                        <td>Financed without porting tradeIn (Smartphone - no apple) </td>
-                    </tr>
-                </table>
-            </section>
-            <section>
-                <h3>AT&T Create Order Carrier Testing</h3>
-                <table>
-                <thead>
-                    <tr>
-                        <th><a>Buy Flow</a></th>
-                        <th><a>Scenario</a></th>
-                    </tr>
-                </thead>
-                    <tr>
-                        <td>Upgrade</td>
-                        <td>Financed without porting tradeIn (Smartphone - apple)</td>
-                    </tr>
-                    
-                    
-                </table>
-            </section>
-            
-        </section>
-        <section><h3><a>AT&T Submit Order ESB Replacement</a></h3></section>
-        <section>
-            <section>
-            <h3>AT&T Submit Order ESB Replacement</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th><a>Carrier API</a></th>
-                        <th><a>Status</a></th>
-                    </tr>
-                </thead>
-                    <tr>
-                        <td>InquireSubscriberContractDetails</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>OrderEquipment</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>UpgradeEquipment</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>AddSalesTransactionDetails</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CreateShippingLabel</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CreateShippingInstructions</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>AddWireLinePayment</td>
-                        <td>DONE</td>
-                    </tr>
-                </table>
-            </section>
-            <section>
-            <h3>AT&T Submit Order ESB Replacement</h3>
-                <table>
-                <thead>
-                    <tr>
-                        <th><a>Carrier API</a></th>
-                        <th><a>Status</a></th>
-                    </tr>
-                </thead>
-                    <tr>
-                        <td>ActivateSubscriber</td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>SwapEquipment</td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>ActivatePendingEquipmentUpgrade</td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>UpdateDeviceProfile</td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>UpdateSharedDataGroupProfile</td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>UpdateSharedGroupSubscriberList</td>
-                        <td>PENDING</td>
-                    </tr>
-                    <tr>
-                        <td>AddSalesTransactionDetails for TradeIn</td>
-                        <td>PENDING</td>
-                    </tr>
-                    
-
-            </table>
-</section>
-
-
-        </section>
+        <section><h3><a>APPLECARE ESB REPLACEMENT</a></h3></section>
         <section>
             <section>
                 <h3><a>Development process</a></h3>
                 <ul>
                     <li>Create a new workflow from the old one</li>
                     <li>Create a feature toggle for this canonical api</li>
-                    <li>Create each mapping and header mapping with the new generated classes</li>
+                    <li>Change request mapping with the new generated classes</li>
                     <li>Change the REST call with the new invoker class</li>
                     <li>Fix usages of the carrier response after the carrier call using the new models</li>
                 </ul>
@@ -322,7 +157,6 @@
                     <li>Implement the common error handling</li>
                     <li>Check PamDB differences and usages</li>
                     <li>Carrier testing</li>
-                    <li>API history logging check</li>
                 </ul>
             </section>
         </section>
@@ -330,10 +164,8 @@
             <section>
                 <h3><a>CHALLENGES</a></h3>
                 <ul>
-                    <li>To test some scenarios running PAM using IntelliJ is not possible due the callback</li>
-                    <li>Online activation scenario testing is taking longer than expected due to data issues</li>
-                    <li>Testing delayed by SSL Certificates issues in docker and shared enviroments</li>
-                    <li>SOHO support took longer than we expected, delaying ESB replacement development</li>
+                    <li>Target's git migration delayed development and affected regression testing.</li>
+                    <li>To set up new laptops delayed the development.</li>
                 </ul>
             </section>
         </section>
