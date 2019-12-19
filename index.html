@@ -117,35 +117,52 @@
                 <tr>
                     <td>SubmitReturn</td>
                     <td>PENDING</td>
-                    <td>PENDING</td>
+                    <td>N/A</td>
                 </tr>
                 <tr>
                     <td>CancelOrder</td>
                     <td>PENDING</td>
-                    <td>PENDING</td>
+                    <td>DONE</td>
                 </tr>
                 <tr>
                     <td>SubmitPayment</td>
                     <td>PENDING</td>
-                    <td>PENDING</td>
+                    <td>IN PROGRESS</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+                <h3>ESB Replacement Plan - Insurance</h3>
+                <h5>(Development Status)</h5>
+            <table>
+                <thead>
+                <tr>
+                    <th><a>Service provider</a></th>
+                    <th><a>Status</a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>AppleCare</td>
+                    <td>DONE</td>
+                </tr>
+                <tr>
+                    <td>Squaretrade</td>
+                    <td>IN PROGRESS</td>
                 </tr>
                 </tbody>
             </table>
         </section>
 
-        <section>
-            <h3><a>MAIN TOPICS - ESB REPLACEMENT</a></h3>
-            <ol>
-                <li>APPLECARE ESB REPLACEMENT</li>
-            </ol>
-        </section>
+    
         <section><h3><a>APPLECARE ESB REPLACEMENT</a></h3></section>
         <section>
             <section>
                 <h3><a>Development process</a></h3>
                 <ul>
                     <li>Create a new workflow from the old one</li>
-                    <li>Create a feature toggle for this canonical api</li>
+                    <li>Create a feature toggle for this insurance provider</li>
                     <li>Change request mapping with the new generated classes</li>
                     <li>Change the REST call with the new invoker class</li>
                     <li>Fix usages of the carrier response after the carrier call using the new models</li>
@@ -154,7 +171,7 @@
             <section>
                 <h3><a>Development process</a></h3>
                 <ul>
-                    <li>Implement the common error handling</li>
+                    <li>Implement error handling</li>
                     <li>Check PamDB differences and usages</li>
                     <li>Carrier testing</li>
                 </ul>
