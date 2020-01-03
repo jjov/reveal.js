@@ -123,18 +123,18 @@
                     </tr>
                     <tr>
                         <td>SubmitReturn</td>
-                        <td></td>
+                        <td>PENDING</td>
                         <td>NA</td>
                     </tr>
                     <tr>
                         <td>CancelOrder</td>
-                        <td></td>
+                        <td>PENDING</td>
                         <td>TESTING</td>
                     </tr>
                     <tr>
                         <td>SubmitPayment</td>
-                        <td></td>
-                        <td></td>
+                        <td>NA</td>
+                        <td>PENDING</td>
                     </tr>
                     </tbody>
                 </table>
@@ -147,10 +147,11 @@
                         <ul>
                             <li>SubmitSigPadCapture.</li>
                             <li>RetrieveApprovalStatus.</li>
-                            <li>SubmitActivation V3.</li>
-                            <li>RetrieveProrateReceipt.</li>
-                            <li>generateReturnLabel.</li>
-                            <li>SubmitCustomerSignature.</li>
+                            <li><u>SubmitActivation V3.</u></li>
+                            <li><u>RetrievePendingOrderStatus.</u></li>
+                            <li><u>RetrieveProrateReceipt.</u></li>
+                            <li><u>generateReturnLabel.</u></li>
+                            <li><u>SubmitCustomerSignature.</u></li>
                             <li style="color: #dd5566">SubmitActivation V2.</li>
                             <li style="color: #dd5566">SubmitOrder.</li>
                             <li style="color: #dd5566">SaveInstallmentDetails.</li>
@@ -177,10 +178,9 @@
                 <br>
                 <div align="left">
                     <ul>
-                        <li>Pam-db variables were accessed using old model structure causing conflicts with ESB
-                            Migration Implementation.
+                        <li>
+                            All Pipelines were broken for release, develop, and team environments.
                         </li>
-                        <li>Payment-cr docker property issue was breaking the pipeline</li>
                         <li>
                             Environment Configuration issues due to new repo changes for ConnectedCommerce_Integration
                         </li>
