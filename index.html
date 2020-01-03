@@ -32,88 +32,9 @@
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>ONLINE ACTIVATIONS</li>
-                <li>ESB MIGRATION CREATE ORDER</li>
+                <li>ESB MIGRATION SUBMIT ORDER</li>
             </ol>
         </section>
-        <section>
-            <section>
-                <h3><a>ONLINE ACTIVATION</a></h3>
-            </section>
-            <section>
-                <h3><a>SUCESSFULL SCENARIOS</a></h3>
-                <div align="left">
-                    <br>
-                    <li> ONLINE ADD A LINE </li>
-                    <li> ONLINE NEW ACTIVATION PORTIN </li>
-                </div>
-            </section>
-            <section>
-                <h3> ONLINE ADD A LINE </h3>
-                <img src="images/ONLINE_AAL.png">
-            </section>
-            <section>
-                <h3> ONLINE NEW ACTIVATION PORTIN  </h3>
-                <img src="images/ONLINE_NP.png">
-            </section>
-            <section>
-                <h3><a>CHALLENGES</a></h3>
-
-                <div align="left">
-                    <ul>
-                        <li> Inconsistencies getting data from RetrievePricePlan Header.</li>
-                        <li> Apply Verizon Recommendations</li>
-                        <ul>
-                            <li> Avoid calling RetrieveNpaNxx twice.</li>
-                            <li> Remove Installment Details from Final SubmitOrder. </li>
-                        </ul>
-                        <li> Data issues.</li>
-                    </ul>
-                </div>
-            </section>
-            <section>
-                <h4><a> Remove Installment Details from Final SubmitOrder </a></h4>
-                <pre>
-                    <code class="hljs xml" data-line-numbers="6-17" data-trim>
-                    <VzwServices>
-                      <ServiceHeader> ..... </ServiceHeader>
-                      <ServiceBody>
-                            .....
-                              <newEqptInfo>
-                                  <installmentDetails>
-                                    <installmentContractNum>2144263105</installmentContractNum>
-                                    <installmentPaymentDetails>
-                                      <totalAmountFinanced>649.99</totalAmountFinanced>
-                                      <firstInstallmentAmount>27.15</firstInstallmentAmount>
-                                      <installmentContractTerm>24</installmentContractTerm>
-                                      <monthlyInstallmentPayment>27.08</monthlyInstallmentPayment>
-                                      <agentDownPaymentAmount>0.0</agentDownPaymentAmount>
-                                      <vZWRequiredDownPaymentAmount>0.0</vZWRequiredDownPaymentAmount>
-                                      <totalDownPaymentAmount>0.0</totalDownPaymentAmount>
-                                    </installmentPaymentDetails>
-                                  </installmentDetails>
-                              </newEqptInfo>
-                            ......
-                      </ServiceBody>
-                    </VzwServices>
-                    </code>
-                </pre>
-            </section>
-            <section>
-                <h1>LET'S SEE THE CODE</h1>
-            </section>
-        </section>
-
-        <section>
-            <h3><a>NEXT TOPIC</a></h3>
-            <div>
-                <div>
-                    <img src="https://media.giphy.com/media/6EiJBiYKFT8OnAfkin/giphy.gif">
-
-                </div>
-            </div>
-        </section>
-
         <section>
             <h3><a>ESB REPLACEMENT</a></h3>
         </section>
@@ -191,59 +112,48 @@
                         <td>DONE</td>
                     </tr>
                     <tr>
-                        <td><a style="color: #dd5566">CreateOrder</a></td>
-                        <td><a style="color: #dd5566">TESTING</a></td>
-                        <td><a style="color: #dd5566">TESTING</a></td>
+                        <td>CreateOrder</td>
+                        <td>DONE</td>
+                        <td>DONE</td>
                     </tr>
                     <tr>
                         <td>SubmitOrder</td>
-                        <td></td>
-                        <td>PENDING</td>
+                        <td><a style="color: #dd5566">PENDING</a></td>
+                        <td>DONE</td>
                     </tr>
                     <tr>
                         <td>SubmitReturn</td>
                         <td></td>
-                        <td>PENDING</td>
+                        <td>DONE</td>
                     </tr>
                     <tr>
                         <td>CancelOrder</td>
                         <td></td>
-                        <td>PENDING</td>
+                        <td>DONE</td>
                     </tr>
                     <tr>
                         <td>SubmitPayment</td>
                         <td></td>
-                        <td>PENDING</td>
+                        <td>DONE</td>
                     </tr>
                     </tbody>
                 </table>
             </section>
 
             <section>
-                <h3><a>VERIZON CREATE ORDER MIGRATION</a></h3>
+                <h3><a>VERIZON SUBMIT ORDER MIGRATION</a></h3>
                 <div align="left">
-                    <div align="left">
-                        <p align="justify"> Successfully migrated happy paths and error scenarios for CreateOrder
-                            APIs. </p>
-                    </div>
                     <div align="left" style="width: 50%; float:left">
                         <ul>
-                            <li>RetrieveNPANxx.</li>
-                            <li>RetrievePricePlans.</li>
-                            <li>ChangePricePlan.</li>
-                            <li>SubmitPortInDetails.</li>
-                            <li>SubmitEdgeUpPayment.</li>
-                            <li>SaveInstallmentDetails.</li>
-                        </ul>
-                    </div>
-                    <div style="width: 50%; float:right">
-                        <ul>
-                            <li>SubmitOrder.</li>
-                            <li>RetrieveOrderDetails.</li>
-                            <li>GenerateServiceAgreements.</li>
-                            <li>GenerateInstallmentContract.</li>
-                            <li>RetrieveInstallmentContract.</li>
-                            <li>RetrieveAcceptanceLanguage.</li>
+                            <li>SubmitSigPadCapture.</li>
+                            <li>RetrieveApprovalStatus.</li>
+                            <li>SubmitActivation V3.</li>
+                            <li>RetrieveProrateReceipt.</li>
+                            <li>generateReturnLabel.</li>
+                            <li>SubmitCustomerSignature.</li>
+                            <li style="color: #dd5566">SubmitActivation V2.</li>
+                            <li style="color: #dd5566">SubmitOrder.</li>
+                            <li style="color: #dd5566">SaveInstallmentDetails.</li>
                         </ul>
                     </div>
                 </div>
@@ -270,8 +180,9 @@
                         <li>Pam-db variables were accessed using old model structure causing conflicts with ESB
                             Migration Implementation.
                         </li>
+                        <li>Payment-cr docker property issue was breaking the pipeline</li>
                         <li>
-                            Long methods refactoring.
+                            Environment Configuration issues due to new repo changes for ConnectedCommerce_Integration
                         </li>
                     </ul>
                 </div>
