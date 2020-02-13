@@ -49,7 +49,6 @@
                 <li>VZW CANCEL ORDER</li>
             </ol>
         </section>
-        <section>
             <section>
                 <h3><a>VZW UPGRADE ONLINE FLOW</a></h3>
                 <div>
@@ -67,6 +66,25 @@
 
                     </div>
                 </div>
+            </section>
+            <section>
+                <h3><a>Retrieve Pending Order Status Request</a></h3>
+                <pre>
+                    <code class="hljs xml" data-line-numbers="7" data-trim>
+                    <VzwServices>
+                        <ServiceHeader> ...... </ServiceHeader>
+                        <ServiceBody>
+                          <pendingOrderStatus>
+                           <request>
+                            <mode>UPDATE</mode>
+                            <updateOrderState>CANCEL</updateOrderState>
+                           </request>
+                          </pendingOrderStatus>
+                         </ServiceBody>
+                    </VzwServices>
+                    </code>
+                    </code>
+                </pre>
             </section>
             <section>
                 <h3><a>SOLUTION</a></h3>
