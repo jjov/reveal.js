@@ -49,6 +49,15 @@
                 <li>VZW CANCEL ORDER</li>
             </ol>
         </section>
+        <section>
+            <h3><a>VZW CANCEL ORDER</a></h3>
+            <div>
+                <div>
+                    Cancel Order Canonical API is executed to Update the state of an online order in order to Cancel it
+                </div>
+            </div>
+        </section>
+        <section>
             <section>
                 <h3><a>VZW UPGRADE ONLINE FLOW</a></h3>
                 <div>
@@ -62,15 +71,16 @@
                 <h3><a>VZW CANCEL ORDER UPGRADE ONLINE FLOW</a></h3>
                 <div>
                     <div>
-                        <img src="images/ONLINE CPP CANCEL ORDER INSTORE.png">
+                        <img src="images/ONLINE CPP CANCEL ORDER ONLINE.png">
 
                     </div>
                 </div>
             </section>
+        </section>
             <section>
                 <h3><a>Retrieve Pending Order Status Request</a></h3>
                 <pre>
-                    <code class="hljs xml" data-line-numbers="7" data-trim>
+                    <code class="hljs xml" data-line-numbers="6,7" data-trim>
                     <VzwServices>
                         <ServiceHeader> ...... </ServiceHeader>
                         <ServiceBody>
@@ -87,7 +97,7 @@
                 </pre>
             </section>
             <section>
-                <h3><a>SOLUTION</a></h3>
+                <h3><a>WHAT WE DID</a></h3>
                 <br>
                 <ul>
                     <li>Fixed Invocation of RetrievePendingOrderStatus Carrier API</li>
@@ -109,6 +119,9 @@
                         <li>
                             Generate Installment Contract Carrier API for ONLINE Profile is returning an error
                             which Blocks the Carrier Testing for ONLINE AAL and NEW activations.
+                        </li>
+                        <li>
+                            PVT ESB Replacement and DA Integration Support.
                         </li>
                     </ul>
                 </div>
