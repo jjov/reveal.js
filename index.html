@@ -36,139 +36,35 @@
             <h3><a>TEAM MEMBERS</a></h3>
             <ul>
                 <li>DEV - DANNY NARANJO</li>
-                <li>DEV - BENJAMIN GOMEZ</li>
+                <li>DEV - SANTIAGO RODRIGUEZ </li>
+                <li>DEV - ENRIQUE DELGADO </li>
+                <li>DEV - JUAN FELIPE ESCOBAR </li>
                 <li>PO - GUILLERMO PITBLADDO</li>
                 <li>TDM - JONATHAN ORTIZ</li>
             </ul>
-            <p><u> Good luck: DEV - FERNANDO SANCHEZ</u></p>
         </section>
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>ESB MIGRATION SUBMIT ORDER</li>
+                <li>VZW CANCEL ORDER</li>
             </ol>
         </section>
         <section>
-            <h3><a>ESB REPLACEMENT</a></h3>
-        </section>
-
-        <section>
             <section>
-                <h3>ESB Replacement Plan</h3>
-                <h5>(Development Status)</h5>
-                <table>
-                    <thead>
-                    <tr>
-                        <th><a>Canonical API</a></th>
-                        <th><a>VZN Migrated</a></th>
-                        <th><a>ATT Migrated</a></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>AccountLookup</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CreditCheck</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePaymentPrograms</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePlans</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>RetrievePlansAddOns</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <h3><a>VZW UPGRADE ONLINE FLOW</a></h3>
+                <div>
+                    <div>
+                        <img src="images/ONLINE CPP.png">
+
+                    </div>
+                </div>
             </section>
-
             <section>
-                <table>
-                    <thead>
-                    <tr>
-                        <th><a>Canonical API</a></th>
-                        <th><a>VZN Migrated</a></th>
-                        <th><a>ATT Migrated</a></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>ValidateDevice</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CheckTradeIn</td>
-                        <td>NA</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>NumberPort</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>ValidateCart</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>CreateOrder</td>
-                        <td>DONE</td>
-                        <td>DONE</td>
-                    </tr>
-                    <tr>
-                        <td>SubmitOrder</td>
-                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
-                        <td><a style="color: #dd5566">IN PROGRESS</a></td>
-                    </tr>
-                    <tr>
-                        <td>SubmitReturn</td>
-                        <td>PENDING</td>
-                        <td>NA</td>
-                    </tr>
-                    <tr>
-                        <td>CancelOrder</td>
-                        <td>PENDING</td>
-                        <td>IN PROGRESS</td>
-                    </tr>
-                    <tr>
-                        <td>SubmitPayment</td>
-                        <td>NA</td>
-                        <td>IN PROGRESS</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </section>
+                <h3><a>VZW CANCEL ORDER UPGRADE ONLINE FLOW</a></h3>
+                <div>
+                    <div>
+                        <img src="images/ONLINE CPP CANCEL ORDER ONLINE.png">
 
-            <section>
-                <h3><a>VERIZON SUBMIT ORDER MIGRATION</a></h3>
-                <div align="left">
-                    <div align="left" style="width: 50%; float:left">
-                        <ul>
-                            <li>SubmitSigPadCapture.</li>
-                            <li>RetrieveApprovalStatus.</li>
-                            <li><u>SubmitActivation V3.</u></li>
-                            <li><u>RetrievePendingOrderStatus.</u></li>
-                            <li><u>RetrieveProrateReceipt.</u></li>
-                            <li><u>generateReturnLabel.</u></li>
-                            <li><u>SubmitCustomerSignature.</u></li>
-                            <li style="color: #dd5566">SubmitActivation V2.</li>
-                            <li style="color: #dd5566">SubmitOrder.</li>
-                            <li style="color: #dd5566">SaveInstallmentDetails.</li>
-                        </ul>
                     </div>
                 </div>
             </section>
@@ -176,11 +72,9 @@
                 <h3><a>SOLUTION</a></h3>
                 <br>
                 <ul>
-                    <li>Created a new workflow from the old one.</li>
-                    <li>Created a feature toggle for this canonical api.</li>
-                    <li>Created each mapping and header mapping with the new generated classes.</li>
-                    <li>Changed the REST call with the new invoker class.</li>
-                    <li>Fixed usages of PAM-DB Variables.</li>
+                    <li>Fixed Invocation of RetrievePendingOrderStatus Carrier API</li>
+                    <li>Fixed Error Handling for Cancel Order Verizon Workflow</li>
+                    <li>Created Cancel Order E2E BDDs for UPG, NEW and AAL ONLINE Scenarios</li>
                 </ul>
             </section>
             <section>
@@ -195,7 +89,8 @@
                             All Pipelines were broken for release, develop, and team environments.
                         </li>
                         <li>
-                            Environment Configuration issues due to new repo changes for ConnectedCommerce_Integration
+                            Generate Installment Contract Carrier API for ONLINE Profile is returning an error
+                            which Blocks the Carrier Testing for ONLINE AAL and NEW activations.
                         </li>
                     </ul>
                 </div>
