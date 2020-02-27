@@ -124,7 +124,7 @@
                 </tr>
                 <tr>
                     <td>SubmitReturn</td>
-                    <td>PENDING</td>
+                    <td>N/A</td>
                     <td>PENDING</td>
                 </tr>
                 <tr>
@@ -173,20 +173,20 @@
     <section>
             <h3><a>ESB Cleaning Process</a></h3>
             <ul>
-                    <li> Erase BPMN and workflow class.</li>
+                    <li>Erase BPMN and workflow class.</li>
                     <li>Erase RAML classes and search if are not used in other place in the project.</li>
-                    <li> Execute canonical against carrier with pam proxy, compare logs and pam dbs from point 1. </li>
-                    <li>   Execute macondo's pipeline to warrant that you do not broke pipeline.</li>
-                    <li> Fix Junits if you broke something.</li>
+                    <li>Execute canonical against carrier with pam proxy, compare logs and pam dbs from old logs. </li>
+                    <li>Execute macondo's pipeline to warrant that you do not broke pipeline.</li>
+                    <li>Fix unit tests if you broke something.</li>
             </ul>
         </section>
             <section>
                 <section>
                     <h3><a>SPRINT CHALLENGES</a></h3>
                     <ul>
-                        <li>Test against carrier</li>
-                        <li>JUnits</li>
-                        <li>Aurus Callback Issue</li>
+                        <li>Problems with Verizon Validate Cart carrier testing delaying the ESB clean up.</li>
+                        <li>To deal with encrypted unit tests affected the development process.</li>
+                        <li>Aurus Callback issue affected submitPayments carrier testing.</li>
                     </ul>
                 </section>
             </section>
