@@ -146,7 +146,7 @@
                 </tbody>
             </table>
         </section>
-
+          
         <section>
   
                 <table>
@@ -166,33 +166,60 @@
                         </tbody>
                     </table>
         </section>
-
-    
-        <section><h3><a>TARGET BDD AUTOMATION CARRIER TESTING</a></h3></section>
         <section>
             <section>
-                <h3><a>Objective</a></h3>
-                <ul>
-                    <li>In order of improving develop and regression carrier testing process it is necessary to standardise and automatize the execution of this kind of test.</li>
-                    <li>Also is necessary to centralize the data information in a unique source in order to process it and update it along the process of testing.</li>
-                </ul>
-            </section>
+                    <h3>ESB Cleaning Process</h3>
+            <ul>
+                <li>Execute canonical against carrier using PROXY, get logs and pamdbs.</li>
+                <li>Erase ESB path and FT call in pam.</li>
+                <li>List of class and method used in pam proxy.</li>
+                <li>Visit each script in ESB side, if it is not in the list from point 3, and do not have any other usage in the project, erase it.</li>      
+            </ul>
+        </section>
+    <section>
+            <h3>ESB Cleaning Process</h3>
+            <ul>
+                    <li> Erase BPMN and workflow class.</li>
+                    <li>Erase RAML classes and search if are not used in other place in the project.</li>
+                    <li> Execute canonical against carrier with pam proxy, compare logs and pam dbs from point 1. </li>
+                    <li>   Execute macondo's pipeline to warrant that you do not broke pipeline.</li>
+                    <li> Fix Junits if you broke something.</li>
+            </ul>
+        </section>
+
+        </section>
+        <section data-background="https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif" data-background-size="100%">
+            <h3><p class="codetime-text">CODE TIME!!</p></h3>
+        </section>
+
+    
+        <section><h3><a>CARRIER TESTING AUTOMATION - FIRST APPROACH</a></h3></section>
+        <section>
             <section>
-                <h3><a>Development process</a></h3>
+                <h3><a>Introduction</a></h3>
                 <ul>
-                    <li>Define Work to do and Assign it</li>
-                    <li>Define Scenarios and Validations to make</li>
-                    <li>Make a Proof of Concept</li>
-                    <li>Implement a final solution for both carriers</li>
+                    <li>To understand how SoHo's carrier testing automation was working.</li>
+                    <li>To start the design of a first approach for Verizon and AT&T carrier testing automation.</li>
+                    <li>First approach must be generic in terms of the data source.</li>
                 </ul>
             </section>
         </section>
         <section>
             <section>
-                <h3><a>PROPOSAL</a></h3>
-                <ul>
-                    <li>DIAGRAM</li>
-                </ul>
+                <h3><a>Components diagram</a></h3>
+                <img src="images/Components.png">
+            </section>
+        </section>
+        <section>
+            <section>
+                
+                <img src="images/flowDiagram.png">
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3><a>Data Source Loader</a></h3>
+                <img src="images/DataSourceLoader.png">
             </section>
         </section>
         <section>
@@ -204,9 +231,7 @@
                 </ul>
             </section>
         </section>
-        <section data-background="https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif" data-background-size="100%">
-            <h3><p class="codetime-text">CODE TIME!!</p></h3>
-        </section>
+      
         
         <section>
             <h3><a>Thanks!!</a></h3>
