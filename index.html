@@ -29,45 +29,45 @@
         <section>
             <img src="/images/logo.png">
             <p class="demo-title">Demo</p>
-            Previous sprint 10/10 -> 100%<br>
-            Current sprint 8/8 -> 100%
+            Previous sprint 11/15 -> 73%<br>
+            Current sprint /12 -> %
         </section>
         <section>
-            <h3>ESB Replacement Plan</h3>
-            <h5>(Development Status)</h5>
+            <h3>ESB Cleaning Plan</h3>
+            <h5>(Status)</h5>
             <table>
                 <thead>
                 <tr>
                     <th><a>Canonical API</a></th>
-                    <th><a>VZN Migrated</a></th>
-                    <th><a>ATT Migrated</a></th>
+                    <th><a>VZN Cleansing</a></th>
+                    <th><a>ATT Cleansing</a></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>AccountLookup</td>
                     <td>DONE</td>
-                    <td>DONE</td>
+                    <td>PENDING</td>
                 </tr>
                 <tr>
-                    <td>CreditCheck</td>
+                    <td>CreditCheck/FEDEX</td>
                     <td>DONE</td>
-                    <td>DONE</td>
+                    <td>PENDING</td>
                 </tr>
                 <tr>
                     <td>RetrievePaymentPrograms</td>
                     <td>DONE</td>
-                    <td>DONE</td>
+                    <td>PENDING</td>
                 </tr>
                 <tr>
                     <td>RetrievePlans</td>
                     <td>DONE</td>
-                    <td>DONE</td>
+                    <td>PENDING</td>
                 </tr>
                 <tr>
                     <td>RetrievePlansAddOns</td>
-                    <td>DONE</td>
-                    <td>DONE</td>
+                    <td>IN_PROGRESS</td>
+                    <td>PENDING</td>
                 </tr>
                 </tbody>
             </table>
@@ -78,59 +78,75 @@
                 <thead>
                 <tr>
                     <th><a>Canonical API</a></th>
-                    <th><a>VZN Migrated</a></th>
-                    <th><a>ATT Migrated</a></th>
+                    <th><a>VZN Cleansing</a></th>
+                    <th><a>ATT Cleansing</a></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>ValidateDevice</td>
                     <td>DONE</td>
-                    <td>DONE</td>
+                    <td>PENDING</td>
                 </tr>
                 <tr>
                     <td>CheckTradeIn</td>
                     <td>N/A</td>
-                    <td>DONE</td>
+                    <td>PENDING</td>
                 </tr>
                 <tr>
                     <td>NumberPort</td>
                     <td>DONE</td>
-                    <td>DONE</td>
+                    <td>PENDING</td>
                 </tr>
                 <tr>
                     <td>ValidateCart</td>
-                    <td>DONE</td>
-                    <td>DONE</td>
-                </tr>
-                <tr>
-                    <td>CreateOrder</td>
-                    <td>DONE</td>
-                    <td>DONE</td>
-                </tr>
-                <tr>
-                    <td>SubmitOrder</td>
-                    <td>DONE</td>
                     <td>IN PROGRESS</td>
-                </tr>
-                <tr>
-                    <td>SubmitReturn</td>
                     <td>PENDING</td>
-                    <td>N/A</td>
-                </tr>
-                <tr>
-                    <td><a>CancelOrder</a></td>
-                    <td><a>DONE</a></td>
-                    <td>DONE</td>
-                </tr>
-                <tr>
-                    <td>SubmitPayment</td>
-                    <td>PENDING</td>
-                    <td>IN PROGRESS</td>
                 </tr>
                 </tbody>
             </table>
         </section>
+
+        <section>
+            <table>
+                <thead>
+                <tr>
+                    <th><a>Canonical API</a></th>
+                    <th><a>VZN Cleansing</a></th>
+                    <th><a>ATT Cleansing</a></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>CreateOrder</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                <tr>
+                    <td>SubmitOrder</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                <tr>
+                    <td>SubmitReturn</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                <tr>
+                    <td>CancelOrder</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                <tr>
+                    <td>SubmitPayment</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
         <section>
   
                 <table>
@@ -144,41 +160,47 @@
                         <tbody>
                         <tr>
                             <td>Insurance</td>
-                            <td>DONE</td>
-                            <td>DONE</td>
+                            <td>PENDING</td>
+                            <td>PENDING</td>
                         </tr>
                         </tbody>
                     </table>
         </section>
 
     
-        <section><h3><a>VERIZON CANCEL ORDER ESB REPLACEMENT</a></h3></section>
+        <section><h3><a>TARGET BDD AUTOMATION CARRIER TESTING</a></h3></section>
         <section>
             <section>
-                <h3><a>Development process</a></h3>
+                <h3><a>Objective</a></h3>
                 <ul>
-                    <li>Create a new workflow from the old one</li>
-                    <li>Create a feature toggle for this insurance provider</li>
-                    <li>Change request mapping with the new generated classes</li>
-                    <li>Change the REST call with the new invoker class</li>
-                    <li>Fix usages of the carrier response after the carrier call using the new models</li>
+                    <li>In order of improving develop and regression carrier testing process it is necessary to standardise and automatize the execution of this kind of test.</li>
+                    <li>Also is necessary to centralize the data information in a unique source in order to process it and update it along the process of testing.</li>
                 </ul>
             </section>
             <section>
                 <h3><a>Development process</a></h3>
                 <ul>
-                    <li>Implement error handling</li>
-                    <li>Check PamDB differences and usages</li>
-                    <li>Carrier testing</li>
+                    <li>Define Work to do and Assign it</li>
+                    <li>Define Scenarios and Validations to make</li>
+                    <li>Make a Proof of Concept</li>
+                    <li>Implement a final solution for both carriers</li>
                 </ul>
             </section>
         </section>
         <section>
             <section>
-                <h3><a>CHALLENGES</a></h3>
+                <h3><a>PROPOSAL</a></h3>
                 <ul>
-                    <li>Missing credentials and null checker in production environment affected AccountLookup PVT.</li>
-                    <li>Properties setted up wrong affected testing and delivery for insurance ESB replacement.</li>
+                    <li>DIAGRAM</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3><a>SPRINT CHALLENGES</a></h3>
+                <ul>
+                    <li>Test against carrier</li>
+                    <li>-----Add more.----</li>
                 </ul>
             </section>
         </section>
