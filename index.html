@@ -29,7 +29,7 @@
         <section>
             <img src="images/poster.png" style="width: 800px; height: 400px">
             <p>Demo</p>
-            Previous sprint -> 92.59%<br>
+            Previous sprint -> 89.29%<br>
             Current sprint -> 89.29%
         </section>
         <section>
@@ -46,87 +46,72 @@
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>VZW CANCEL ORDER</li>
+                <li>VZW REMOVE SAVE INSTALLMENT DETAILS</li>
             </ol>
         </section>
         <section>
-            <h3><a>VZW CANCEL ORDER</a></h3>
+            <h3><a>VZW REMOVE SAVE INSTALLMENT DETAILS</a></h3>
             <div>
                 <div>
-                    Cancel Order Canonical API is executed to Update the state of an online order in order to Cancel it
+                    saveInstallmentDetail API is now deprecated by Verizon
                 </div>
             </div>
         </section>
         <section>
-            <section>
-                <h3><a>VZW UPGRADE ONLINE FLOW</a></h3>
-                <div>
-                    <div>
-                        <img src="images/ONLINE CPP.png">
-
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h3><a>VZW CANCEL ORDER UPGRADE ONLINE FLOW</a></h3>
-                <div>
-                    <div>
-                        <img src="images/ONLINE CPP CANCEL ORDER ONLINE.png">
-
-                    </div>
-                </div>
-            </section>
+            <h3><a>WHAT WE DID</a></h3>
+            <br>
+            <ul>
+                <li>Removed saveInstallmentDetails call from VZN Workflows</li>
+                <li>Added installmentDetails object to the final submitOrder request</li>
+                <li>Carrier testing for Online and Instore scenarios</li>
+            </ul>
         </section>
-            <section>
-                <h3><a>Retrieve Pending Order Status Request</a></h3>
-                <pre>
-                    <code class="hljs xml" data-line-numbers="6,7" data-trim>
-                    <VzwServices>
-                        <ServiceHeader> ...... </ServiceHeader>
-                        <ServiceBody>
-                          <pendingOrderStatus>
-                           <request>
-                            <mode>UPDATE</mode>
-                            <updateOrderState>CANCEL</updateOrderState>
-                           </request>
-                          </pendingOrderStatus>
-                         </ServiceBody>
-                    </VzwServices>
-                    </code>
-                    </code>
-                </pre>
-            </section>
-            <section>
-                <h3><a>WHAT WE DID</a></h3>
-                <br>
+        <section>
+            <h3><a>Submit Order Request with Installment Details</a></h3>
+            <pre>
+                <code class="hljs xml" data-line-numbers="6,17" data-trim>
+                <VzwServices>
+                    <ServiceHeader> ...... </ServiceHeader>
+                    <ServiceBody>
+                      <custServiceOrderDetail>
+                        ...
+                          <installmentDetails>
+                              <installmentContractNum></installmentContractNum>
+                              <installmentPaymentDetails>
+                                 <totalAmountFinanced>649.99</totalAmountFinanced>
+                                 <firstInstallmentAmount>20.91</firstInstallmentAmount>
+                                 <installmentContractTerm>24</installmentContractTerm>
+                                 <monthlyInstallmentPayment>20.83</monthlyInstallmentPayment>
+                                 <agentDownPaymentAmount>-149.99</agentDownPaymentAmount>
+                                 <vZWRequiredDownPaymentAmount>149.99</vZWRequiredDownPaymentAmount>
+                                 <totalDownPaymentAmount>149.99</totalDownPaymentAmount>
+                              </installmentPaymentDetails>
+                          </installmentDetails>
+                        ...
+                      </custServiceOrderDetail>
+                     </ServiceBody>
+                </VzwServices>
+                </code>
+            </pre>
+        </section>
+        <section>
+            <h3><a>Let's go to the code</a></h3>
+        </section>
+        <section>
+            <h3><a>CHALLENGES</a></h3>
+            <br>
+            <div align="left">
                 <ul>
-                    <li>Fixed Invocation of RetrievePendingOrderStatus Carrier API</li>
-                    <li>Fixed Error Handling for Cancel Order Verizon Workflow</li>
-                    <li>Created Cancel Order E2E BDDs for UPG, NEW and AAL ONLINE Scenarios</li>
+                    <li>
+                        Carrier data for AAL scenarios was scarce (plans are too old)
+                    </li>
+                    <li>
+                        DA Integration Support.
+                    </li>
                 </ul>
-            </section>
-            <section>
-                <h3><a>Let's go to the code</a></h3>
-            </section>
-            <section>
-                <h3><a>CHALLENGES</a></h3>
-                <br>
-                <div align="left">
-                    <ul>
-                        <li>
-                            All Pipelines were broken for release, develop, and team environments.
-                        </li>
-                        <li>
-                            Generate Installment Contract Carrier API for ONLINE Profile is returning an error
-                            which Blocks the Carrier Testing for ONLINE AAL and NEW activations.
-                        </li>
-                        <li>
-                            PVT ESB Replacement and DA Integration Support.
-                        </li>
-                    </ul>
-                </div>
-                <br>
-            </section>
+            </div>
+            <br>
+        </section>
         </section>
         </section>
 
