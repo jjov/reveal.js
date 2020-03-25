@@ -29,18 +29,77 @@
         <section>
             <img src="/images/logo.png">
             <p class="demo-title">Demo</p>
-            Previous sprint 11/15 -> 73%<br>
-            Current sprint 15.5/12 -> 129%
+            Previous sprint ?/? -> ?%<br>
+            Current sprint ?/? -> ?%
         </section>
         <section>
             <section>
                 <h3><a>Topics</a></h3>
                 <ul>
+                    <li>Removal of Secrets from Unit Testing Module of Activation Plugins</li>
                     <li>ESB Cleaning Plan</li>
-                    <li>Draft - Carrier Testing Automation</li>
                 </ul>
             </section>
         </section>
+
+        <section><h3><a>Removal of Secrets from Unit Testing Module of Activation Plugins</a></h3></section>
+        <section>
+            <section>
+                <h3><a>Introduction</a></h3>
+                <ul>
+                    <li>The main reason for this work was to remove all the compromised information found in
+                        this module using GRAVITY in order to finally be able to decompress the unit tests and facilitate
+                        the work of all the groups related to PAM</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3><a>Steps Followed from Confluence Guide</a></h3>
+                <ul>
+                    <li>Decompress the module</li>
+                    <li>Generate secret list from keywords</li>
+                    <li>Sift through the list of secrets</li>
+                    <li>Create gravity.yml file</li>
+                    <li>Erase or replace the key words found in the code</li>
+                    <li>Add Secret Variables to gravity.yml if found</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3><a>Project Structure</a></h3>
+                <img src="images/ProjectStructure.png">
+            </section>
+
+            <section>
+                <h3><a>List Of Secrets</a></h3>
+                <img src="images/File.png">
+            </section>
+
+            <section>
+                <h3><a>Result</a></h3>
+                <img src="images/Result.png">
+            </section>
+
+            <section>
+                <h3><a>Conclusions</a></h3>
+                <ul>
+                    <li>There was no need of create gravity variables</li>
+                    <li>All the secret information was replace for dummy information or erased</li>
+                    <li>There is no need to include urls as gravity variables</li>
+                    <li>Every time we create a new unit test we have to make sure that
+                        none of the secret information is being saved</li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section data-background="https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif"
+                 data-background-size="100%">
+            <h3><p class="codetime-text">SECOND TOPIC!!</p></h3>
+        </section>
+
+        <section><h3><a>ESB Cleaning Plan</a></h3></section>
+
         <section>
             <h3><a>ESB Cleaning Plan</a></h3>
             <h5>(Status)</h5>
@@ -56,27 +115,27 @@
                 <tr>
                     <td>AccountLookup</td>
                     <td><a>DONE</a></td>
-                    <td>PENDING</td>
+                    <td><a>DONE</a></td>
                 </tr>
                 <tr>
                     <td>CreditCheck/FEDEX</td>
                     <td><a>DONE</a></td>
-                    <td>PENDING</td>
+                    <td><a>DONE</a></td>
                 </tr>
                 <tr>
                     <td>RetrievePaymentPrograms</td>
                     <td><a>DONE</a></td>
-                    <td>PENDING</td>
+                    <td><a>DONE</a></td>
                 </tr>
                 <tr>
                     <td>RetrievePlans</td>
                     <td><a>DONE</a></td>
-                    <td>PENDING</td>
+                    <td>In Progress</td>
                 </tr>
                 <tr>
                     <td>RetrievePlansAddOns</td>
                     <td><a>DONE</a></td>
-                    <td>PENDING</td>
+                    <td><a>DONE</a></td>
                 </tr>
                 <tr>
                     <td>ValidateDevice</td>
@@ -105,12 +164,12 @@
                 <tr>
                     <td>NumberPort</td>
                     <td><a>DONE</a></td>
-                    <td>PENDING</td>
+                    <td><a>DONE</a></td>
                 </tr>
                 <tr>
                     <td>ValidateCart</td>
-                    <td><a>IN PROGRESS</a></td>
-                    <td>PENDING</td>
+                    <td><a>DONE</a></td>
+                    <td><a>DONE</a></td>
                 </tr>
                 <tr>
                     <td>CreateOrder</td>
@@ -140,92 +199,58 @@
                 </tbody>
             </table>
         </section>
-          
-        <section>
-  
-                <table>
-                        <thead>
-                        <tr>
-                            <th><a>Canonical API</a></th>
-                            <th><a>AppleCare</a></th>
-                            <th><a>Squaretrade</a></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Insurance</td>
-                            <td>PENDING</td>
-                            <td>PENDING</td>
-                        </tr>
-                        </tbody>
-                    </table>
-        </section>
-        <section>
-            <section>
-                    <h3><a>ESB Cleaning Process</a></h3>
-            <ul>
-                <li>Execute canonical against carrier using PROXY, get logs and pamdbs.</li>
-                <li>Erase ESB path and FT call in pam.</li>
-                <li>List of class and method used in pam proxy.</li>
-                <li>Visit each script in ESB side, if it is not in the list from point 3, and do not have any other usage in the project, erase it.</li>      
-            </ul>
-        </section>
-    <section>
-            <h3><a>ESB Cleaning Process</a></h3>
-            <ul>
-                    <li>Erase BPMN and workflow class.</li>
-                    <li>Erase RAML classes and search if are not used in other place in the project.</li>
-                    <li>Execute canonical against carrier with pam proxy, compare logs and pam dbs from old logs. </li>
-                    <li>Execute macondo's pipeline to warrant that you do not broke pipeline.</li>
-                    <li>Fix unit tests if you broke something.</li>
-            </ul>
-        </section>
-                <section>
-                    <h3><a>SPRINT CHALLENGES</a></h3>
-                    <ul>
-                        <li>Problems with Verizon Validate Cart carrier testing delaying the ESB clean up.</li>
-                        <li>To deal with encrypted unit tests affected the development process.</li>
-                        <li>Aurus Callback issue affected submitPayments carrier testing.</li>
-                    </ul>
-                </section>
 
-        </section>
-        <section data-background="https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif" data-background-size="100%">
-            <h3><p class="codetime-text">CODE TIME!!</p></h3>
-        </section>
-
-    
-        <section><h3><a>CARRIER TESTING AUTOMATION - FIRST APPROACH</a></h3></section>
         <section>
+
+            <table>
+                <thead>
+                <tr>
+                    <th><a>Canonical API</a></th>
+                    <th><a>AppleCare</a></th>
+                    <th><a>Squaretrade</a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Insurance</td>
+                    <td>PENDING</td>
+                    <td>PENDING</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+<!--        <section>
             <section>
-                <h3><a>Introduction</a></h3>
+                <h3><a>ESB Cleaning Process</a></h3>
                 <ul>
-                    <li>To understand how SoHo's carrier testing automation was working.</li>
-                    <li>To start the design of a first approach for Verizon and AT&T carrier testing automation.</li>
-                    <li>First approach must be generic in terms of the data source.</li>
+                    <li>Execute canonical against carrier using PROXY, get logs and pamdbs.</li>
+                    <li>Erase ESB path and FT call in pam.</li>
+                    <li>List of class and method used in pam proxy.</li>
+                    <li>Visit each script in ESB side, if it is not in the list from point 3, and do not have any other
+                        usage in the project, erase it.
+                    </li>
                 </ul>
             </section>
-        </section>
-        <section>
             <section>
-                <h3><a>Components diagram</a></h3>
-                <img src="images/Components.png">
+                <h3><a>ESB Cleaning Process</a></h3>
+                <ul>
+                    <li>Erase BPMN and workflow class.</li>
+                    <li>Erase RAML classes and search if are not used in other place in the project.</li>
+                    <li>Execute canonical against carrier with pam proxy, compare logs and pam dbs from old logs.</li>
+                    <li>Execute macondo's pipeline to warrant that you do not broke pipeline.</li>
+                    <li>Fix unit tests if you broke something.</li>
+                </ul>
             </section>
-        </section>
+        </section>-->
+
         <section>
-            <section>
-                
-                <img src="images/flowDiagram.png">
-            </section>
-        </section>
-        <section>
-            <section>
-                <h3><a>Data Source Loader</a></h3>
-                <img src="images/DataSourceLoader.png">
-            </section>
+            <h3><a>SPRINT CHALLENGES</a></h3>
+            <ul>
+                <li>Learn the creation of gravity variables and the sift of almost 2000 lines of
+                    compromised information for the secrets removal.</li>
+            </ul>
         </section>
 
-        
         <section>
             <h3><a>Thanks!!</a></h3>
         </section>
