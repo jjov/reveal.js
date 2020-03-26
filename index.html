@@ -47,6 +47,15 @@
             <section>
                 <h3><a>Introduction</a></h3>
                 <ul>
+                    <li>After the migration to Target GIT the Unit Test module for activation-plugins was disable and almost
+                    unreachable to work with due to the secrets and compromised information found there. It was compressed and
+                        every time that a change was needed to be done it was necessary
+                    to decompress and compress it again doing the work harder and untraceable.</li>
+                </ul>
+            </section>
+            <section>
+                <h3><a>Reason</a></h3>
+                <ul>
                     <li>The main reason for this work was to remove all the compromised information found in
                         this module using GRAVITY in order to finally be able to decompress the unit tests and facilitate
                         the work of all the groups related to PAM</li>
@@ -71,19 +80,9 @@
             </section>
 
             <section>
-                <h3><a>List Of Secrets</a></h3>
-                <img src="images/File.png">
-            </section>
-
-            <section>
-                <h3><a>Result</a></h3>
-                <img src="images/Result.png">
-            </section>
-
-            <section>
                 <h3><a>Conclusions</a></h3>
                 <ul>
-                    <li>There was no need of create gravity variables</li>
+                    <li>There was no need to create gravity variables</li>
                     <li>All the secret information was replace for dummy information or erased</li>
                     <li>There is no need to include urls as gravity variables</li>
                     <li>Every time we create a new unit test we have to make sure that
@@ -91,11 +90,6 @@
                 </ul>
             </section>
 
-        </section>
-
-        <section data-background="https://media.giphy.com/media/4H3Ii5eLChYul9p7NL/giphy.gif"
-                 data-background-size="100%">
-            <h3><p class="codetime-text">SECOND TOPIC!!</p></h3>
         </section>
 
         <section><h3><a>ESB Cleaning Plan</a></h3></section>
@@ -130,7 +124,7 @@
                 <tr>
                     <td>RetrievePlans</td>
                     <td><a>DONE</a></td>
-                    <td>In Progress</td>
+                    <td>INPROGRESS</td>
                 </tr>
                 <tr>
                     <td>RetrievePlansAddOns</td>
@@ -219,35 +213,12 @@
                 </tbody>
             </table>
         </section>
-<!--        <section>
-            <section>
-                <h3><a>ESB Cleaning Process</a></h3>
-                <ul>
-                    <li>Execute canonical against carrier using PROXY, get logs and pamdbs.</li>
-                    <li>Erase ESB path and FT call in pam.</li>
-                    <li>List of class and method used in pam proxy.</li>
-                    <li>Visit each script in ESB side, if it is not in the list from point 3, and do not have any other
-                        usage in the project, erase it.
-                    </li>
-                </ul>
-            </section>
-            <section>
-                <h3><a>ESB Cleaning Process</a></h3>
-                <ul>
-                    <li>Erase BPMN and workflow class.</li>
-                    <li>Erase RAML classes and search if are not used in other place in the project.</li>
-                    <li>Execute canonical against carrier with pam proxy, compare logs and pam dbs from old logs.</li>
-                    <li>Execute macondo's pipeline to warrant that you do not broke pipeline.</li>
-                    <li>Fix unit tests if you broke something.</li>
-                </ul>
-            </section>
-        </section>-->
 
         <section>
             <h3><a>SPRINT CHALLENGES</a></h3>
             <ul>
-                <li>Learn the creation of gravity variables and the sift of almost 2000 lines of
-                    compromised information for the secrets removal.</li>
+                <li>All the additional work and all the effort to complete with all the goals
+                    for the ESB Migration and the result of having all this in Production. </li>
             </ul>
         </section>
 
