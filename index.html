@@ -29,8 +29,8 @@
         <section>
             <img src="images/poster.png" style="width: 800px; height: 400px">
             <p>Demo</p>
-            Previous sprint -> 103.33%<br>
-            Current sprint -> 100.00%
+            Previous sprint -> ?.00%<br>
+            Current sprint -> ?.00%
         </section>
         <section>
             <h3><a>TEAM MEMBERS</a></h3>
@@ -38,7 +38,8 @@
                 <li>DEV - DANNY NARANJO</li>
                 <li>DEV - SANTIAGO RODRIGUEZ </li>
                 <li>DEV - ENRIQUE DELGADO </li>
-                <li>DEV - JUAN FELIPE ESCOBAR </li>
+                <li>DEV - FERNANDO J GARCIA </li>
+                <li>DEV - JOSE F RIVERA </li>
                 <li>PO - GUILLERMO PITBLADDO</li>
                 <li>TDM - JONATHAN ORTIZ</li>
             </ul>
@@ -46,14 +47,23 @@
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <ol>
-                <li>VZW REMOVE SAVE INSTALLMENT DETAILS</li>
+                <li>AT&T FRAUD DETECTION ENGINE(FDE)</li>
+                <li>TRACFONE - AUTHENTICATION</li>
             </ol>
         </section>
         <section>
-            <h3><a>VZW REMOVE SAVE INSTALLMENT DETAILS</a></h3>
+            <h3><a>AT&T FRAUD DETECTION ENGINE(FDE)</a></h3>
             <div>
                 <div>
-                    saveInstallmentDetail API is now deprecated by Verizon
+                    Implementation of FDE RetrieveAuthenticator, SubmitAuthenticator and AccountLookup
+                </div>
+            </div>
+        </section>
+        <section>
+            <h3><a>TRACFONE PAM INTEGRATION - INITIAL WORK</a></h3>
+            <div>
+                <div>
+                    Implementation of RetrieveAuthenticator, SubmitAuthenticator
                 </div>
             </div>
         </section>
@@ -61,74 +71,10 @@
             <h3><a>WHAT WE DID</a></h3>
             <br>
             <ul>
-                <li>Removed saveInstallmentDetails call from VZN Workflows</li>
-                <li>Added installmentDetails object to the final submitOrder request</li>
-                <li>Carrier testing for Online and Instore scenarios</li>
+                <li>Changes in Canonical Workflows</li>
+                <li>Carrier Testing</li>
+                <li>BDD Creation</li>
             </ul>
-        </section>
-        <!-- <section>
-            <h3><a>VZW ONLINE CARRIER API CALLS BEFORE</a></h3>
-            <div>
-                <div>
-                    <img src="images/UPG_Online_Before_APIs.png">
-                    ​
-                </div>
-            </div>
-        </section>
-        <section>
-            <h3><a>VZW ONLINE CARRIER API CALLS NOW </a></h3>
-            <div>
-                <div>
-                    <img src="images/UPG_Online_Now_APIs.png">
-                    ​
-                </div>
-            </div>
-        </section> !-->
-        <section>
-            <h3><a>VZW INSTORE CARRIER API CALLS BEFORE</a></h3>
-            <div>
-                <div>
-                    <img src="images/UPG_Instore_Before_APIs.png" style="height: 500px">
-                    ​
-                </div>
-            </div>
-        </section>
-        <!-- <section>
-            <h3><a>VZW INSTORE CARRIER API CALLS NOW</a></h3>
-            <div>
-                <div>
-                    <img src="images/UPG_Instore_Now_APIs.png">
-                    ​
-                </div>
-            </div>
-        </section>!-->
-        <section>
-            <h3><a>Submit Order Request with Installment Details</a></h3>
-            <pre>
-                <code class="hljs xml" data-line-numbers="6-17" data-trim>
-                <VzwServices>
-                    <ServiceHeader> ...... </ServiceHeader>
-                    <ServiceBody>
-                      <custServiceOrderDetail>
-                        ...
-                          <installmentDetails>
-                              <installmentContractNum></installmentContractNum>
-                              <installmentPaymentDetails>
-                                 <totalAmountFinanced>649.99</totalAmountFinanced>
-                                 <firstInstallmentAmount>20.91</firstInstallmentAmount>
-                                 <installmentContractTerm>24</installmentContractTerm>
-                                 <monthlyInstallmentPayment>20.83</monthlyInstallmentPayment>
-                                 <agentDownPaymentAmount>0.0</agentDownPaymentAmount>
-                                 <vZWRequiredDownPaymentAmount>149.99</vZWRequiredDownPaymentAmount>
-                                 <totalDownPaymentAmount>149.99</totalDownPaymentAmount>
-                              </installmentPaymentDetails>
-                          </installmentDetails>
-                        ...
-                      </custServiceOrderDetail>
-                     </ServiceBody>
-                </VzwServices>
-                </code>
-            </pre>
         </section>
         <section>
             <h3><a>Let's go to the code</a></h3>
@@ -139,10 +85,10 @@
             <div align="left">
                 <ul>
                     <li>
-                        Not enough data for AAL scenarios or plans were too old
+                        Tracfone not clear documentation
                     </li>
                     <li>
-                        Update broken JUnits was really though as they were encrypted at the moment to apply these changes
+                        Problems at FDE testing different scenarios against carrier
                     </li>
                 </ul>
             </div>
