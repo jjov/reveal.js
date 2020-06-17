@@ -21,6 +21,7 @@
         link.type = 'text/css';
         link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
+
     </script>
 </head>
 <body>
@@ -36,126 +37,97 @@
                 <li>PO - GUILLERMO PITBLADDO</li>
                 <li>TDM - JONATHAN ORTIZ</li>
                 <li>DEV - DANNY NARANJO</li>
-                <li>DEV - SANTIAGO RODRIGUEZ </li>
-                <li>DEV - ENRIQUE DELGADO </li>
-                <li>DEV - FERNANDO J GARCIA </li>
-                <li>DEV - JOSE RIVERA </li>
+                <li>DEV - SANTIAGO RODRIGUEZ</li>
+                <li>DEV - ENRIQUE DELGADO</li>
+                <li>DEV - FERNANDO J GARCIA</li>
+                <li>DEV - JOSE RIVERA</li>
             </ul>
         </section>
         <section>
-            <h3><a>20.07 – 106% (26.5/25)</a></h3>
+            <h3><a>20.? – ?% (?/?)</a></h3>
             <ul>
-                <li>Fraud Decision Engine PAM implementation</li>
                 <li>TracFone PAM support</li>
-                <li>Bug resolution for AT&T and SquareTrade</li>
+                <li>Bug resolution</li>
             </ul>
-            <h3><a>20.08 – 100% (31/31)</a></h3>
+            <h3><a>20.? – ?% (?/?)</a></h3>
             <ul>
-                <li>Fraud Decision Engine PAM implementation</li>
                 <li>TracFone PAM support</li>
                 <li>Bug resolution</li>
             </ul>
         </section>
         <section>
             <h3><a>MAIN TOPICS</a></h3>
+            <div>TRACFONE PAM IMPLEMENTATION:
+            </div>
             <ol>
-                <li>AT&T FRAUD DETECTION ENGINE(FDE)</li>
-                <li>TRACFONE PAM INTEGRATION - INITIAL WORK</li>
+                <li>GetDeviceType API</li>
+                <li>GetAccountStatus API</li>
+                <li>AddressValidation API</li>
             </ol>
         </section>
+
         <section>
-            <h3><a>1. AT&T FRAUD DETECTION ENGINE(FDE)</a></h3>
-            <div>
-                <div>
-                    Fraud Protection flow allows AT&T to validate Existing Customer profile, changes to the profile, if any, authenticate their identification and provide mitigation wherever required. Customers will not be able to upgrade unless authenticated.
-                </div>
-            </div>
-        </section>
-        <section>
-            <h3><a>1. AT&T FRAUD DETECTION ENGINE(FDE)</a></h3>
-            <div>
-                <img src="images/FDE_Complete.png" style="width: 800px; height: 400px">
-            </div>
-        </section>
-        <section>
-            <h3><a>1. AT&T FRAUD DETECTION ENGINE(FDE)</a></h3>
-            <div>
-                <img src="images/FDE.png" style="width: 800px; height: 400px">
-            </div>
-        </section>
-        <section>
-            <h3><a>CHALLENGES FOR FDE</a></h3>
-            <br>
-            <div align="left">
-                <ul>
-                    <li>
-                        We could not test error scenarios against carrier, just the happy path.
-                    </li>
-                </ul>
-            </div>
-            <br>
-        </section>
-        <section>
-            <h3><a>Let's go to the code</a></h3>
-        </section>
-        <section>
-            <h3><a>2. TRACFONE PAM INTEGRATION - INITIAL WORK</a></h3>
+            <h3><a>TRACFONE</a></h3>
             <div>
                 <div>
                     A New supported carrier for prepaid activations.
                 </div>
             </div>
         </section>
+
         <section>
-            <h3><a>2. TRACFONE PAM INTEGRATION - INITIAL WORK</a></h3>
+            <h3><a>TRACFONE IMPLEMENTATION NEW ACTIVATION CURRENT STATE:</a></h3>
             <div>
-                <img src="images/Tracfone.png" style="width: 800px; height: 400px">
+                <img src="images/TC_NEW.png">
             </div>
         </section>
+
+        <section>
+            <h3><a>TRACFONE IMPLEMENTATION UPGRADE CURRENT STATE:</a></h3>
+            <div>
+                <img src="images/TC_UPG_1.png" style="width: 450px; height: 250px">
+                <img src="images/TC_UPG_2.png" style="width: 450px; height: 250px">
+                <img src="images/TC_UPG_3.png" style="width: 450px; height: 250px">
+            </div>
+        </section>
+
+
         <section>
             <h3><a>WHAT WE DID</a></h3>
             <br>
             <ul>
                 <li>Changes in Canonical Workflows</li>
+                <ol>
+                    <liv><a>ValidateDevice - GETDEVICETYPE api</a></liv>
+                    <liv><a>AccountLookUp - GETACCOUNTSTATUS api</a></liv>
+                    <liv><a>CreateCustomer - ADDRESSVALIDATION api</a></liv>
+                </ol>
                 <li>Carrier Testing</li>
                 <li>BDD Creation</li>
             </ul>
         </section>
         <section>
-            <h3><a>CHALLENGES FOR TRACFONE</a></h3>
+            <h3><a>CHALLENGES FOR TRACFONE IMPLEMENTATION</a></h3>
             <br>
             <div align="left">
                 <ul>
                     <li>
-                        Changes in the version of the API documentation during the normalization process
-                    </li>
-                    <li>
-                        Lack of examples for error scenarios.
-                    </li>
-                    <li>
-                        We were not able to test all carrier endpoints yet.
+                        GetAccountStatus models were modified due to differences between documentation and carrier testing.
                     </li>
                 </ul>
             </div>
             <br>
         </section>
+
         <section>
             <h3><a>Let's go to the code</a></h3>
         </section>
+
         <section>
             <h3><a>UPCOMING WORK</a></h3>
             <br>
             <div align="left">
                 <ul>
-                    <li>
-                        PAM support for TracFone payments with Aurus
-                    </li>
-                    <li>
-                        FDE PAM integration
-                    </li>
-                    <li>
-                        PAM AT&T Returns and Exchanges support
-                    </li>
                     <li>
                         TracFone PAM integration
                     </li>
@@ -188,6 +160,7 @@
             {src: 'plugin/notes/notes.js', async: true}
         ]
     });
+
 </script>
 </body>
 </html>
