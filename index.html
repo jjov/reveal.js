@@ -22,6 +22,7 @@
         link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
 
+
     </script>
 </head>
 <body>
@@ -96,7 +97,7 @@
             <h3><a>WHAT WE DID</a></h3>
             <br>
             <ul>
-                <li>Changes in Canonical Workflows</li>
+                <li>Changes in Canonical Workflows adding workflows for the Tracfone carrier apis:</li>
                 <ol>
                     <liv><a>ValidateDevice - GETDEVICETYPE api</a></liv>
                     <liv><a>AccountLookUp - GETACCOUNTSTATUS api</a></liv>
@@ -110,10 +111,25 @@
             <h3><a>CHALLENGES FOR TRACFONE IMPLEMENTATION</a></h3>
             <br>
             <div align="left">
-                <ul>
-                    <li>
-                        GetAccountStatus models were modified due to differences between documentation and carrier testing.
-                    </li>
+                <li>
+                    GetAccountStatus models were modified due to differences between documentation and carrier testing.
+                </li>
+                <li>Issues with ConnectedCommer_Features Repository related to drone changes.</li>
+
+                </ul>
+            </div>
+            <br>
+        </section>
+
+        <section>
+            <h3><a>CHALLENGES FOR TRACFONE IMPLEMENTATION</a></h3>
+            <br>
+            <div align="left">
+
+                <li>Pipeline and local issues related to drone changes. Catalog-Server on docker was not starting-up</li>
+                <li>Issues with components dependencies. ConnectedCommerce_Integration was not compiling. A workAround
+                    was suggested to unblock PAM Teams.
+                </li>
                 </ul>
             </div>
             <br>
@@ -160,6 +176,7 @@
             {src: 'plugin/notes/notes.js', async: true}
         ]
     });
+
 
 </script>
 </body>
