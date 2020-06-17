@@ -23,6 +23,7 @@
         document.getElementsByTagName('head')[0].appendChild(link);
 
 
+
     </script>
 </head>
 <body>
@@ -44,7 +45,7 @@
                 <li>DEV - JOSE RIVERA</li>
             </ul>
         </section>
-        <section>
+        <!--<section>
             <h3><a>20.? – ?% (?/?)</a></h3>
             <ul>
                 <li>TracFone PAM support</li>
@@ -55,15 +56,15 @@
                 <li>TracFone PAM support</li>
                 <li>Bug resolution</li>
             </ul>
-        </section>
+        </section>-->
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <div>TRACFONE PAM IMPLEMENTATION:
             </div>
             <ol>
-                <li>GetDeviceType API</li>
-                <li>GetAccountStatus API</li>
-                <li>AddressValidation API</li>
+                <li>ValidateDevice - GetDeviceType api</li>
+                <li>AccountLookUp - GetAccountStatus api</li>
+                <li>CreditCheck - AddressValidation api</li>
             </ol>
         </section>
 
@@ -107,6 +108,11 @@
                 <li>BDD Creation</li>
             </ul>
         </section>
+
+        <section>
+            <h3><a>Let's go to the code</a></h3>
+        </section>
+
         <section>
             <h3><a>CHALLENGES FOR TRACFONE IMPLEMENTATION</a></h3>
             <br>
@@ -114,7 +120,7 @@
                 <li>
                     GetAccountStatus models were modified due to differences between documentation and carrier testing.
                 </li>
-                <li>Issues with ConnectedCommer_Features Repository related to drone changes.</li>
+                <li>Issues with ConnectedCommerce_Features Repository.</li>
 
                 </ul>
             </div>
@@ -126,34 +132,13 @@
             <br>
             <div align="left">
 
-                <li>Pipeline and local issues related to drone changes. Catalog-Server on docker was not starting-up</li>
-                <li>Issues with components dependencies. ConnectedCommerce_Integration was not compiling. A workAround
-                    was suggested to unblock PAM Teams.
+                <li>Catalog-Server on docker was not starting-up
+                </li>
+                <li>Issues with components dependencies. ConnectedCommerce_Integration was not compiling.
                 </li>
                 </ul>
             </div>
             <br>
-        </section>
-
-        <section>
-            <h3><a>Let's go to the code</a></h3>
-        </section>
-
-        <section>
-            <h3><a>UPCOMING WORK</a></h3>
-            <br>
-            <div align="left">
-                <ul>
-                    <li>
-                        TracFone PAM integration
-                    </li>
-                    <li>
-                        PROD support
-                    </li>
-                </ul>
-            </div>
-            <br>
-        </section>
         </section>
         ​
     </div>
@@ -176,6 +161,7 @@
             {src: 'plugin/notes/notes.js', async: true}
         ]
     });
+
 
 
 </script>
