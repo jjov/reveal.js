@@ -48,9 +48,9 @@
 
         <section>
             <h3><a>SPRINTS RESULTS</a></h3>
-            <h3><a>20.09 – 90% (27.5/30.5)</a></h3>
+            <h3><a>20.12 – 00% (0/0)</a></h3>
 
-            <h3><a>20.10 – 65% (20/31)</a></h3>
+            <h3><a>20.13 – 00% (0/0)</a></h3>
 
         </section>
         <section>
@@ -58,19 +58,9 @@
             <div>TRACFONE PAM IMPLEMENTATION:
             </div>
             <ol>
-                <li>ValidateDevice</li>
-                <li>AccountLookUp</li>
-                <li>CreditCheck</li>
+                <li>Create Order</li>
+                <li>Submit Order</li>
             </ol>
-        </section>
-
-        <section>
-            <h3><a>TRACFONE</a></h3>
-            <div>
-                <div>
-                    A New supported carrier for prepaid activations.
-                </div>
-            </div>
         </section>
 
         <section>
@@ -83,9 +73,7 @@
         <section>
             <h3><a>TRACFONE IMPLEMENTATION UPGRADE CURRENT STATE:</a></h3>
             <div>
-                <img src="images/TC_UPG_1.png" style="width: 450px; height: 250px">
-                <img src="images/TC_UPG_2.png" style="width: 450px; height: 250px">
-                <img src="images/TC_UPG_3.png" style="width: 450px; height: 250px">
+                <img src="images/TC_UPG.png">
             </div>
         </section>
 
@@ -94,12 +82,12 @@
             <h3><a>WHAT WE DID</a></h3>
             <br>
             <ul>
-                <li>Changes in Canonical Workflows adding workflows for the Tracfone carrier apis:</li>
-                <ol>
-                    <liv><a>ValidateDevice - GetDeviceType api</a></liv>
-                    <liv><a>AccountLookUp - GetAccountStatus api</a></liv>
-                    <liv><a>CreditCheck - AddressValidation api</a></liv>
-                </ol>
+                <li>Added new Tracfone workflows to the canonical ones</li>
+                <ul>
+                    <liv><a>Create Order</a></liv>
+                </ul><ul>
+                    <liv><a>Submit Order</a></liv>
+                </ul>
                 <li>Carrier Testing</li>
                 <li>BDD Creation</li>
             </ul>
@@ -114,9 +102,11 @@
             <br>
             <div align="left">
                 <li>
-                    GetAccountStatus models were modified due to differences between documentation and carrier testing.
+                    Tracfone data issues for specific scenarios.
                 </li>
-                <li>Issues with ConnectedCommerce_Features Repository.</li>
+                <li>
+                    Tracfone NEW scenario carrier testing is blocked due to dependency with Blackhawk.
+                </li>
 
                 </ul>
             </div>
@@ -124,14 +114,22 @@
         </section>
 
         <section>
-            <h3><a>CHALLENGES FOR TRACFONE IMPLEMENTATION</a></h3>
+            <h3><a>UPCOMING WORK</a></h3>
             <br>
             <div align="left">
-
-                <li>Catalog-Server on docker was not starting-up
-                </li>
-                <li>Issues with components dependencies. ConnectedCommerce_Integration was not compiling.
-                </li>
+                <ul>
+                    <li>
+                        PAM integration with Blackhawk Network
+                    </li>
+                    <li>
+                        AT&T Prepaid PAM integration
+                    </li>
+                    <li>
+                        PAM AT&T Returns and Exchanges support
+                    </li>
+                    <li>
+                        PROD support
+                    </li>
                 </ul>
             </div>
             <br>
