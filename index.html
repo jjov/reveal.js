@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/blood.css">
+    <link rel="stylesheet" href="css/theme/quartet.css">
     <link rel="stylesheet" href="css/custom-macondo-styles.css">
 
     <!-- Theme used for syntax highlighting of code -->
@@ -27,105 +27,49 @@
 <div class="reveal">
     <div class="slides">
         <section>
-            <img src="/images/quartet.png" width=70% height=70%>
+            <img src="/images/quartet.png" width=65% height=65%>
             <p class="demo-title">PAM Modularization</p>
+            Previous sprint 0/0 -> 0%<br>
+            Current sprint 0/0 -> 0%
+        </section>
+        <section>
+            <h3><a>TOPICS</a></h3>
+            <ul>
+                <li>
+                    PAM Modularization
+                </li>
+                <li>
+                    Proxy layer PoC for different PAM Applications
+                </li>
+            </ul>
         </section>
         <section>
             <h3><a>PAM Modularization</a></h3>
 
             <ul>
                 <li>
-                    Issolate PAM base for new applications. <b>ConnectedCommerce_IntegrationComponents</b>
+                    Extract PAM base for new applications as a library. <b>ConnectedCommerce_IntegrationComponents</b>
                 </li>
-                <br>
+                
                 <li>
-                    Create new PAM application for Top Ups which use PAM base. <b>item_services_integrations_prepaid_topups_v1</b>
+                    Create new PAM application for Top Ups which has the PAM base library as a dependency. <b>item_services_integrations_prepaid_topups_v1</b>
+                </li>
+                <li>
+                    Create new TAP application for Top Ups. <b>itemservicesintegrationsprepaidtopupsv1</b>
                 </li>
             </ul>
         </section>
+       
         <section>
-            <h3><a>Requirement - Create Warranty</a></h3>
-            <pre><code data-trim data-noescape>
-                {
-                    "customer": {
-                        "addresses": [
-                            {
-                                "address1": "100 MILITARY PLZ",
-                                "city": "SAN ANTONIO",
-                                "country": "US",
-                                "stateProvince": "TX",
-                                "type": "billing",
-                                "zipPostalCode": "78205"
-                            }
-                        ],
-                        "email": "anwara@360logica.com",
-                        "firstName": "CONSENSUS",
-                        "lastName": "DO NOT TOUCH",
-                        "locale": "en_US",
-                        "phone": "1111110002"
-                    },
-                    "merchantID": "subscrip_trgt04122016",
-                    "orderLines": [
-                        {
-                            "items": [
-                                {
-                                    "itemAttributes": {
-                                        "description": "Apple  iPhone X 64GB - Silver",
-                                        "model": "iPhone X 64GB - Silver"
-                                    },
-                                    "pricing": {
-                                        "purchasePrice": {
-                                            "currencyCode": "USD",
-                                            "value": 899.99
-                                        }
-                                    },
-                                    "purchaseDate": "2019-12-05T10:52:38.000-08:00",
-                                    "serialNumber": "359406080000005",
-                                    "sku": "6173B"
-                                }<mark>,
-                                {
-                                    "itemAttributes": {
-                                        "description": "Smartphone2"
-                                    },
-                                    "phoneNumber": "12345672"
-                                },
-                                {
-                                    "itemAttributes": {
-                                        "description": "Smartphone3"
-                                    },
-                                    "phoneNumber": "12345673"
-                                },
-                                {
-                                    "itemAttributes": {
-                                        "description": "Smartphone4"
-                                    },
-                                    "phoneNumber": "12345674"
-                                }</mark>
-                            ],
-                            "pricing": {
-                                "purchasePrice": {
-                                    "currencyCode": "USD",
-                                    "value": 9.99
-                                }
-                            },
-                            "purchaseDate": "2019-12-05T10:52:38.000-08:00",
-                            "resaleProductID": "TARGETMIBTEST-1"
-                        }
-                    ],
-                    "orderNumber": "100087329 : 359406080000005",
-                    "source": "TARGET_MOBILE",
-                    "storeID": "2225"
-                }
-            </code></pre>
+            <h3><a>Proxy layer PoC</a></h3>
+
+            <ul>
+                <li>
+                </li>
+                
+            </ul>
         </section>
-        <section>
-            <h3><a>Solution - order post canonical request</a></h3>
-            <img src="/images/post.png">
-        </section>
-        <section>
-            <h3><a>Solution - logic</a></h3>
-            <img src="/images/SQTfamilyplan.png">
-        </section>
+        
         
     </div>
 </div>
