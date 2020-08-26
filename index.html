@@ -35,42 +35,53 @@
         </section>
 
         <section>
+            <h3><a>CONTEXT</a></h3>
+            <br>
+            <div align="left">
+                <ul>
+                    <li>
+                        New prepaid feature “Top Ups” has become part of Target priorities. Top ups will be used for
+                        adding minutes to a phone or creating a virtual account with a redemption code.
+                        In order to handle Top Ups for prepaid purposes a canonical flow has to be implemented.
+                    </li>
+                </ul>
+            </div>
+            <br>
+        </section>
+
+        <section>
             <h3><a>MAIN TOPICS</a></h3>
-            <div>TRACFONE PAM IMPLEMENTATION:
+            <div>TOP UPS PAM MODULARIZATION IMPLEMENTATION:
             </div>
             <ol>
+                <li>Retrieve Plans</li>
                 <li>Create Order</li>
                 <li>Submit Order</li>
             </ol>
         </section>
 
         <section>
-            <h3><a>TRACFONE IMPLEMENTATION NEW ACTIVATION CURRENT STATE:</a></h3>
+            <h3><a>TOP-UPS CANONICAL FLOW:</a></h3>
             <div>
-                <img src="images/TC_NEW.png">
+                <img src="images/TopUps1.png">
             </div>
         </section>
-
-        <section>
-            <h3><a>TRACFONE IMPLEMENTATION UPGRADE CURRENT STATE:</a></h3>
-            <div>
-                <img src="images/TC_UPG.png">
-            </div>
-        </section>
-
 
         <section>
             <h3><a>WHAT WE DID</a></h3>
-            <br>
             <ul>
-                <li>Added new Tracfone workflows to the canonical ones</li>
+                <li>We implemented the topUp module using the new repository "item_services_integrations_prepaid_topups_v1" created by Quartet team.</li>
+                <li>We created the following canonicals workflows supporting happy and error paths:</li>
+                <ul>
+                    <liv><a>Retrieve Plans</a></liv>
+                </ul>
                 <ul>
                     <liv><a>Create Order</a></liv>
-                </ul><ul>
+                </ul>
+                <ul>
                     <liv><a>Submit Order</a></liv>
                 </ul>
-                <li>Carrier Testing</li>
-                <li>BDD Creation</li>
+                <li>Functional testing using Postman</li>
             </ul>
         </section>
 
@@ -79,19 +90,15 @@
         </section>
 
         <section>
-            <h3><a>CHALLENGES FOR TRACFONE IMPLEMENTATION</a></h3>
+            <h3><a>CHALLENGES FOR TOP-UPS IMPLEMENTATION</a></h3>
             <br>
             <div align="left">
                 <li>
-                    Tracfone data issues for specific scenarios (NEW with CDMA).
+                    The decision to start working on pam modularization for this feature was taken at the middle of the sprint.
                 </li>
                 <li>
-                    Tracfone NEW scenarios carrier testing is blocked due to dependency with Blackhawk.
+                    The learning curve on pam modularization.
                 </li>
-                <li>
-                    Tracfone UPG scenario carrier testing is blocked because we can't create data.
-                </li>
-
                 </ul>
             </div>
             <br>
