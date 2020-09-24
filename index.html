@@ -40,66 +40,88 @@
             <div align="left">
                 <ul>
                     <li>
-                        New prepaid feature “Top Ups” has become part of Target priorities. Top ups will be used for
-                        adding minutes to a phone or creating a virtual account with a redemption code.
-                        In order to handle Top Ups for prepaid purposes a canonical flow has been implemented.
+                        On the initial implementation of the "Top-Ups" module only the BlackHawk services were consumed
+                    </li>
+                    <li>
+                        We were notified of a special requirement: when dealing with Tracfone's RTR transactions, additional APIs must be invoked
+                    </li>
+                    <li>
+                        This didn't imply any update at the canonical level, only internal implementation changes
                     </li>
                 </ul>
             </div>
             <br>
         </section>
-
+        ​
         <section>
             <h3><a>MAIN TOPICS</a></h3>
-            <div>TOP UPS PAM MODULARIZATION IMPLEMENTATION:
+            <div>ENHANCEMENTS TO TOP-UPS PAM MODULE IMPLEMENTATION:
             </div>
             <ol>
-                <li>Retrieve Plans</li>
-                <li>Create Order</li>
-                <li>Submit Order</li>
+                <li>Common libraries (repositories) for the adapters and models</li>
+                <li>Updates on the Top-Ups workflows for supporting Tracfone on RTR scenarios</li>
             </ol>
         </section>
-
+        ​
         <section>
             <h3><a>TOP-UPS CANONICAL FLOW:</a></h3>
             <div>
-                <img src="images/TopUps1.png">
+                <img src="images/TopUps1-plus-tracfone.png">
             </div>
         </section>
-
+        ​
         <section>
             <h3><a>WHAT WE DID</a></h3>
             <ul>
-                <li>We implemented the topUp module using the new repository "item_services_integrations_prepaid_topups_v1" created by Quartet team.</li>
-                <li>We created the following canonicals workflows supporting happy and error paths:</li>
-                <ul>
-                    <liv><a>Retrieve Plans</a></liv>
-                </ul>
+                <li>We continued implementing the Top-Ups module using the repositories with Drone and Vela configurations:
+                    <ul>
+                        <liv><a>item_services_integrations_prepaid_topups_v1</a></liv>
+                    </ul>
+                    <ul>
+                        <liv><a>item_services_integration_models_blackhawk</a></liv>
+                    </ul>
+                    <ul>
+                        <liv><a>item_services_integration_models_tracfone</a></liv>
+                    </ul>
+                    <ul>
+                        <liv><a>ConnectedCommerce_IntegrationCommon</a></liv>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        ​
+        <section>
+            <h3><a>WHAT WE DID</a></h3>
+            <ul>
+                <li>Were improved the following canonicals workflows for supporting Tracfone carrier:</li>
                 <ul>
                     <liv><a>Create Order</a></liv>
                 </ul>
                 <ul>
                     <liv><a>Submit Order</a></liv>
                 </ul>
-                <li>Functional testing using Postman</li>
+                <li>The <liv><a>Retrieve Plans</a></liv> API was not affected</li>
+                <li>Wiremock testing using Postman</li>
             </ul>
         </section>
-
+        ​
         <section>
             <h3><a>Let's go to the code</a></h3>
         </section>
-
+        ​
         <section>
             <h3><a>CHALLENGES FOR TOP-UPS IMPLEMENTATION</a></h3>
             <br>
             <div align="left">
                 <li>
-                    The approval to start working on PAM modularization for this feature was obtained at the middle of the sprint.
+                    Learning curve for configuring the new Drone and Vela repositories and pipelines
                 </li>
                 <li>
-                    The learning curve on PAM modularization.
+                    The pipelines of the new model repositories cannot be activated until the build and deploy plugin to be updated to support Vela
                 </li>
-                </ul>
+                <li>
+                    Besides Top-Ups, we also took care of the integration between Tracfone & Aurus with the prepaid app in TAP
+                </li>
             </div>
             <br>
         </section>
