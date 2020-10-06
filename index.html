@@ -28,47 +28,52 @@
     <div class="slides">
         <section>
             <img src="/images/quartet.png" width=65% height=65%>
-            <p class="demo-title">PAM Modularization</p>
-            Previous sprint 0/0 -> 0%<br>
-            Current sprint 0/0 -> 0%
+            <p class="demo-title">Synthetic monitoring by store</p>
         </section>
         <section>
-            <h3><a>TOPICS</a></h3>
+            <h3><a>APPROACHES</a></h3>
             <ul>
                 <li>
-                    PAM Modularization
+                    To use store id http header in PAM Proxy.
                 </li>
                 <li>
-                    Proxy layer PoC for different PAM Applications
+                    To add synthetic header in PAM when expected store is in the canonical request.
                 </li>
             </ul>
         </section>
         <section>
-            <h3><a>PAM Modularization</a></h3>
+            <h3><a>To use store http header in PAM Proxy.</a></h3>
+            <ul>
+                <li>
+                    Http header present in most of carrier calls in PAM. (X-PAM-EXTERNAL-STOREID)
+                </li>
+                <li>
+                    Some carrier requests have to be modified in PAM.
+                </li>
+                <li>
+                    Two properties in PAM Proxy, to know if the deployment is prod, and to know which stores will be for synthetic monitoring.
+                </li>
+                <li>
+                    To add the logic for synthetic monitoring by store in PAM Proxy.
+                   </li>
+            </ul>
+            
+        </section>
+        <section>
+            <h3><a>To add synthetic header in PAM</a></h3>
+            <ul>
+                <li>
+                    Add a new property to know which stores are for synthetic monitoring.
+                </li>
+                <li>
+                    To implement the logic in ApiServiceEndPointBase class from integrationcomponents.
+                </li>
+                <li>
+                    To add synthetic monitoring header when the store is the expected, and the deployment is prod.
+                </li>
+            </ul>
+        </section>
 
-            <ul>
-                <li>
-                    Extract PAM base for new applications as a library. <b>ConnectedCommerce_IntegrationComponents</b>
-                </li>
-                
-                <li>
-                    Create new PAM application for Top Ups which has the PAM base library as a dependency. <b>item_services_integrations_prepaid_topups_v1</b>
-                </li>
-                <li>
-                    Create new TAP application for Top Ups. <b>itemservicesintegrationsprepaidtopupsv1</b>
-                </li>
-            </ul>
-        </section>
-       
-        <section>
-            <h3><a>Proxy layer PoC</a></h3>
-
-            <ul>
-                <li>
-                </li>
-                
-            </ul>
-        </section>
         
         
     </div>
