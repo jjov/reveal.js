@@ -24,6 +24,7 @@
 
 
 
+
     </script>
 </head>
 <body>
@@ -36,12 +37,32 @@
 
         <section>
             <h3><a>MAIN TOPICS</a></h3>
-            <div>ENHANCEMENTS TO TOP-UPS PAM MODULE IMPLEMENTATION:
+            <div>ATT PREPAID PAM MODULE IMPLEMENTATION:
             </div>
-            <ol>
-                <li>Updates on the Top-Ups workflows for supporting Tracfone on RTR scenarios</li>
-                <li>Common libraries (repositories) for the adapters and models</li>
-            </ol>
+            <div align="left">
+                <div><a> Canonical ValidateDevice:</a></div>
+
+                <li>InquireSIMStatus API</li>
+
+                <div><a>Canonical CreateCustomer:</a></div>
+
+                <li>InquireMarketServiceAreas</li>
+
+
+                <li>AddAccount</li>
+
+                <div><a>Canonical CreateOrder:</a></div>
+
+                <li>AddPort</li>
+
+
+                <li>ReserveSubscriberNumber</li>
+
+
+                <li>Blackhawk Transaction (BHN) API Request</li>
+
+
+            </div>
         </section>
         ​
 
@@ -52,13 +73,9 @@
             <div align="left">
                 <ul>
                     <li>
-                        On the initial implementation of the "Top-Ups" module only the BlackHawk services were consumed
-                    </li>
-                    <li>
-                        We were notified of a special requirement: when dealing with Tracfone's RTR transactions, additional APIs must be invoked
-                    </li>
-                    <li>
-                        This didn't imply any update at the canonical level, only internal implementation changes
+                        AT&T prepaid activations have become part of Target priorities. Prepaid Activations will be used
+                        for activating customers with a prepaid device or activating prepaid smartphones with prepaid
+                        data plans. In order to handle these new features a canonical flow has been proposed.
                     </li>
                 </ul>
             </div>
@@ -67,45 +84,49 @@
 
 
         <section>
-            <h3><a>TOP-UPS CANONICAL FLOW:</a></h3>
+            <h3><a>NEW ACTIVATION CANONICAL FLOW</a></h3>
             <div>
-                <img src="images/TopUps1-plus-tracfone.png">
+                <img src="images/ATT_NEW_ACTIVATION.png">
             </div>
         </section>
         ​
         ​
         <section>
+            <h3><a>NEW ACTIVATION CANONICAL FLOW WITH PORT-IN</a></h3>
+            <div>
+                <img src="images/ATT_PORT_IN.png">
+            </div>
+        </section>
+
+        <section>
             <h3><a>WHAT WE DID</a></h3>
             <ul>
-                <li>We continued implementing the Top-Ups module using the repositories with Drone and Vela configurations:
+                <li>We created two repositories for AT&T PAM module:
                     <ul>
-                        <liv><a>item_services_integrations_prepaid_topups_v1</a></liv>
+                        <liv><a>item_services_integrations_prepaid_att</a></liv>
                     </ul>
                     <ul>
-                        <liv><a>item_services_integration_models_blackhawk</a></liv>
+                        <liv><a>item_services_integration_models_att</a></liv>
                     </ul>
-                    <ul>
-                        <liv><a>item_services_integration_models_tracfone</a></liv>
-                    </ul>
-                    <ul>
-                        <liv><a>ConnectedCommerce_IntegrationCommon</a></liv>
-                    </ul>
-                </li>
+            </ul>
+            </li>
             </ul>
         </section>
         ​
         <section>
             <h3><a>WHAT WE DID</a></h3>
             <ul>
-                <li>Were improved the following canonicals workflows for supporting Tracfone carrier:</li>
+                <li>Were implemented the following canonicals workflows:</li>
+                <ul>
+                    <liv><a>Validate Device</a></liv>
+                </ul>
+                <ul>
+                    <liv><a>Create Customer</a></liv>
+                </ul>
                 <ul>
                     <liv><a>Create Order</a></liv>
                 </ul>
-                <ul>
-                    <liv><a>Submit Order</a></liv>
-                </ul>
-                <li>The <liv><a>Retrieve Plans</a></liv> API was not affected</li>
-                <li>Wiremock testing using Postman</li>
+                <li>Wiremock testing using Postman and K6</li>
             </ul>
         </section>
         ​
@@ -114,17 +135,19 @@
         </section>
         ​
         <section>
-            <h3><a>CHALLENGES FOR TOP-UPS IMPLEMENTATION</a></h3>
+            <h3><a> /TODO: CHALLENGES FOR TOP-UPS IMPLEMENTATION</a></h3>
             <br>
             <div align="left">
                 <li>
                     Learning curve for configuring the new Drone and Vela repositories and pipelines
                 </li>
                 <li>
-                    The pipelines of the new model repositories cannot be activated until the build and deploy plugin gets updated to support Vela
+                    The pipelines of the new model repositories cannot be activated until the build and deploy plugin
+                    gets updated to support Vela
                 </li>
                 <li>
-                    Besides Top-Ups, we had issues with the integration testing between Tracfone & Aurus with the prepaid app in TAP
+                    Besides Top-Ups, we had issues with the integration testing between Tracfone & Aurus with the
+                    prepaid app in TAP
                 </li>
             </div>
             <br>
@@ -150,6 +173,7 @@
             {src: 'plugin/notes/notes.js', async: true}
         ]
     });
+
 
 
 
