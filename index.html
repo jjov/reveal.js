@@ -37,7 +37,7 @@
 
         <section>
             <h3><a>MAIN TOPICS</a></h3>
-            <div>ATT PREPAID PAM MODULE IMPLEMENTATION:
+            <div align="left">ATT PREPAID PAM MODULE IMPLEMENTATION:
             </div>
             <div align="left">
                 <div><a> Canonical ValidateDevice:</a></div>
@@ -103,11 +103,15 @@
             <ul>
                 <li>We created two repositories for AT&T PAM module:
                     <ul>
+                        <liv>item_services_integration_models_blackhawk</liv>
+                    </ul>
+                    <ul>
                         <liv><a>item_services_integrations_prepaid_att</a></liv>
                     </ul>
                     <ul>
                         <liv><a>item_services_integration_models_att</a></liv>
                     </ul>
+
             </ul>
             </li>
             </ul>
@@ -127,6 +131,7 @@
                     <liv><a>Create Order</a></liv>
                 </ul>
                 <li>Wiremock testing using Postman and K6</li>
+                <li>K6 running in Vela</li>
             </ul>
         </section>
         ​
@@ -135,24 +140,15 @@
         </section>
         ​
         <section>
-            <h3><a> /TODO: CHALLENGES FOR TOP-UPS IMPLEMENTATION</a></h3>
+            <h3><a>CHALLENGES FOR TOP-UPS IMPLEMENTATION</a></h3>
             <br>
             <div align="left">
                 <li>
-                    Learning curve for configuring the new Drone and Vela repositories and pipelines
-                </li>
-                <li>
-                    The pipelines of the new model repositories cannot be activated until the build and deploy plugin
-                    gets updated to support Vela
-                </li>
-                <li>
-                    Besides Top-Ups, we had issues with the integration testing between Tracfone & Aurus with the
-                    prepaid app in TAP
+                    We implemented AddAccount in V118 while we wait for XSDs V208 which are not yet received.
                 </li>
             </div>
             <br>
-        </section>
-        ​
+        </section>        ​
     </div>
 </div>
 ​
