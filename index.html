@@ -37,35 +37,24 @@
 
         <section>
             <h3><a>MAIN TOPICS</a></h3>
-            <div align="left">ATT PREPAID PAM MODULE IMPLEMENTATION:
-            </div>
+            <div align="left"><a>AT&T PREPAID PAM MODULE IMPLEMENTATION</a></div>
             <div align="left">
-                <div><a> Canonical ValidateDevice:</a></div>
-
-                <li>InquireSIMStatus API</li>
-
-                <div><a>Canonical CreateCustomer:</a></div>
-
-                <li>InquireMarketServiceAreas</li>
-
-
-                <li>AddAccount</li>
-
-                <div><a>Canonical CreateOrder:</a></div>
-
-                <li>AddPort</li>
-
-
-                <li>ReserveSubscriberNumber</li>
-
-
-                <li>Blackhawk Transaction (BHN) API Request</li>
-
-
+                <div>Unified API library for AT&T</div>
+                <ul>
+                <ul>
+                    <liv>Features</liv>
+                </ul>
+                <ul>
+                    <liv>Error handling generic workflow</liv>
+                </ul>
+                </ul>
+            </div>
+            <br/>
+            <div align="left"><a>TOP UPS MODULE</a></div>
+            <div align="left">
+                <div>Create Customer canonical implementation</div>
             </div>
         </section>
-        ​
-
 
         <section>
             <h3><a>CONTEXT</a></h3>
@@ -73,65 +62,121 @@
             <div align="left">
                 <ul>
                     <li>
-                        AT&T prepaid activations have become part of Target priorities. Prepaid Activations will be used
-                        for activating customers with a prepaid device or activating prepaid smartphones with prepaid
-                        data plans. In order to handle these new features a canonical flow has been proposed.
+                        AT&T prepaid activations have become part of Target priorities. Many of its support flows are
+                        already available, but a refactoring was implemented for simplifying upcoming developments.
+                    </li>
+                    <li>
+                        In parallel, Top Ups module continue growing by supporting customer's validations flows.
                     </li>
                 </ul>
             </div>
             <br>
         </section>
 
+        <section>
+            <h3><a>Unified API's library for modularization</a></h3>
+            <div>
+                <img src="images/pam-modularized-deployments.png">
+            </div>
+        </section>
 
         <section>
-            <h3><a>NEW ACTIVATION CANONICAL FLOW</a></h3>
+            <h3><a>Unified API's library for modularization</a></h3>
+            <div align="left">Its purpose is to provide a software component that encapsulates the foundations of
+                the logic needed to interact with a service provider's APIs in order to achieve a specific goal.</div>
+        </section>
+
+        <section>
+            <h3><a>Unified API's library for modularization</a></h3>
+            <div align="left">Main components</div>
+            <ul>
+                <li>The business domain classes/POJOs</li>
+                <li>The Adapter utility: for low-level data exchange using a communications protocol</li>
+                <li>The Invoker utility: that is a PAM-oriented component that simplifies the use of the Adapter in a
+                    workflow execution</li>
+                <li>The generic error handling workflow</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3><a>Tracfone's auto-pay - Create Customer</a></h3>
+            <div align="left">As part of Tracfone Auto-Refill implementation was necessary to remove getDeviceType from
+                Create Order canonical workflow and add it to Create Customer canonical API call to validate if the
+                phone number which is going to recharged belongs to an active account</div>
+        </section>
+
+        <section>
+            <h3><a>Tracfone's auto-pay - New Customer flow</a></h3>
             <div>
-                <img src="images/ATT_NEW_ACTIVATION.png">
+                <img src="images/topUps_autoPay_newCustomer_flow.png">
             </div>
         </section>
         ​
+        <section>
+            <h3><a>Tracfone's auto-pay - Existing Customer flow</a></h3>
+            <div>
+                <img src="images/topUps_autoPay_existingCustomer_flow.png">
+            </div>
+        </section>
         ​
         <section>
-            <h3><a>NEW ACTIVATION CANONICAL FLOW WITH PORT-IN</a></h3>
-            <div>
-                <img src="images/ATT_PORT_IN.png">
-            </div>
+            <h3><a>Tracfone's auto-pay - Create Customer</a></h3>
+            <ul>
+                <li>For all service providers but Tracfone Create Customer will just be a pass-through</li>
+                <li>Only for Tracfone the GetDevice carrier-API will be called</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3><a>Tracfone's auto-pay - Create customer request</a></h3>
+            <pre>   <code>
+    {
+       "header":{
+          "dealerCode":"3LAYE",
+          "serviceProvider":"TTRACFONE",
+          "sessionId":"",
+          "clientReferenceId":"0347745",
+          "clientOriginationId":"9999",
+          "channel":"INSTORE"
+       },
+       "input":{
+          "mobile":{
+             "accountPhoneNumber":"1839018390"
+          }
+       }
+    }
+            </code> </pre>
+        </section>
+
+
+        <section>
+            <h3><a>Tracfone's auto-pay - Create customer response</a></h3>
+            <pre>   <code>
+    {
+       "header":{
+          "serviceProvider":"TRACFONE",
+          "sessionId":"6ee72e1d-d614-4f28-b3b6-b80df85a24ed",
+          "clientReferenceId":"0347745",
+          "correlationId":"cfdce152-3bda-11ea-9b59-0242ac120007",
+          "errors": []
+       }
+    }
+            </code> </pre>
         </section>
 
         <section>
             <h3><a>WHAT WE DID</a></h3>
             <ul>
-                <li>We created two repositories for AT&T PAM module:
+                <li>We created the first unified API library
                     <ul>
-                        <liv>item_services_integration_models_blackhawk</liv>
+                        <liv>AT&T</liv>
                     </ul>
                     <ul>
-                        <liv><a>item_services_integrations_prepaid_att</a></liv>
+                        <liv>Wiki with a check list for next service providers</liv>
                     </ul>
-                    <ul>
-                        <liv><a>item_services_integration_models_att</a></liv>
-                    </ul>
-
-            </ul>
-            </li>
-            </ul>
-        </section>
-        ​
-        <section>
-            <h3><a>WHAT WE DID</a></h3>
-            <ul>
-                <li>Were implemented the following canonicals workflows:</li>
-                <ul>
-                    <liv><a>Validate Device</a></liv>
-                </ul>
-                <ul>
-                    <liv><a>Create Customer</a></liv>
-                </ul>
-                <ul>
-                    <liv><a>Create Order</a></liv>
-                </ul>
-                <li>Wiremock testing using Postman and K6</li>
-                <li>K6 running in Vela</li>
+                </li>
+                <li>Completed the Create Customer canonical API for Top Ups
+                </li>
             </ul>
         </section>
         ​
@@ -140,11 +185,15 @@
         </section>
         ​
         <section>
-            <h3><a>CHALLENGES FOR ATT PREPAID IMPLEMENTATION</a></h3>
+            <h3><a>CHALLENGES FOR TOP UPS</a></h3>
             <br>
             <div align="left">
                 <li>
-                    We implemented AddAccount in V118 while we wait for XSDs V208 which are not yet received.
+                    The canonical buy flows were revisited and reformulated several times
+                </li>
+                <li>
+                    The tests against the carrier are blocked since the Tracfone's staging environment does not
+                    support integrating with BlackHawk's generated PINs
                 </li>
             </div>
             <br>
