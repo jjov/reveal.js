@@ -50,7 +50,7 @@
             <div align="left">
                 <ul>
                     <li>
-                        For Top Ups module continuing growing we did some changes according to the last changes in the design of AUTO REFILL.
+                        For Top Ups module continuing implementation we did some changes according to the last design decisions.
                     </li>
                 </ul>
             </div>
@@ -62,7 +62,7 @@
             <ul>
                 <li>As part of Tracfone Auto-Refill implementation was necessary to remove getDeviceType from
                 Create Customer canonical workflow and add it to Retrieve Account canonical API call to validate if the
-                phone number which is going to recharged belongs to an active account</li>
+                phone number which is going to recharged belongs to an active account.</li>
                 </ul>
         </section>
 
@@ -125,12 +125,13 @@
         <section>
             <h3><a>Create Order Price Structure</a></h3>
             <ul>
-                <li>As part of Tracfone Auto-Refill implementation was necessary to change . </li>
+                <li>As part of Tracfone Auto-Refill implementation was necessary to change the Create Order Canonical
+                    Request where now we added the Price Object structure and removed Retail Identifiers Object Structure. </li>
             </ul>
         </section>
 
         <section>
-            <h3><a>Create Order Response</a></h3>
+            <h3><a>Create Order Request</a></h3>
             <pre>   <code>
                 CreateOrder request: {
                   "header": {
@@ -179,11 +180,7 @@
             <br>
             <div align="left">
                 <li>
-                    The canonical buy flows were revisited and reformulated several times
-                </li>
-                <li>
-                    The tests against the carrier are blocked since the Tracfone's staging environment does not
-                    support integrating with BlackHawk's generated PINs
+                    We had some issues with some internal Core libraries that created some conflicts.
                 </li>
             </div>
             <br>
