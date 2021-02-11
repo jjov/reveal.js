@@ -36,12 +36,13 @@
         <section>
             <h3><a>MAIN TOPICS</a></h3>
             <br/>
-            <div align="left"><a>TOP UPS MODULE CHANGES</a></div>
+            <div align="left"><a>TOP UPS MODULE - INTEGRATION</a></div>
             <div align="left">
                 <ul>
-                    <li>Move GetDeviceType from CreateCustomer to RetrieveAccount</li>
-                    <li>Add new field availableFeatures to RetrievePlans Canonical Response</li>
-                    <li>CreateOrder must support Price structure instead of RetailIdentifier for the Canonical Request</li>
+                    <li>All buy-flows for TopUps with auto-refill are deployed on a TAP <b>development</b> environment</li>
+                    <li>We moved from the development phase to the integration phase</li>
+                    <li>Complete workflow for a new customer</li>
+                    <li>Complete workflow for an existing customer</li>
                 </ul>
             </div>
         </section>
@@ -51,61 +52,58 @@
             <br>
             <div align="left">
                 <ul>
-                    <li>
-                        For Top Ups module continuing implementation we did some changes according to the last design decisions.
-                    </li>
+                    <li>Enable TopUps service on Target as a meaningful market share.</li>
                 </ul>
             </div>
             <br>
         </section>
 
         <section>
-            <h3><a>GetDeviceType In  RetrieveAccount</a></h3>
-            <ul>
-                <li>As part of Tracfone Auto-Refill implementation was necessary to remove getDeviceType from
-                Create Customer canonical workflow and add it to Retrieve Account canonical API call to validate if the
-                phone number which is going to be recharged belongs to an active account.</li>
+            <h3><a>Overall status</a></h3>
+            <br>
+            <div align="left">
+                <ul>
+                    <li>All business logic for TopUps with auto-refill is implemented.</li>
+                    <li>Nevertheless, most testing so far has been done with Wiremock stubs.</li>
+                    <li>Now we are doing carrier-testing and supporting UI-integration.</li>
                 </ul>
+            </div>
+            <br>
         </section>
 
-        <section>
-            <h3><a>Tracfone's auto-pay - New Customer flow Old Version</a></h3>
-            <div>
-                <img src="images/topUps_autoPay_newCustomer_flow.png">
-            </div>
-        </section>
-        ​ ​
         <section>
             <h3><a>Tracfone's auto-pay - New Customer flow</a></h3>
             <div>
-                <img src="images/New_Scenario.png">
-            </div>
-        </section>
-        ​
-
-        <section>
-            <h3><a>Tracfone's auto-pay - Existing Customer flow Old Version</a></h3>
-            <div>
-                <img src="images/topUps_autoPay_existingCustomer_flow.png">
+                <img src="images/topUps_autoPay_newCustomer_flow_v2.png">
             </div>
         </section>
 
         <section>
             <h3><a>Tracfone's auto-pay - Existing Customer flow</a></h3>
             <div>
-                <img src="images/ExistingAccount.png">
+                <img src="images/topUps_autoPay_existingCustomer_flow_v2.png">
             </div>
         </section>
-        ​
+
         <section>
-            <h3><a>Retrieve Plans Canonical Response</a></h3>
+            <h3><a>Encryption handling for Tracfone's requests</a></h3>
             <ul>
-                <li>As part of Tracfone Auto-Refill implementation was necessary to include the field Available Features in Retrieve Plans Canonical Response. </li>
+                <li>It is required for both CreateCustomer and RetrieveCustomerDetails APIs for protecting customer's password</li>
+                <li>The text first gets Base64-encoded</li>
+                <li>Then it is encrypted with the algorithm RSA/ECB/OAEPWITHSHA-1ANDMGF1PADDING</li>
             </ul>
         </section>
 
         <section>
-            <h3><a>Retrieve Plans Canonical Response</a></h3>
+            <h3><a>Retrieve Plans canonical response</a></h3>
+            <ul>
+                <li>As part of Tracfone Auto-Refill implementation was necessary to include the field
+                    <b>availableFeatures</b> in RetrievePlans canonical response. </li>
+            </ul>
+        </section>
+
+        <section>
+            <h3><a>Retrieve Plans canonical response</a></h3>
             <pre>   <code class="hljs json"  data-line-numbers="11    -20" data-trim>
                 Response: {
                     "plans": [
@@ -142,8 +140,8 @@
         <section>
             <h3><a>Create Order Price Structure</a></h3>
             <ul>
-                <li>As part of Tracfone Auto-Refill implementation was necessary to change the Create Order Canonical
-                    Request where now we added the Price Object structure and removed Retail Identifiers Object Structure. </li>
+                <li>As part of Tracfone Auto-Refill implementation was necessary to change the Create Order canonical
+                    request where now we added the <b>price</b> object structure and removed the <b>retailIdentifiers</b> object structure. </li>
             </ul>
         </section>
 
@@ -182,32 +180,36 @@
         <section>
             <h3><a>WHAT WE DID</a></h3>
             <ul>
-                <li>Implemented Changes in PAM TopUps Module</li>
-                <li>Test Changes Against Wiremock through Postman</li>
-                <li>K6 Test Changes</li>
+                <li>Deployed current version of PAM TopUps module</li>
+                <li>Test changes against Wiremock through Postman</li>
+                <li>K6 Test improvements</li>
+                <li>Extensive carrier-testing</li>
             </ul>
         </section>
-        ​
+
         <section>
             <h3><a>Let's go to the code</a></h3>
         </section>
-        ​
+
         <section>
             <h3><a>CHALLENGES FOR TOP UPS</a></h3>
             <br>
             <div align="left">
                 <li>
-                    We had some issues with some internal Core libraries that created some conflicts.
+                    The unexpected downtime of some service providers
+                </li>
+                <li>
+                    Obtain/generate valid data for feeding the carrier APIs
+                </li>
+                <li>
+                    We had some issues with some internal Core libraries that raised some conflicts
                 </li>
             </div>
             <br>
         </section>
-        ​
     </div>
 </div>
-​
 <script src="js/reveal.js"></script>
-​
 <script>
     // More info about config & dependencies:
     // - https://github.com/hakimel/reveal.js#configuration
@@ -223,7 +225,6 @@
             {src: 'plugin/notes/notes.js', async: true}
         ]
     });
-
 </script>
 </body>
 </html>
